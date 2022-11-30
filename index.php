@@ -457,7 +457,7 @@
 
 
     <!-- Subscribe Start -->
-    <div class="container-fluid bg-secondary my-5">
+    <!-- <div class="container-fluid bg-secondary my-5">
         <div class="row justify-content-md-center py-5 px-xl-5">
             <div class="col-md-6 col-12 py-5">
                 <div class="text-center mb-2 pb-2">
@@ -474,7 +474,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Subscribe End -->
 
 
