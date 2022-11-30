@@ -251,29 +251,26 @@
             </div>
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <p class="text-right">15 Products</p>
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/cat-4.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/fan/fan.jpg" alt="">
                     </a>
-                    <h5 class="font-weight-semi-bold m-0">Headphone</h5>
+                    <h5 class="font-weight-semi-bold m-0">Fan</h5>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <p class="text-right">15 Products</p>
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/cat-5.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/charger/charger-asus.jpg" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">Charger</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="assets/img/Printer/Epson L120.png" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Printer</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <p class="text-right">15 Products</p>
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/cat-6.jpg" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">CPU</h5>
                 </div>
             </div>
         </div>
@@ -457,7 +454,7 @@
 
 
     <!-- Subscribe Start -->
-    <div class="container-fluid bg-secondary my-5">
+    <!-- <div class="container-fluid bg-secondary my-5">
         <div class="row justify-content-md-center py-5 px-xl-5">
             <div class="col-md-6 col-12 py-5">
                 <div class="text-center mb-2 pb-2">
@@ -474,7 +471,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Subscribe End -->
 
 
