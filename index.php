@@ -102,22 +102,22 @@
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown">Dresses <i class="fa fa-angle-down float-right mt-1"></i></a>
+                            <a href="#" class="nav-link" data-toggle="dropdown">Accerssories <i class="fa fa-angle-down float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                <a href="" class="dropdown-item">Men's Dresses</a>
-                                <a href="" class="dropdown-item">Women's Dresses</a>
-                                <a href="" class="dropdown-item">Baby's Dresses</a>
+                                <a href="" class="dropdown-item">Headphone</a>
+                                <a href="" class="dropdown-item">Fan</a>
+                                <a href="" class="dropdown-item">Keyboard + Mouse</a>
                             </div>
                         </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a>
+                        <a href="" class="nav-item nav-link">Laptop</a>
+                        <a href="" class="nav-item nav-link">Charger</a>
+                        <a href="" class="nav-item nav-link">LCD</a>
+                        <a href="" class="nav-item nav-link">Motherboard</a>
+                        <a href="" class="nav-item nav-link">CPU</a>
+                        <a href="" class="nav-item nav-link">Monitor</a>
+                        <a href="" class="nav-item nav-link">Power Supply</a>
+                        <a href="" class="nav-item nav-link">RAM</a>
+                        <a href="" class="nav-item nav-link">Printer</a>
                     </div>
                 </nav>
             </div>
@@ -230,7 +230,7 @@
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="img/cat-1.jpg" alt="">
                     </a>
-                    <h5 class="font-weight-semi-bold m-0">Men's dresses</h5>
+                    <h5 class="font-weight-semi-bold m-0">Laptop</h5>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 pb-1">
@@ -239,7 +239,7 @@
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="img/cat-2.jpg" alt="">
                     </a>
-                    <h5 class="font-weight-semi-bold m-0">Women's dresses</h5>
+                    <h5 class="font-weight-semi-bold m-0">LCD</h5>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 pb-1">
@@ -248,7 +248,7 @@
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="img/cat-3.jpg" alt="">
                     </a>
-                    <h5 class="font-weight-semi-bold m-0">Baby's dresses</h5>
+                    <h5 class="font-weight-semi-bold m-0">Keyboard</h5>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 pb-1">
@@ -257,7 +257,7 @@
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="img/cat-4.jpg" alt="">
                     </a>
-                    <h5 class="font-weight-semi-bold m-0">Accerssories</h5>
+                    <h5 class="font-weight-semi-bold m-0">Headphone</h5>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 pb-1">
@@ -266,7 +266,7 @@
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="img/cat-5.jpg" alt="">
                     </a>
-                    <h5 class="font-weight-semi-bold m-0">Bags</h5>
+                    <h5 class="font-weight-semi-bold m-0">Printer</h5>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 pb-1">
@@ -275,7 +275,7 @@
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="img/cat-6.jpg" alt="">
                     </a>
-                    <h5 class="font-weight-semi-bold m-0">Shoes</h5>
+                    <h5 class="font-weight-semi-bold m-0">CPU</h5>
                 </div>
             </div>
         </div>
@@ -314,7 +314,7 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">Popular</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -481,7 +481,7 @@
 
 
     <!-- Products Start -->
-    <div class="container-fluid pt-5">
+    <!-- <div class="container-fluid pt-5">
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">Just Arrived</span></h2>
         </div>
@@ -623,12 +623,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Products End -->
 
 
     <!-- Vendor Start -->
-    <div class="container-fluid py-5">
+    <!-- <div class="container-fluid py-5">
         <div class="row px-xl-5">
             <div class="col">
                 <div class="owl-carousel vendor-carousel">
@@ -659,7 +659,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Vendor End -->
 
 

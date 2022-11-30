@@ -109,15 +109,15 @@
                                 <a href="" class="dropdown-item">Baby's Dresses</a>
                             </div>
                         </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a>
+                        <a href="" class="nav-item nav-link">Laptop</a>
+                        <a href="" class="nav-item nav-link">Charger</a>
+                        <a href="" class="nav-item nav-link">Keyboard + Mouse</a>
+                        <a href="" class="nav-item nav-link">LCD</a>
+                        <a href="" class="nav-item nav-link">Motherboard</a>
+                        <a href="" class="nav-item nav-link">CPU</a>
+                        <a href="" class="nav-item nav-link">Monitor</a>
+                        <a href="" class="nav-item nav-link">Power Supply</a>
+                        <a href="" class="nav-item nav-link">RAM</a>
                     </div>
                 </nav>
             </div>
