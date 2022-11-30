@@ -118,7 +118,6 @@
                         <a href="" class="nav-item nav-link">Power Supply</a>
                         <a href="" class="nav-item nav-link">RAM</a>
                         <a href="" class="nav-item nav-link">Printer</a>
-                        <a href="" class="nav-item nav-link">Kresna</a>
                     </div>
                 </nav>
             </div>
