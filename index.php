@@ -227,27 +227,24 @@
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <p class="text-right">15 Products</p>
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/cat-1.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/laptop/laptop-hp.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Laptop</h5>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <p class="text-right">15 Products</p>
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/cat-2.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/LCD/lcd-ultra.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">LCD</h5>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <p class="text-right">15 Products</p>
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/cat-3.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/keyboard/keyboard.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Keyboard</h5>
                 </div>
