@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <title>SITTOK</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
+    <link href='assets/img/Sittok-png.png' rel='shortcut icon'>
 
     <!-- Favicon -->
-    <link href='assets/img/Sittok-png.png' rel='shortcut icon'>
+    <link href="assets/assets/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -192,9 +193,9 @@
     <!-- Page Header Start -->
     <div class="coba">
     <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #d2afff;" >
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #e7d1ff;" >
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Sittok</h1>
-            <p class="m-0"><a href="">Home</a></p>
+            <p class="m-0" style="text-color: black"><b><a href="">Home</a></b></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Our Shop>>></p>
             </div>

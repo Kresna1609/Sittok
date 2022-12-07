@@ -93,6 +93,7 @@
 
 
     <!-- Navbar Start -->
+<<<<<<< HEAD
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
@@ -187,6 +188,11 @@
             </div>
         </div>
     </div>
+=======
+    <?php
+        include 'navbar.php';
+    ?>
+>>>>>>> 7bfbffe1341773cd9e559d43054ec0cd8bdb2b34
     <!-- Navbar End -->
 
 
