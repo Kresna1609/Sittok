@@ -99,13 +99,13 @@
 
 
     <!-- Page Header Start -->
+    <div class="coba">
     <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #e7d1ff;" >
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Checkout</h1>
-            <div class="d-inline-flex">
-                <p class="m-0"><a href="">Home</a></p>
+            <p class="m-0" style="text-color: black"><b><a href="">Home</a></b></p>
                 <p class="m-0 px-2">-</p>
-                <p class="m-0">Checkout</p>
+                <p class="m-0">Our Shop>>></p>
             </div>
         </div>
     </div>
@@ -117,14 +117,14 @@
         <div class="row px-xl-5">
             <div class="col-lg-8">
                 <div class="mb-4">
-                    <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+                    <h4 class="font-weight-semi-bold mb-4">Alamat Pengiriman</h4>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <label>First Name</label>
+                            <label>Nama Lengkap</label>
                             <input class="form-control" type="text" placeholder="John">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Last Name</label>
+                            <label>Nama Panggilan</label>
                             <input class="form-control" type="text" placeholder="Doe">
                         </div>
                         <div class="col-md-6 form-group">
@@ -132,48 +132,44 @@
                             <input class="form-control" type="text" placeholder="example@email.com">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Mobile No</label>
+                            <label>Nomor Headphone Aktif</label>
                             <input class="form-control" type="text" placeholder="+123 456 789">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Address Line 1</label>
+                            <label>Alamat Lengkap</label>
                             <input class="form-control" type="text" placeholder="123 Street">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Address Line 2</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Country</label>
+                            <label>Negara</label>
                             <select class="custom-select">
-                                <option selected>United States</option>
-                                <option>Afghanistan</option>
-                                <option>Albania</option>
-                                <option>Algeria</option>
+                                <option selected>Indonesia</option>
+                                <option>Malaysia</option>
+                                <option>Singapore</option>
+                                <option>Brunnei Darussalam</option>
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>City</label>
+                            <label>Provinsi</label>
                             <input class="form-control" type="text" placeholder="New York">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>State</label>
+                            <label>Kabupaten/Kota</label>
                             <input class="form-control" type="text" placeholder="New York">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>ZIP Code</label>
+                            <label>Kode Post</label>
                             <input class="form-control" type="text" placeholder="123">
                         </div>
                         <div class="col-md-12 form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="newaccount">
-                                <label class="custom-control-label" for="newaccount">Create an account</label>
+                                <label class="custom-control-label" for="newaccount">Buat Akun</label>
                             </div>
                         </div>
                         <div class="col-md-12 form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="shipto">
-                                <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
+                                <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Belanja dengan alamat lain</label>
                             </div>
                         </div>
                     </div>
