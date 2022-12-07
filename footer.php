@@ -2,7 +2,7 @@
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
                 <a href="" class="text-decoration-none">
-                    <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>sittok</h1>
+                    <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Sittok</h1>
                 </a>
                 <p>Sittok merupakan salah satu market place yang menjual berbagai macam produk elektronik. 
                     Sittok memudahkan para konsumen untuk mencari barang elektronik seperti laptop, 
