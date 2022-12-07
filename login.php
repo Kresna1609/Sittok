@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="login/css/sb-admin-2.min.css" rel="stylesheet">
 
     
     <script>
@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
 
 </head>
 
-<body class="bg-gradient-primary">
+<body style="background-color: #d2afff">
 
     <div class="container">
 
@@ -116,7 +116,7 @@ if (isset($_POST['submit'])) {
                                                 <label class="custom-control-label" for="show_password">Show Password</label>
                                             </div>
                                         </div>
-                                        <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                        <button type="submit" name="submit" class="btn-user btn-block" style="background-color:#d2afff;">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
@@ -142,7 +142,7 @@ if (isset($_POST['submit'])) {
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="login/js/sb-admin-2.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){  
