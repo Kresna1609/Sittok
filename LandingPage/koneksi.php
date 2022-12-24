@@ -1,11 +1,11 @@
 <?php
-$hostname = "localhost";
-$database = "sittok";
+$server = "localhost";
 $username = "root";
 $password = "";
-$kon = mysqli_connect($hostname, $username, $password, $database);
-// script cek koneksi
-if (!$kon) {
-    die("Koneksi Tidak Berhasil: " . mysqli_connect_error());
+$db = "tkkomputer";
+$koneksi = mysqli_connect($server, $username, $password, $db);
+
+if(mysqli_connect_errno()) {
+    echo "Koneksi gagal :".mysqli_connect_error();
 }
 ?>

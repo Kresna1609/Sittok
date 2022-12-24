@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
             $userName = $row['user_fullname'];
             $userVal = $row['user_email'];
             $level = $row['level'];
-            $passVal = $row['user_password'];
+            $passVal = $row['password'];
 
         }
 
