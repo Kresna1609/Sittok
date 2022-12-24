@@ -1,6 +1,5 @@
 <?php
-// memulai sesi
-session_start();
+require('koneksi.php');
 
 // jika belum ada sesi "cart", membuat sesi dengan array kosong
 if(!isset($_SESSION['cart'])){
