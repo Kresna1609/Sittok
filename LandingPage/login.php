@@ -13,18 +13,18 @@ if (isset($_POST['submit'])) {
         $num        = mysqli_num_rows($result);
 
         while ($row = mysqli_fetch_array($result)) {
-            $id = $row['id'];
-            $userVal = $row['user_email'];
-            $passVal = $row['user_password'];
+            $id = $row['id_karyawan'];
             $userName = $row['user_fullname'];
+            $userVal = $row['user_email'];
             $level = $row['level'];
+            $passVal = $row['user_password'];
 
         }
 
         if ($num != 0) {
             if ($userVal==$email && $passVal==$pass) {
-                $_SESSION['id'] = $id;
-                $_SESSION['name'] = $userName;
+                $_SESSION['id_karyawan'] = $id;
+                $_SESSION['user_fullname'] = $userName;
                 $_SESSION['level'] = $level;
                 header('Location: index.php');
             }else{
