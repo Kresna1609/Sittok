@@ -8,22 +8,22 @@ if (isset($_POST['submit'])) {
     $pass = $_POST['txt_pass'];
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
-        $query      = "SELECT * FROM karyawan WHERE user_email = '$email'";
+        $query      = "SELECT * FROM customer WHERE user_email = '$email'";
         $result     = mysqli_query($koneksi, $query);
         $num        = mysqli_num_rows($result);
 
         while ($row = mysqli_fetch_array($result)) {
-            $id = $row['id_karyawan'];
+            $id = $row['id_customer'];
             $userName = $row['user_fullname'];
             $userVal = $row['user_email'];
             $level = $row['level'];
-            $passVal = $row['user_password'];
+            $passVal = $row['password'];
 
         }
 
         if ($num != 0) {
             if ($userVal==$email && $passVal==$pass) {
-                $_SESSION['id_karyawan'] = $id;
+                $_SESSION['id_customer'] = $id;
                 $_SESSION['user_fullname'] = $userName;
                 $_SESSION['level'] = $level;
                 header('Location: index.php');
