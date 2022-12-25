@@ -136,7 +136,7 @@
                 </div>
                 <div class="card-body">
                   <form>
-                    <div class="form-group">
+                    <div class="form-group" hidden>
 
                       <label for="exampleInputEmail1">Id Supplier</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Supplier">
