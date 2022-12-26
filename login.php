@@ -46,7 +46,6 @@ if (isset($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -123,6 +122,9 @@ if (isset($_POST['submit'])) {
                                         <a class="small" href="register.php">Create an Account!</a>
                                     </div>
                                 </div>
+                                <div class="text-right">
+                                        <a class="medium" href="register.php">Login Admin</a>
+                                    </div>
                             </div>
                         </div>
                     </div>
