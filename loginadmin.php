@@ -1,4 +1,4 @@
- <?php  
+<?php  
 require('koneksi.php');
 
 session_start();
@@ -8,12 +8,12 @@ if (isset($_POST['submit'])) {
     $pass = $_POST['txt_pass'];
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
-        $query      = "SELECT * FROM customer WHERE user_email = '$email'";
+        $query      = "SELECT * FROM karyawan WHERE user_email = '$email'";
         $result     = mysqli_query($koneksi, $query);
         $num        = mysqli_num_rows($result);
 
         while ($row = mysqli_fetch_array($result)) {
-            $id = $row['id_customer'];
+            $id = $row['id_karyawan'];
             $userName = $row['user_fullname'];
             $userVal = $row['user_email'];
             $level = $row['level'];
@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 
         if ($num != 0) {
             if ($userVal==$email && $passVal==$pass) {
-                $_SESSION['id_customer'] = $id;
+                $_SESSION['id_karyawan'] = $id;
                 $_SESSION['user_fullname'] = $userName;
                 $_SESSION['level'] = $level;
                 header('Location: index.php');
@@ -97,7 +97,7 @@ if (isset($_POST['submit'])) {
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Selamat Datang di Sittok!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Login As Admin</h1>
                                     </div>
                                     <form class="user" action="login.php" method="post">
                                         <div class="form-group">
@@ -122,9 +122,6 @@ if (isset($_POST['submit'])) {
                                         <a class="small" href="register.php">Create an Account!</a>
                                     </div>
                                 </div>
-                                <div class="text-right">
-                                        <a class="medium" href="loginadmin.php">Login Admin</a>
-                                    </div>
                             </div>
                         </div>
                     </div>
