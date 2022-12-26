@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+require('koneksi.php');
+?>
+
 <html lang="en">
 
 <head>
@@ -103,12 +107,10 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
                                             <th>Id</th>
-                                            <th>Email</th>
                                             <th>Nama</th>
-                                            <th>Level</th>
-                                            <th>Aksi</th>
+                                            <th>No Telp</th>
+                                            <th>hgaxsbh</th>
                                         </tr>
                                     </thead>
                                     <tbody>

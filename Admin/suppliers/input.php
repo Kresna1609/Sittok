@@ -3,12 +3,13 @@
 <?php
 require ('koneksi.php');
 if(isset($_POST['supplier'])){
-    $userNama = $_POST['txt_nama'];
-    $userTelp = $_POST['txt_telp'];
-    $userAlamat = $_POST['txt_alamat'];
-    $query = "INSERT INTO supplier VALUES ('','$userNama', '$userTelp', '$userAlamat',2)";
+    $id = $_POST['txt_id'];
+    $nama_supplier = $_POST['txt_nama'];
+    $no_telp_supplier = $_POST['txt_telp'];
+    $alamat = $_POST['txt_alamat'];
+    $query = "INSERT INTO supplier VALUES ('$id','$nama_supplier', '$no_telp_supplier', '$alamat',2)";
     $result = mysqli_query($koneksi, $query);
-    header('Location: index.php');
+    header('Location: list.php');
 }
 ?>
 
@@ -132,7 +133,7 @@ if(isset($_POST['supplier'])){
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Barang</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Suppliers</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -145,14 +146,14 @@ if(isset($_POST['supplier'])){
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Supplier</h6>            
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Suppliers</h6>            
                 </div>
                 <div class="card-body">
                   <form>
-                    <div class="form-group" hidden>
+                    <div class="form-group">
 
                       <label for="exampleInputEmail1">Id Supplier</label>
-                      <input type="text" class="form-control" name="" placeholder="Id Supplier">
+                      <input type="text" class="form-control" name="txt_id" placeholder="Id Supplier">
                     </div>
 
                     <div class="form-group">

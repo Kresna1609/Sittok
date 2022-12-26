@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+require('koneksi.php');
+?>
+
 <html lang="en">
 
 <head>
@@ -103,16 +107,38 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Id</th>
-                                            <th>Email</th>
+                                        <th>Id</th>
                                             <th>Nama</th>
-                                            <th>Level</th>
+                                            <th>No Telp</th>
+                                            <th>Alamat</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                    <?php
+                                            $query = "SELECT * FROM supplier";
+                                            $result = mysqli_query($koneksi, $query); 
+
+                                            while ($row = mysqli_fetch_array($result)){
+                                                $id = $row['id_supplier'];
+                                                $nama_supplier = $row['nama_supplier'];
+                                                $no_telp_supplier = $row['no_telp_supplier'];
+                                                $alamat = $row['alamat'];
+                                                //$gambar = $row['gambar'];
+                                            }
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $id; ?></td>
+                                            <td><?php echo $nama_supplier; ?></td>
+                                            <td><?php echo $no_telp_supplier; ?></td>
+                                            <td><?php echo $alamat; ?></td>
+                                            <td>
+                                            <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
+
+                                            <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                       
                                     </tbody>
                                 </table>
 
