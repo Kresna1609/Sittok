@@ -129,7 +129,7 @@ require('koneksi.php');
                                                 $id_supplier = $row['id_supplier'];
                                                 $id_kategori = $row['id_kategori'];
                       
-                                                $gambar = $row['gambar'];
+                                                //$gambar = $row['gambar'];
                                             }
                                         ?>
                                         <tr>
@@ -138,6 +138,7 @@ require('koneksi.php');
                                             <td><?php echo $jumlah_barang; ?></td>
                                             <td><?php echo $id_supplier; ?></td>
                                             <td><?php echo $id_kategori; ?></td>
+                                            <td></td>
                                            
                                             <td>
                                             <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
