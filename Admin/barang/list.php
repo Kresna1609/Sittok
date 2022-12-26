@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php  
+require('koneksi.php');
+?>
+
 <html lang="en">
 
 <head>
@@ -17,45 +21,9 @@
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon">
-          <img src="Admin/img/logo/logo2.png">
-        </div>
-        <div class="sidebar-brand-text mx-3">SITTOK</div>
-      </a>
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Data Master
-      </div>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
-          aria-expanded="true" aria-controls="collapseBootstrap">
-          <i class="far fa-fw fa-window-maximize"></i>
-          <span>Data Master</span>
-        </a>
-        <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Sittok</h6>
-            <a class="collapse-item" href="barang.php">Barang</a>
-            <a class="collapse-item" href="kategori.php">Kategori</a>
-            <a class="collapse-item" href="suppliers.php">Suppliers</a>
-            <a class="collapse-item" href="customers.php">Customers</a>
-          </div>
-        </div>
-      </li>
-      <!-- <hr class="sidebar-divider"> -->
-      <div class="sidebar-heading">
-      </div>
-      <hr class="sidebar-divider">
-      <div class="version" id="version-ruangadmin"></div>
-    </ul>
+    <?php
+      include 'sidebar.php';
+    ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
@@ -119,7 +87,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Barang</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Customers</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -132,17 +100,55 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Form Basic</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Customers</h6>
                 </div>
                 <div class="card-body">
-                  <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-                </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Merk Barang</th>
+                                            <th>Jumlah Barang</th>
+                                            <th>Id Supplier</th>
+                                            <th>Id Kategori</th>
+                                            <th>Gambar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                            $query = "SELECT * FROM barang";
+                                            $result = mysqli_query($koneksi, $query); 
+                                        
+                                                 
+                                            while ($row = mysqli_fetch_array($result)){
+                                                $id = $row['id_barang'];
+                                                $merk_barang = $row['merk_barang'];
+                                                $jumlah_barang = $row['jumlah_barang'];
+                                                $id_supplier = $row['id_supplier'];
+                                                $id_kategori = $row['id_kategori'];
+                                                //$gambar = $row['gambar'];
+                                            }
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $id; ?></td>
+                                            <td><?php echo $merk_barang; ?></td>
+                                            <td><?php echo $jumlah_barang; ?></td>
+                                            <td><?php echo $id_supplier; ?></td>
+                                            <td><?php echo $id_kategori; ?></td>
+                      
+                                            <td>
+                                            <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
+
+                                            <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
               </div>
         <!-- <Form Basic> -->
       </div>
@@ -154,12 +160,12 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <script src="Admin/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="Admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="Admin/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="Admin/assets/js/ruang-admin.min.js"></script>
-  <script src="Admin/assets/vendor/chart.js/Chart.min.js"></script>
-  <script src="Admin/assets/js/demo/chart-area-demo.js"></script>  
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="assets/js/ruang-admin.min.js"></script>
+  <script src="assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="assets/js/demo/chart-area-demo.js"></script>  
 </body>
 
 </html>
