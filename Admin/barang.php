@@ -1,5 +1,10 @@
 <!DOCTYPE html>
+<?php
+require('koneksi.php');
+?>
+
 <html lang="en">
+
 
 <head>
   <meta charset="utf-8">
@@ -100,15 +105,88 @@
                 </div>
                 <div class="card-body">
                   <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
+                    <div class="form-group" hidden>
+                      <label for="exampleInputEmail1">Id Barang</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Merk Barang</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Jumlah</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Id Supplier</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Supp">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Id Kategori</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Kategori">
+                    </div>
+                    <div class=form method="post" action="aksi.php" enctype="multipart/form-data">
+                      <label for="exampleInputEmail1">Gambar</label>
+                      <input type="file" name="file">
+                      <input type="Submit" name="bupload" value="Upload">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
                 </div>
               </div>
         <!-- <Form Basic> -->
+          <!--Form Tabel>-->
+          <div class="container my-5">
+            <h2> List Barang </h2>
+            <a class="btn btn-primary" href="/Sittok/admin/index.php" role="button">New List</a>
+            <br>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Merk Barang</th>
+                  <th>Jumlah</th>
+                  <th>Id Supplier</th>
+                  <th>Id Kategori</th>
+                  <th>Gambar</th>
+</tr>
+</thead>
+<tbody>
+                                        <?php
+                                            $query = "SELECT * FROM barang";
+                                            $result = mysqli_query($koneksi, $query); 
+                                            $no = 1;      
+                                                 
+                                            while ($row = mysqli_fetch_array($result)){
+                                                $id = $row['id_barang'];
+                                                $merk_barang = $row['merk_barang'];
+                                                $jumlah_barang = $row['jumlah_barang'];
+                                                $id_supplier = $row['id_supplier'];
+                                                $id_kategori = $row['id_kategori'];
+                                                //$gambar = $row['gambar'];
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $id; ?></td>
+                                            <td><?php echo $merk_barang; ?></td>
+                                            <td><?php echo $jumlah_barang; ?></td>
+                                            <td><?php echo $id_supplier; ?></td>
+                                            <td><?php echo $id_kategori; ?></td>
+                      
+                                            <td>
+                                            <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
+
+                                            <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                            $no++;
+                                            }
+                                        ?>
+                                    </tbody>
+      </table>
+</div>
+
+
       </div>
     </div>
   </div>
@@ -125,5 +203,3 @@
   <script src="vendor/chart.js/Chart.min.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>  
 </body>
-
-</html>
