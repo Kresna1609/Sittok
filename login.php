@@ -55,16 +55,7 @@ if (isset($_POST['login'])) {
                 echo "<script>alert('$error')</script>";
                 }
             }
-            if (isset ($_POST['register'])) {
-                $userVal   = $_POST['txt_email'];
-                $passVal   = $_POST['txt_pass'];
-                $userName  = $_POST['txt_nama'];
-        
-                $query  = "INSERT INTO user VALUES (NULL, '$userName', '$userVal', '$passVal', 2)";
-                $result = mysqli_query($koneksi, $query);
-        
-                header('Location: login.php');
-            }
+            
 ?>
 
 <!DOCTYPE html>

@@ -1,12 +1,13 @@
 <?php
 require('koneksi.php');
-if( isset($_POST['register']) ){
-    $userMail = $_POST['txt_email'];
-    $userPass = $_POST['txt_pass'];
-    $userName = $_POST['txt_nama'];
+if (isset ($_POST['register'])) {
+    $userVal   = $_POST['txt_email'];
+    $passVal   = $_POST['txt_pass'];
+    $userName  = $_POST['txt_nama'];
 
-    $query = "INSERT INTO user_detail VALUES ('', '$userMail', '$userPass', '$userName', 2)";
+    $query  = "INSERT INTO user VALUES (NULL, '$userVal', '$userName', '$passVal', 2)";
     $result = mysqli_query($koneksi, $query);
+
     header('Location: login.php');
 }
 ?>
@@ -51,12 +52,12 @@ if( isset($_POST['register']) ){
                             </div>
                             <form class="user" action="register.php" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputUsername"
-                                        placeholder="Username" name="txt_nama">
-                                </div>
-                                <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Email Address" name="txt_email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputUsername"
+                                        placeholder="Username" name="txt_nama">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-user" id="exampleInputPassword"
