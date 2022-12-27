@@ -124,8 +124,6 @@ require('koneksi.php');
                                                 $nama_supplier = $row['nama_supplier'];
                                                 $no_telp_supplier = $row['no_telp_supplier'];
                                                 $alamat = $row['alamat'];
-                                                //$gambar = $row['gambar'];
-                                            }
                                         ?>
                                         <tr>
                                             <td><?php echo $id; ?></td>
@@ -133,12 +131,14 @@ require('koneksi.php');
                                             <td><?php echo $no_telp_supplier; ?></td>
                                             <td><?php echo $alamat; ?></td>
                                             <td>
-                                            <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
+                                            <!-- <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a> -->
 
-                                            <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
+                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_supplier=<?php echo $row['id_supplier']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                       
+                                       <?php
+                                            }
+                                       ?>
                                     </tbody>
                                 </table>
 
