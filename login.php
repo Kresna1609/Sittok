@@ -122,9 +122,6 @@ if (isset($_POST['submit'])) {
                                         <a class="small" href="register.php">Create an Account!</a>
                                     </div>
                                 </div>
-                                <div class="text-right">
-                                        <a class="medium" href="loginadmin.php">Login Admin</a>
-                                    </div>
                             </div>
                         </div>
                     </div>
