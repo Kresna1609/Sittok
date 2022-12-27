@@ -128,9 +128,7 @@ require('koneksi.php');
                                                 $jumlah_barang = $row['jumlah_barang'];
                                                 $id_supplier = $row['id_supplier'];
                                                 $id_kategori = $row['id_kategori'];
-                      
                                                 $gambar = $row['gambar'];
-                                            }
                                         ?>
                                         <tr>
                                             <td><?php echo $id; ?></td>
@@ -145,7 +143,9 @@ require('koneksi.php');
                                             <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                       
+                                        <?php 
+                                            }
+                                       ?>
                                     </tbody>
                                 </table>
 

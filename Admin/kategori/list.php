@@ -122,7 +122,7 @@ require('koneksi.php');
                                             while ($row = mysqli_fetch_array($result)){
                                                 $id = $row['id_kategori'];
                                                 $nama_kategori = $row['nama_kategori'];
-                                            }
+                                            
                                         ?>
                                         <tr>
                                             <td><?php echo $id; ?></td>
@@ -130,11 +130,12 @@ require('koneksi.php');
                       
                                             <td>
                                             <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
-
-                                            <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
+                                            <a href="hapus.php?id= <?php echo $row['id']; ?>" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                       
+                                       <?php 
+                                            }
+                                       ?>
                                     </tbody>
                                 </table>
 
