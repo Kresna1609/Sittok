@@ -6,6 +6,9 @@ session_start();
 if (isset($_POST['submit'])) {
     $email = $_POST['txt_email'];
     $pass = $_POST['txt_pass'];
+
+    $emailCheck = mysqli_real_escape_string($koneksi, $email);
+    $passCheck  = mysqli_real_escape_string($koneksi, $pass);
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
         $query      = "SELECT * FROM customer WHERE user_email = '$email'";
@@ -16,32 +19,54 @@ if (isset($_POST['submit'])) {
             $id = $row['id_customer'];
             $userName = $row['user_fullname'];
             $userVal = $row['user_email'];
-            $level = $row['level'];
             $passVal = $row['password'];
+            $level = $row['level'];
+            
 
         }
 
         if ($num != 0) {
             if ($userVal==$email && $passVal==$pass) {
-                $_SESSION['id_customer'] = $id;
-                $_SESSION['user_fullname'] = $userName;
-                $_SESSION['level'] = $level;
+                // header('Location: index.php?user_fullname=' . urlencode($userName));
                 header('Location: index.php');
+                if($level==1){
+                    $_SESSION['id'] = $id;
+                    $_SESSION['user_fullname'] = $userName;
+                    $_SESSION['level'] = $level;
+                    header('location:admin/');
+                }elseif($level==2){
+                    session_start();
+                    $_SESSION['id_customer'] = $id;
+                    $_SESSION['user_fullname'] = $userName;
+                    $_SESSION['level'] = $level;
+                    header('location:home.php');
+                }
             }else{
-                $error = 'user atau password salah!!';
+                    $error = 'user atau password salah!!';
+                    echo "<script>alert('$error')</script>";
+                    header('Location: login.php');
+                }
+            }else{
+                    $error = 'user tidak ditemukan!!';
+                    echo "<script>alert('$error')</script>";
+                    header('Location: login.php');
+                }
+            }else{
+                $error = 'Data tidak boleh kosong!!';
                 echo "<script>alert('$error')</script>";
+                }
+            }
+            if (isset ($_POST['register'])) {
+                $userVal   = $_POST['txt_email'];
+                $passVal   = $_POST['txt_pass'];
+                $userName   = $_POST['txt_name'];
+        
+                $query  = "INSERT INTO user VALUES (NULL, '$userName', '$userVal', '$passVal', 2)";
+                $result = mysqli_query($koneksi, $query);
+        
                 header('Location: login.php');
             }
-        }else{
-            $error = 'user tidak ditemukan!!';
-            echo "<script>alert('$error')</script>";
-            header('Location: login.php');
-        }
-    }else{
-        $error = 'Data tidak boleh kosong!!';
-        echo "<script>alert('$error')</script>";
-    }
-}
+        ?>
 ?>
 
 <!DOCTYPE html>
