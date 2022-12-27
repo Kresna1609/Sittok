@@ -1,3 +1,14 @@
+<?php
+require('koneksi.php');
+if( isset($_POST['kategori']) ){
+    $userName = $_POST['nama_kategori'];
+
+    $query = "INSERT INTO kategori VALUES ('', '$userName')";
+    $result = mysqli_query($koneksi, $query);
+    header('Location: list.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,19 +107,13 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Supplier</h6>            
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Kategori</h6>            
                 </div>
                 <div class="card-body">
                   <form>
-                    <div class="form-group" hidden>
-
-                      <label for="exampleInputEmail1">Id Supplier</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Supplier">
-                    </div>
-
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nama Kategori</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Nama Kategori">
+                      <input type="text" class="form-control" name="nama_kategori" placeholder="Masukkan Nama Kategori">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>

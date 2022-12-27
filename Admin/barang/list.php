@@ -128,9 +128,7 @@ require('koneksi.php');
                                                 $jumlah_barang = $row['jumlah_barang'];
                                                 $id_supplier = $row['id_supplier'];
                                                 $id_kategori = $row['id_kategori'];
-                      
-                                                //$gambar = $row['gambar'];
-                                            }
+                                                $gambar = $row['gambar'];
                                         ?>
                                         <tr>
                                             <td><?php echo $id; ?></td>
@@ -138,7 +136,6 @@ require('koneksi.php');
                                             <td><?php echo $jumlah_barang; ?></td>
                                             <td><?php echo $id_supplier; ?></td>
                                             <td><?php echo $id_kategori; ?></td>
-                                            <td></td>
                                            
                                             <td>
                                             <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
@@ -146,7 +143,9 @@ require('koneksi.php');
                                             <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                       
+                                        <?php 
+                                            }
+                                       ?>
                                     </tbody>
                                 </table>
 
@@ -171,4 +170,4 @@ require('koneksi.php');
   <script src="assets/js/demo/chart-area-demo.js"></script>  
 </body>
 
-</html>
+</html
