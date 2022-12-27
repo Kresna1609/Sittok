@@ -22,7 +22,7 @@ require('koneksi.php');
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-      include 'sidebar.php';
+      include ('../sidebar.php');
     ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -114,7 +114,30 @@ require('koneksi.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                    <?php
+                                            $query = "SELECT * FROM customer";
+                                            $result = mysqli_query($koneksi, $query); 
+
+                                            while ($row = mysqli_fetch_array($result)){
+                                                $id = $row['id_customer'];
+                                                $nama_customer = $row['nama_customer'];
+                                                $alamat = $row['alamat'];
+                                                $no_telp = $row['no_telp'];
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $id; ?></td>
+                                            <td><?php echo $nama_customer; ?></td>
+                                            <td><?php echo $alamat; ?></td>
+                                            <td><?php echo $no_telp; ?></td>
+                                            <td>
+                                            <!-- <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a> -->
+
+                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_supplier=<?php echo $row['id_supplier']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                       <?php
+                                            }
+                                       ?>
                                     </tbody>
                                 </table>
 
