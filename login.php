@@ -11,18 +11,16 @@ if (isset($_POST['submit'])) {
     $passCheck  = mysqli_real_escape_string($koneksi, $pass);
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
-        $query      = "SELECT * FROM customer WHERE user_email = '$email'";
+        $query      = "SELECT * FROM user WHERE user_email = '$email'";
         $result     = mysqli_query($koneksi, $query);
         $num        = mysqli_num_rows($result);
 
         while ($row = mysqli_fetch_array($result)) {
-            $id = $row['id_customer'];
+            $id = $row['id'];
             $userName = $row['user_fullname'];
             $userVal = $row['user_email'];
             $passVal = $row['password'];
             $level = $row['level'];
-            
-
         }
 
         if ($num != 0) {
@@ -36,7 +34,7 @@ if (isset($_POST['submit'])) {
                     header('location:admin/');
                 }elseif($level==2){
                     session_start();
-                    $_SESSION['id_customer'] = $id;
+                    $_SESSION['id'] = $id;
                     $_SESSION['user_fullname'] = $userName;
                     $_SESSION['level'] = $level;
                     header('location:home.php');
