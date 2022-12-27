@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php  
-require('koneksi.php');
+require('../koneksi.php');
 ?>
 
 <html lang="en">
