@@ -3,7 +3,7 @@ require('koneksi.php');
 
 session_start();
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['login'])) {
     $email = $_POST['txt_email'];
     $pass = $_POST['txt_pass'];
 
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
             $id = $row['id'];
             $userName = $row['user_fullname'];
             $userVal = $row['user_email'];
-            $passVal = $row['password'];
+            $passVal = $row['user_password'];
             $level = $row['level'];
         }
 
@@ -28,16 +28,17 @@ if (isset($_POST['submit'])) {
                 // header('Location: index.php?user_fullname=' . urlencode($userName));
                 header('Location: index.php');
                 if($level==1){
+                    session_start();
                     $_SESSION['id'] = $id;
                     $_SESSION['user_fullname'] = $userName;
                     $_SESSION['level'] = $level;
-                    header('location:admin/');
+                    header('location:admin/indexadmin.php');
                 }elseif($level==2){
                     session_start();
                     $_SESSION['id'] = $id;
                     $_SESSION['user_fullname'] = $userName;
                     $_SESSION['level'] = $level;
-                    header('location:home.php');
+                    header('location:index.php');
                 }
             }else{
                     $error = 'user atau password salah!!';
@@ -57,14 +58,13 @@ if (isset($_POST['submit'])) {
             if (isset ($_POST['register'])) {
                 $userVal   = $_POST['txt_email'];
                 $passVal   = $_POST['txt_pass'];
-                $userName   = $_POST['txt_name'];
+                $userName  = $_POST['txt_nama'];
         
                 $query  = "INSERT INTO user VALUES (NULL, '$userName', '$userVal', '$passVal', 2)";
                 $result = mysqli_query($koneksi, $query);
         
                 header('Location: login.php');
             }
-        ?>
 ?>
 
 <!DOCTYPE html>
@@ -122,15 +122,15 @@ if (isset($_POST['submit'])) {
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang di Sittok!</h1>
                                     </div>
-                                    <form class="user" action="login.php" method="post">
+                                    <form class="user" action="login.php" method="POST">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." name="txt_email">
+                                                id="txt_email" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address" name="txt_email" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="password" placeholder="Password" name="txt_pass">
+                                                id="txt_pass" placeholder="Password" name="txt_pass" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -138,16 +138,13 @@ if (isset($_POST['submit'])) {
                                                 <label class="custom-control-label" for="show_password">Show Password</label>
                                             </div>
                                         </div>
-                                        <button type="submit" name="submit" class="btn-user btn-block" style="background-color:#d2afff;">Login</button>
+                                        <button type="submit" name="login" class="btn-user btn-block" style="background-color:#d2afff;">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="register.php">Create an Account!</a>
                                     </div>
                                 </div>
-                                <div class="text-right">
-                                        <a class="medium" href="loginadmin.php">Login Admin</a>
-                                    </div>
                             </div>
                         </div>
                     </div>
