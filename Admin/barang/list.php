@@ -170,4 +170,4 @@ require('koneksi.php');
   <script src="assets/js/demo/chart-area-demo.js"></script>  
 </body>
 
-</html>
+</html
