@@ -22,7 +22,7 @@ require('koneksi.php');
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-      include 'sidebar.php';
+      include('../sidebar.php');
     ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">

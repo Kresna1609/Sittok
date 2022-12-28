@@ -132,12 +132,12 @@
 
 
     <!-- Categories Start -->
-    <div class="container-fluid pt-5">
-        <div class="row px-xl-5 pb-3">
+    <div class="container-fluid pt-5" style="padding: 50px;">
+        <div class="row px-xl-5 pb-3" >
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/laptop/laptop-hp.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/laptop/laptop-asusdepan.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Laptop</h5>
                 </div>
@@ -145,7 +145,7 @@
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/LCD/lcd-ultra.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/LCD/lcd-ultradepan.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">LCD</h5>
                 </div>
@@ -161,7 +161,7 @@
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/fan/fan.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/fan/fandepan.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Fan</h5>
                 </div>
@@ -169,7 +169,7 @@
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/charger/charger-asus.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/charger/charger-asusdepan.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Charger</h5>
                 </div>
@@ -177,7 +177,7 @@
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/Printer/Canon Pixma G3000.png" alt="">
+                        <img class="img-fluid" src="assets/img/Printer/printerdpn.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Printer</h5>
                 </div>
