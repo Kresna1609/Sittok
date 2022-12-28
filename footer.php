@@ -47,7 +47,7 @@
                 <p class="mb-md-0 text-center text-md-left text-dark">
                     &copy; <a class="text-dark font-weight-semi-bold" href="#">Sittok.com</a>. All Rights Reserved. Designed
                     by
-                    <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">Tim Website</a>
+                    <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">Tim WSI</a>
                 </p>
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">
