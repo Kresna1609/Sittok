@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+require('koneksi.php');
+
+//$barang = $_GET['barang'];
+$sql =$koneksi->query("SELECT*FROM barang"); 
+$review = $sql->fetch_array();
+
+
+?>
 <html lang="en">
 
 <head>
@@ -51,21 +60,21 @@
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
                         <div class="carousel-item active">
-                            <img class="w-100 h-100" src="img/product-1.jpg" alt="Image">
+                            <img src="assets/img/laptop-asus.jpg" alt="Image">
                         </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="img/product-2.jpg" alt="Image">
+                       <div class="carousel-item">
+                            <img class="w-100 h-100" src="assets/img/<?=$review['gambar']?>" alt="Image">
                         </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="img/product-3.jpg" alt="Image">
+                       <div class="carousel-item"> 
+                            <img class="w-100 h-100" src="assets/img/<?=$review['gambar']?>" alt="Image">
                         </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="img/product-4.jpg" alt="Image">
+                         <div class="carousel-item"> 
+                            <img class="w-100 h-100" src="assets/img/<?=$review['gambar']?>" alt="Image">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                         <i class="fa fa-2x fa-angle-left text-dark"></i>
-                    </a>
+                    </Sa>
                     <a class="carousel-control-next" href="#product-carousel" data-slide="next">
                         <i class="fa fa-2x fa-angle-right text-dark"></i>
                     </a>
@@ -73,7 +82,7 @@
             </div>
 
             <div class="col-lg-7 pb-5">
-                <h3 class="font-weight-semi-bold">Colorful Stylish Shirt</h3>
+                <h3 class="font-weight-semi-bold"><?=$review['merk_barang']?></h3>
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
                         <small class="fas fa-star"></small>
@@ -84,34 +93,11 @@
                     </div>
                     <small class="pt-1">(50 Reviews)</small>
                 </div>
-                <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-                <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus labore stet, est lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.</p>
-                <div class="d-flex mb-3">
-                    <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
-                    <form>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-1" name="size">
-                            <label class="custom-control-label" for="size-1">XS</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-2" name="size">
-                            <label class="custom-control-label" for="size-2">S</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-3" name="size">
-                            <label class="custom-control-label" for="size-3">M</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-4" name="size">
-                            <label class="custom-control-label" for="size-4">L</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-5" name="size">
-                            <label class="custom-control-label" for="size-5">XL</label>
-                        </div>
+                <h3 class="font-weight-semi-bold mb-4"><?$review['harga']?>;</h3>
+                <p class="mb-4"><?= $review['deskripsi']?>;</p>
                     </form>
                 </div>
-                <div class="d-flex mb-4">
+                <div class="d-flex mb-5">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                     <form>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -175,17 +161,15 @@
             <div class="col">
                 <div class="nav nav-tabs justify-content-center border-secondary mb-4">
                     <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Description</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Information</a>
+                    <!-- <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Information</a> -->
                     <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="tab-pane-1">
-                        <h4 class="mb-3">Product Description</h4>
-                        <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
-                        <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p>
-                    </div>
+                        <p class="mb-3"><?= $review['deskripsi']?></p>
+                        </div>
                     <div class="tab-pane fade" id="tab-pane-2">
-                        <h4 class="mb-3">Additional Information</h4>
+                        <!-- <h4 class="mb-3">Additional Information</h4> -->
                         <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
                         <div class="row">
                             <div class="col-md-6">
