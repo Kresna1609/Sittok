@@ -1,11 +1,14 @@
 <?php
-require('koneksi.php');
-if( isset($_POST['kategori']) ){
-    $userName = $_POST['nama_kategori'];
+require('../koneksi.php');
+if(isset($_POST['create'])){
+  $user = ($_POST['nama_kategori']);
 
-    $query = "INSERT INTO kategori VALUES ('', '$userName')";
-    $result = mysqli_query($koneksi, $query);
-    header('Location: list.php');
+
+  $query=mysqli_query($koneksi,"INSERT INTO kategori VALUES (NULL, '$user')");
+  if($query){
+    echo "<script>alert('Data Ditambahkan')</script>";
+    echo "<script>location='list.php'</script>";
+}
 }
 ?>
 
@@ -20,16 +23,16 @@ if( isset($_POST['kategori']) ){
   <meta name="author" content="">
   <link href="img/logo/logo.png" rel="icon">
   <title>SITTOK</title>
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="css/ruang-admin.min.css" rel="stylesheet">
+  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-      include 'sidebar.php';
+      include ('../sidebar.php');
     ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -110,7 +113,7 @@ if( isset($_POST['kategori']) ){
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Kategori</h6>            
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form class="user" action="list.php" method="POST">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nama Kategori</label>
                       <input type="text" class="form-control" name="nama_kategori" placeholder="Masukkan Nama Kategori">
@@ -132,12 +135,12 @@ if( isset($_POST['kategori']) ){
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="js/ruang-admin.min.js"></script>
-  <script src="vendor/chart.js/Chart.min.js"></script>
-  <script src="js/demo/chart-area-demo.js"></script>  
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../assets/js/ruang-admin.min.js"></script>
+  <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="../assets/js/demo/chart-area-demo.js"></script>  
 </body>
 
 </html>
