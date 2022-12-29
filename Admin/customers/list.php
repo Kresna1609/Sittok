@@ -111,6 +111,7 @@ require('koneksi.php');
                                             <th>Nama</th>
                                             <th>No Telp</th>
                                             <th>hgaxsbh</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -120,19 +121,19 @@ require('koneksi.php');
 
                                             while ($row = mysqli_fetch_array($result)){
                                                 $id = $row['id_customer'];
-                                                $nama_customer = $row['nama_customer'];
+                                                $user_fullname= $row['user_fullname'];
                                                 $alamat = $row['alamat'];
                                                 $no_telp = $row['no_telp'];
                                         ?>
                                         <tr>
                                             <td><?php echo $id; ?></td>
-                                            <td><?php echo $nama_customer; ?></td>
+                                            <td><?php echo $user_fullname; ?></td>
                                             <td><?php echo $alamat; ?></td>
                                             <td><?php echo $no_telp; ?></td>
                                             <td>
                                             <!-- <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a> -->
 
-                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_supplier=<?php echo $row['id_supplier']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_supplier=" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
                                        <?php

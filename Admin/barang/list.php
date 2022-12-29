@@ -139,9 +139,9 @@ require('koneksi.php');
                                             <td><?php echo $gambar; ?></td> 
                                            
                                             <td>
-                                            <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
+                                            <a href="edit.php?id= " class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
 
-                                            <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
+                                            <a href="#" class="btn btn-danger btn-circle" onClick="confirm Modal('hapus.php?&id=');"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <?php 
