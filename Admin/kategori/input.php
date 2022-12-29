@@ -1,10 +1,10 @@
 <?php
 require('../koneksi.php');
 if(isset($_POST['create'])){
-  $user = ($_POST['nama_kategori']);
+  $user = ($_POST['txt_nama']);
 
 
-  $query=mysqli_query($koneksi,"INSERT INTO kategori VALUES (NULL, '$user')");
+  $query=mysqli_query($koneksi,"INSERT INTO kategori VALUES ('K4', '$user')");
   if($query){
     echo "<script>alert('Data Ditambahkan')</script>";
     echo "<script>location='list.php'</script>";
@@ -113,12 +113,13 @@ if(isset($_POST['create'])){
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Kategori</h6>            
                 </div>
                 <div class="card-body">
-                  <form class="user" action="list.php" method="POST">
+                  <form action="input.php" method="POST" class="user">
+                  <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Nama Kategori</label>
-                      <input type="text" class="form-control" name="nama_kategori" placeholder="Masukkan Nama Kategori">
+                      <label for="txt_nama">Nama Kategori</label>
+                      <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Kategori">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="create" class="btn btn-primary">Submit</button>
                   </form>
                 </div>
               </div>
