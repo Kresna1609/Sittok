@@ -63,13 +63,13 @@ $review = $sql->fetch_array();
                             <img src="assets/img/laptop-asus.jpg" alt="Image">
                         </div>
                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="assets/img/<?=$review['gambar']?>" alt="Image">
+                            <img src="Sittok/assets/img/<?=$review['gambar']?>" alt="Image">
                         </div>
                        <div class="carousel-item"> 
-                            <img class="w-100 h-100" src="assets/img/<?=$review['gambar']?>" alt="Image">
+                            <img class="w-100 h-100" src="" alt="Image">
                         </div>
                          <div class="carousel-item"> 
-                            <img class="w-100 h-100" src="assets/img/<?=$review['gambar']?>" alt="Image">
+                            <img class="w-100 h-100" src="" alt="Image">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
@@ -93,7 +93,7 @@ $review = $sql->fetch_array();
                     </div>
                     <small class="pt-1">(50 Reviews)</small>
                 </div>
-                <h3 class="font-weight-semi-bold mb-4"><?$review['harga']?>;</h3>
+                <h4 class="font-weight-semi-bold mb-4"><?=$review['harga']?></h4>
                 <p class="mb-4"><?= $review['deskripsi']?>;</p>
                     </form>
                 </div>
@@ -268,7 +268,7 @@ $review = $sql->fetch_array();
     <!-- Products Start -->
     <div class="container-fluid py-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">Rekomendasi Untuk Anda </span></h2>
         </div>
         <div class="row px-xl-5">
             <div class="col">
@@ -278,9 +278,9 @@ $review = $sql->fetch_array();
                             <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                            <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                             <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del><?=$review['harga']?></del></h6>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
@@ -293,9 +293,9 @@ $review = $sql->fetch_array();
                             <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                            <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                             <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                <h6><?=$review['harga']?><h6 class="text-muted ml-2"><del><?=$review['harga']?></del></h6>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
@@ -308,9 +308,9 @@ $review = $sql->fetch_array();
                             <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                            <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                             <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del><?=$review['harga']?></del></h6>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
@@ -323,9 +323,9 @@ $review = $sql->fetch_array();
                             <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                            <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                             <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del><?=$review['harga']?></del></h6>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
@@ -338,9 +338,9 @@ $review = $sql->fetch_array();
                             <img class="img-fluid w-100" src="img/product-5.jpg" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                            <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                             <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del><?=$review['harga']?></del></h6>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
