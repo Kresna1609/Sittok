@@ -4,7 +4,7 @@ if(isset($_POST['create'])){
   $user = ($_POST['txt_nama']);
 
 
-  $query=mysqli_query($koneksi,"INSERT INTO kategori VALUES ('K4', '$user')");
+  $query=mysqli_query($koneksi,"INSERT INTO kategori VALUES (NULL, '$user')");
   if($query){
     echo "<script>alert('Data Ditambahkan')</script>";
     echo "<script>location='list.php'</script>";
