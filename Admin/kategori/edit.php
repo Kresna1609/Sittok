@@ -1,9 +1,23 @@
-<!DOCTYPE html>
-
-<?php  
+<?php
 require('../koneksi.php');
+
+if(isset($_POST['update'])){
+  $user = ($_POST['txt_nama']);
+
+  $update=mysqli_query($koneksi,"UPDATE kategori SET nama_kategori='$user'");
+  if($update){
+    echo "<script>alert('Data di Update')</script>";
+    echo "<script>location='../list.php'</script>";
+  }
+}
+
+$id_kategori = $_GET['id'];
+$query = "SELECT * FROM kategori WHERE id_kategori = '$id_kategori'";
+$result = mysqli_query($koneksi, $query);
+$u = mysqli_fetch_array($result);
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,7 +37,7 @@ require('../koneksi.php');
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-      include('../sidebar.php');
+      include ('../sidebar.php');
     ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -101,46 +115,18 @@ require('../koneksi.php');
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Kategori</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Kategori</h6>            
                 </div>
                 <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Kategori</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                            $query = "SELECT * FROM kategori";
-                                            $result = mysqli_query($koneksi, $query); 
-                                        
-                                                 
-                                            while ($row = mysqli_fetch_array($result)){
-                                                $id = $row['id_kategori'];
-                                                $nama_kategori = $row['nama_kategori'];
-                                            
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $id; ?></td>
-                                            <td><?php echo $nama_kategori; ?></td>
-                      
-                                            <td>
-                                            <a href="edit.php?id= <?php echo $row['id_kategori']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
-                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_kategori=<?php echo $row['id_kategori']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                       <?php 
-                                            }
-                                       ?>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
+                  <form action="edit.php" method="POST" class="user">
+                  <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori" >
+                    <div class="form-group">
+                      <label for="txt_nama">Nama Kategori</label>
+                      <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Kategori" value="<?php echo $u['nama_kategori']; ?>">
+                    </div>
+                    <button type="submit" name="update" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
               </div>
         <!-- <Form Basic> -->
       </div>
