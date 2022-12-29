@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+require('koneksi.php');
+
+//$barang = $_GET['barang'];
+$sql =$koneksi->query("SELECT*FROM barang"); 
+$review = $sql->fetch_array();
+
+?>
 <html lang="en">
 
 <head>
@@ -32,7 +40,7 @@
     ?>
     <!-- Page Header Start -->
     <div class="coba">
-    <div class="container-fluid bg-secondary mb-5">
+    <div class="container-fluid bg-secondary mb-5" style= "background-color: #e7d1ff;">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #e7d1ff;" >
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Sittok</h1>
             <p class="m-0" style="text-color: black"><b><a href="">Home</a></b></p>
@@ -46,6 +54,7 @@
 
     <!-- Shop Start -->
     <div class="container-fluid pt-5">
+
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-12">
@@ -200,9 +209,9 @@
                                 <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
@@ -217,9 +226,9 @@
                                 <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
@@ -234,9 +243,9 @@
                                 <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
@@ -251,9 +260,9 @@
                                 <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
@@ -268,9 +277,9 @@
                                 <img class="img-fluid w-100" src="img/product-5.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
@@ -285,9 +294,9 @@
                                 <img class="img-fluid w-100" src="img/product-6.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6><?=$review['harga']?>/h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
@@ -302,9 +311,9 @@
                                 <img class="img-fluid w-100" src="img/product-7.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
@@ -319,9 +328,9 @@
                                 <img class="img-fluid w-100" src="img/product-8.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6><?=$review['harga']?></h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
@@ -336,9 +345,9 @@
                                 <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3"><?=$review['merk_barang']?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6>$<?=$review['harga']?></h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">

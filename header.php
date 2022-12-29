@@ -1,7 +1,7 @@
 <!-- Topbar Start -->
-<div class="container-fluid">
-        <div class="row bg-secondary py-2 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
+<div class="container-fluid" >
+        <div class="row bg-secondary py-2 px-xl-5" style = " background-color: #e7d1ff;">
+            <div class="col-lg-6 d-none d-lg-block" >
                 <div class="d-inline-flex align-items-center">
                     <a class="text-dark" href="">FAQs</a>
                     <span class="text-muted px-2">|</span>
