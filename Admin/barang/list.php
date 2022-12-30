@@ -101,6 +101,7 @@ require('koneksi.php');
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Barang</h6>
+                  <a href = "input.php" class = "btn btn-outline-primary btn-xs mb-0">+</a>
                 </div>
                 <div class="card-body">
                             <div class="table-responsive">
@@ -110,7 +111,7 @@ require('koneksi.php');
                                             <th>Id</th>
                                             <th>Merk Barang</th>
                                             <th>Jumlah Barang</th>
-                                            <th>Id Supplier</th>
+                                            <!-- <th>Id Supplier</th> -->
                                             <th>Id Kategori</th>
                                             <th>Gambar</th>
                                             <th style=" width: 100px;">Aksi</th>
@@ -126,7 +127,7 @@ require('koneksi.php');
                                                 $id = $row['id_barang'];
                                                 $merk_barang = $row['merk_barang'];
                                                 $jumlah_barang = $row['jumlah_barang'];
-                                                $id_supplier = $row['id_supplier'];
+                                                // $id_supplier = $row['id_supplier'];
                                                 $id_kategori = $row['id_kategori'];
                                                 $gambar = $row['gambar'];
                                         ?>
@@ -134,7 +135,7 @@ require('koneksi.php');
                                             <td><?php echo $id; ?></td>
                                             <td><?php echo $merk_barang; ?></td>
                                             <td><?php echo $jumlah_barang; ?></td>
-                                            <td><?php echo $id_supplier; ?></td>
+                                            <!-- <td><?php echo $id_supplier; ?></td> -->
                                             <td><?php echo $id_kategori; ?></td>
                                             <td><?php echo $gambar; ?></td> 
                                 

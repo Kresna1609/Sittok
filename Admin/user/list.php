@@ -1,24 +1,9 @@
-<?php
+<!DOCTYPE html>
+
+<?php  
 require('../koneksi.php');
-
-if(isset($_POST['update'])){
-  $user = ($_POST['txt_nama']);
-  $id = ($_POST['txt_id']);
-
-  $update=mysqli_query($koneksi,"UPDATE kategori SET nama_kategori='$user' WHERE id_kategori = '$id'");
-  if($update){
-    echo "<script>alert('Data di Update')</script>";
-    echo "<script>location='../kategori/list.php'</script>";
-  }
-}
-
-$id_kategori = $_GET['id'];
-$query = "SELECT * FROM kategori WHERE id_kategori = '$id_kategori'";
-$result = mysqli_query($koneksi, $query);
-$u = mysqli_fetch_array($result);
 ?>
 
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -38,7 +23,7 @@ $u = mysqli_fetch_array($result);
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-      include ('../sidebar.php');
+      include('../sidebar.php');
     ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -103,7 +88,7 @@ $u = mysqli_fetch_array($result);
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Kategori</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data User</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -116,18 +101,53 @@ $u = mysqli_fetch_array($result);
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Kategori</h6>            
+                  <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
                 </div>
                 <div class="card-body">
-                  <form action="edit.php" method="POST" class="user">
-                  <input type="hidden" class="form-control" name="txt_id" placeholder="" value="<?php echo $u['id_kategori']; ?>">
-                    <div class="form-group">
-                      <label for="txt_nama">Nama Kategori</label>
-                      <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Kategori" value="<?php echo $u['nama_kategori']; ?>">
-                    </div>
-                    <button type="submit" name="update" class="btn btn-primary">Submit</button>
-                  </form>
-                </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Level</th>
+                                            <th>Hapus</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                            $query = "SELECT * FROM user";
+                                            $result = mysqli_query($koneksi, $query); 
+                                        
+                                                 
+                                            while ($row = mysqli_fetch_array($result)){
+                                                $id = $row['id'];
+                                                $user_fullname = $row['user_fullname'];
+                                                $user_email = $row['user_email'];
+                                                $user_password = $row['user_password'];
+                                                $level = $row['level'];
+                                            
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $id; ?></td>
+                                            <td><?php echo $user_fullname; ?></td>
+                                            <td><?php echo $user_email; ?></td>
+                                            <td><?php echo $user_password; ?></td>
+                                            <td><?php echo $level; ?></td>
+                                            <td>
+                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_kategori=<?php echo $row['id_kategori']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                       <?php 
+                                            }
+                                       ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
               </div>
         <!-- <Form Basic> -->
       </div>
