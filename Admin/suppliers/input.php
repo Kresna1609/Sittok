@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-
 <?php
-require ('koneksi.php');
-if(isset($_POST['supplier'])){
-    $id = $_POST['txt_id'];
-    $nama_supplier = $_POST['txt_nama'];
-    $no_telp_supplier = $_POST['txt_telp'];
-    $alamat = $_POST['txt_alamat'];
-    $query = "INSERT INTO supplier VALUES ('$id','$nama_supplier', '$no_telp_supplier', '$alamat',2)";
-    $result = mysqli_query($koneksi, $query);
-    header('Location: list.php');
-}
-?>
+require('../koneksi.php');
+if(isset($_POST['create'])){
+  $nama = ($_POST['txt_nama']);
+  $no_telp= ($_POST['txt_no_telp']);
+  $alamat = ($_POST['txt_alamat']);
 
+  $query=mysqli_query($koneksi,"INSERT INTO supplier VALUES (NULL, '$nama', '$no_telp', '$alamat')");
+    if($query){
+      echo "<script>alert('Data Ditambahkan')</script>";
+      echo "<script>location='list.php'</script>";
+    }
+  }
+  ?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,53 +24,17 @@ if(isset($_POST['supplier'])){
   <meta name="author" content="">
   <link href="img/logo/logo.png" rel="icon">
   <title>SITTOK</title>
-  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="assets/css/ruang-admin.min.css" rel="stylesheet">
+  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon">
-          <img src="assets/img/logo/logo2.png">
-        </div>
-        <div class="sidebar-brand-text mx-3">SITTOK</div>
-      </a>
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Data Master
-      </div>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
-          aria-expanded="true" aria-controls="collapseBootstrap">
-          <i class="far fa-fw fa-window-maximize"></i>
-          <span>Data Master</span>
-        </a>
-        <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Sittok</h6>
-            <a class="collapse-item" href="barang.php">Barang</a>
-            <a class="collapse-item" href="kategori.php">Kategori</a>
-            <a class="collapse-item" href="suppliers.php">Suppliers</a>
-            <a class="collapse-item" href="customers.php">Customers</a>
-          </div>
-        </div>
-      </li>
-      <!-- <hr class="sidebar-divider"> -->
-      <div class="sidebar-heading">
-      </div>
-      <hr class="sidebar-divider">
-      <div class="version" id="version-ruangadmin"></div>
-    </ul>
+    <?php
+      include ('../sidebar.php');
+    ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
@@ -104,7 +69,7 @@ if(isset($_POST['supplier'])){
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
+                <span class="ml-2 d-none d-lg-inline text-white small">Kresna Tampan</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -133,7 +98,7 @@ if(isset($_POST['supplier'])){
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Suppliers</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Supplier</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -146,37 +111,25 @@ if(isset($_POST['supplier'])){
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Suppliers</h6>            
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Supplier</h6>            
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form action="input.php" method="POST" class="user">
+                  <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori">
                     <div class="form-group">
-
-                      <label for="exampleInputEmail1">Id Supplier</label>
-                      <input type="text" class="form-control" name="txt_id" placeholder="Id Supplier">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Nama Supplier</label>
+                      <label for="txt_nama">Nama Supplier</label>
                       <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Supplier">
+                      <div class="form-group">
+                      <label for="txt_nama">No Telepon Supplier</label>
+                      <input type="text" class="form-control" name="txt_no_telp" placeholder="Masukkan No Telepon Supplier">
+                      <div class="form-group">
+                      <label for="txt_nama">Alamat Supplier</label>
+                      <input type="text" class="form-control" name="txt_alamat" placeholder="Masukkan Alamat">
                     </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">No Telepon</label>
-                      <input type="text" class="form-control" name="txt_telp" placeholder="No Telepon">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Alamat</label>
-                      <input type="text" class="form-control" name="txt_alamat" placeholder="Alamat">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" name="supplier">Submit</button>
+                    <button type="submit" name="create" class="btn btn-primary">Submit</button>
                   </form>
                 </div>
               </div>
-              
-
             
         <!-- <Form Basic> -->
       </div>
@@ -188,12 +141,12 @@ if(isset($_POST['supplier'])){
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="assets/js/ruang-admin.min.js"></script>
-  <script src="assets/vendor/chart.js/Chart.min.js"></script>
-  <script src="assets/js/demo/chart-area-demo.js"></script>  
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../assets/js/ruang-admin.min.js"></script>
+  <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="../assets/js/demo/chart-area-demo.js"></script>  
 </body>
 
 </html>
