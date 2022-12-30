@@ -90,14 +90,29 @@
             </ol>
           </div>
 
-          <div class="row mb-3">
+          <div class="row mb-4">
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-6 col-md-6 mb-4">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Pendapatan Per Bulan</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Data Customer</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                        <span>Since last month</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-primary"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Pesanan Masuk</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
                         <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
@@ -111,13 +126,29 @@
                 </div>
               </div>
             </div>
+            
             <!-- Earnings (Annual) Card Example -->
             <div class="col-xl-6 col-md-6 mb-4">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Penjualan</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Penjualan BELUM BAYAR</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                        <span>Since last years</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Penjualan SUDAH BAYAR</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
                         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
@@ -131,7 +162,6 @@
                 </div>
               </div>
             </div>
-
             <!-- Area Chart -->
             <div class="col-xl-12 col-lg-7">
               <div class="card mb-4">
