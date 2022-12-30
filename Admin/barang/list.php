@@ -113,7 +113,7 @@ require('koneksi.php');
                                             <th>Id Supplier</th>
                                             <th>Id Kategori</th>
                                             <th>Gambar</th>
-                                            <th>Aksi</th>
+                                            <th style=" width: 100px;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -137,6 +137,7 @@ require('koneksi.php');
                                             <td><?php echo $id_supplier; ?></td>
                                             <td><?php echo $id_kategori; ?></td>
                                             <td><?php echo $gambar; ?></td> 
+                                
                                            
                                             <td>
                                             <a href="edit.php?id= " class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
