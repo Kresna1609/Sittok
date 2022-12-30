@@ -3,11 +3,12 @@ require('../koneksi.php');
 
 if(isset($_POST['update'])){
   $user = ($_POST['txt_nama']);
+  $id = ($_POST['txt_id']);
 
-  $update=mysqli_query($koneksi,"UPDATE kategori SET nama_kategori='$user'");
+  $update=mysqli_query($koneksi,"UPDATE kategori SET nama_kategori='$user' WHERE id_kategori = '$id'");
   if($update){
     echo "<script>alert('Data di Update')</script>";
-    echo "<script>location='../list.php'</script>";
+    echo "<script>location='../kategori/list.php'</script>";
   }
 }
 
@@ -119,7 +120,7 @@ $u = mysqli_fetch_array($result);
                 </div>
                 <div class="card-body">
                   <form action="edit.php" method="POST" class="user">
-                  <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori" >
+                  <input type="hidden" class="form-control" name="txt_id" placeholder="" value="<?php echo $u['id_kategori']; ?>">
                     <div class="form-group">
                       <label for="txt_nama">Nama Kategori</label>
                       <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Kategori" value="<?php echo $u['nama_kategori']; ?>">

@@ -114,7 +114,7 @@ if(isset($_POST['create'])){
                 </div>
                 <div class="card-body">
                   <form action="input.php" method="POST" class="user">
-                  <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori">
+                  <!-- <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori"> -->
                     <div class="form-group">
                       <label for="txt_nama">Nama Kategori</label>
                       <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Kategori">
