@@ -130,9 +130,9 @@ session_start();
                                 <?php
                                 if (isset($_SESSION['id'])) {
                                     $id = $_SESSION['id'];
-$userName = $_SESSION['user_fullname'];
-$level = $_SESSION['level'];
-?>
+                                    $userName = $_SESSION['user_fullname'];
+                                    $level = $_SESSION['level'];
+                                ?>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
                                 <?php
                                 }else{
