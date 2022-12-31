@@ -1,17 +1,24 @@
 <?php
 require('../koneksi.php');
+
 if(isset($_POST['update'])){
-  $nama = ($_POST['txt_nama']);
-  $no_telp= ($_POST['txt_no_telp']);
+  $user = ($_POST['txt_nama']);
+  $id = ($_POST['txt_id']);
+  $no = ($_POST['txt_no_telp_supplier']);
   $alamat = ($_POST['txt_alamat']);
 
-  $query=mysqli_query($koneksi,"INSERT INTO supplier VALUES (NULL, '$nama', '$no_telp', '$alamat')");
-    if($query){
-      echo "<script>alert('Data Ditambahkan')</script>";
-      echo "<script>location='list.php'</script>";
-    }
+  $update=mysqli_query($koneksi,"UPDATE supplier SET nama_supplier='$user' WHERE id_supplier = '$id'");
+  if($update){
+    echo "<script>alert('Data di Update')</script>";
+    echo "<script>location='../suppliers/list.php'</script>";
   }
-  ?>
+}
+
+$id_supplier = $_GET['id'];
+$query = "SELECT * FROM supplier WHERE id_supplier = '$id_supplier'";
+$result = mysqli_query($koneksi, $query);
+$u = mysqli_fetch_array($result);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,22 +121,25 @@ if(isset($_POST['update'])){
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Supplier</h6>            
                 </div>
                 <div class="card-body">
-                  <form action="input.php" method="POST" class="user">
-                  <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori">
+                <form action="edit.php" method="POST" class="user">
+                    <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori" value="<?php echo $u['id_supplier']; ?>">
                     <div class="form-group">
                       <label for="txt_nama">Nama Supplier</label>
-                      <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Supplier">
-                      <div class="form-group">
+                      <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Supplier" value="<?php echo $u['nama_supplier']; ?>">
+                    </div>
+                    <div class="form-group">
                       <label for="txt_nama">No Telepon Supplier</label>
-                      <input type="text" class="form-control" name="txt_no_telp" placeholder="Masukkan No Telepon Supplier">
-                      <div class="form-group">
+                      <input type="text" class="form-control" name="txt_no_telp_supplier" placeholder="Masukkan No Telepon Supplier" value="<?php echo $u['no_telp_supplier']; ?>">
+                    </div>
+                    <div class="form-group">
                       <label for="txt_nama">Alamat Supplier</label>
-                      <input type="text" class="form-control" name="txt_alamat" placeholder="Masukkan Alamat">
+                      <input type="text" class="form-control" name="txt_alamat" placeholder="Masukkan Alamat" value="<?php echo $u['alamat']; ?>">
                     </div>
                     <button type="submit" name="update" class="btn btn-primary">Submit</button>
                   </form>
                 </div>
               </div>
+          </div>
             
         <!-- <Form Basic> -->
       </div>

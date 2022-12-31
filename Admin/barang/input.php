@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <?php
 require('koneksi.php');
+if(isset($_POST['simpan'])){
+  $id_barang = ($_POST['id']);
+  $merk_barang = ($_POST['merk']);
+  $jumlah_barang = ($_POST['jml']);
+  $harga = ($_POST['harga']);
+  $deskripsi = ($_POST['desc']);
+  $gambar = ($_FILES['gbr']['name']);
+  $id_kategori =($_POST ['idkt']);
+
+  // Simpan di Folder Gambar
+  move_uploaded_file($_FILES['gbr']['tmp_name'], "../assets/img/barang/".basename($_FILES['gbr']['name']));
+
+  $query=mysqli_query($koneksi,"INSERT INTO barang VALUES (NULL, '$merk_barang', '$jumlah_barang', '$harga', '$deskripsi', '$gambar', '$id_kategori')");
+
+
+    if($query){
+      echo "<script>alert('Data Ditambahkan')</script>";
+      echo "<script>location='list.php'</script>";
+}}
 ?>
 
 <html lang="en">
@@ -104,33 +123,36 @@ require('koneksi.php');
                   <h6 class="m-0 font-weight-bold text-primary">Form Basic</h6>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form method="post" action="input.php" enctype="multipart/form-data">
                     <div class="form-group" hidden>
                       <label for="exampleInputEmail1">Id Barang</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      <input type="text" name= "id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Merk Barang</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk">
+                      <input type="text" name="merk" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Jumlah</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang">
+                      <label for="exampleInputEmail1">Jumlah Barang</label>
+                      <input type="text" name="jml" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Id Supplier</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Supp">
+                      <label for="exampleInputEmail1">Harga</label>
+                      <input type="text" name="harga "class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Deskripsi</label>
+                      <input type="text" name= "desc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Gambar</label>
+                      <input type="file" name="gbr" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Supp">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Id Kategori</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Kategori">
+                      <input type="text" name="idkt" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Kategori">
                     </div>
-                    <div class=form method="post" action="aksi.php" enctype="multipart/form-data">
-                      <label for="exampleInputEmail1">Gambar</label>
-                      <input type="file" name="file">
-                      <input type="Submit" name="bupload" value="Upload">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name= "simpan" class="btn btn-primary">Submit</button>
                   </form>
                 </div>
               </div>

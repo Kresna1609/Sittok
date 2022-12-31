@@ -115,14 +115,16 @@ if(isset($_POST['create'])){
                 </div>
                 <div class="card-body">
                   <form action="input.php" method="POST" class="user">
-                  <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori">
+                    <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori">
                     <div class="form-group">
                       <label for="txt_nama">Nama Supplier</label>
                       <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Supplier">
-                      <div class="form-group">
+                    </div>
+                    <div class="form-group">
                       <label for="txt_nama">No Telepon Supplier</label>
                       <input type="text" class="form-control" name="txt_no_telp" placeholder="Masukkan No Telepon Supplier">
-                      <div class="form-group">
+                    </div>
+                    <div class="form-group">
                       <label for="txt_nama">Alamat Supplier</label>
                       <input type="text" class="form-control" name="txt_alamat" placeholder="Masukkan Alamat">
                     </div>
@@ -130,6 +132,7 @@ if(isset($_POST['create'])){
                   </form>
                 </div>
               </div>
+          </div>
             
         <!-- <Form Basic> -->
       </div>
