@@ -124,13 +124,12 @@
                 </div>
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Metode Pembayaran</h4>
+                        <h4 class="font-weight-semi-bold m-0">Bukti Transfer Pembayaran</h4>
                     </div>
                     <div class="card-body">
-                        <div class="">
+                        <div class="buktitf">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
+                            <input type="file" accept="image/*" width : 200px;/>
                             </div>
                         </div>
                     </div>

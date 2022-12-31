@@ -22,7 +22,7 @@
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
-        Data User
+        Data Transaksi
       </div>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
@@ -34,6 +34,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sittok</h6>
             <a class="collapse-item" href="../admin/user/list.php">User</a>
+            <a class="collapse-item" href="../admin/jual/list.php">Jual</a>
           </div>
         </div>
       </li>
