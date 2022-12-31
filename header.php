@@ -1,3 +1,10 @@
+<?php
+require("koneksi.php");
+
+session_start();
+
+?>
+
 <!-- Topbar Start -->
 <div class="container-fluid" >
         <div class="row bg-secondary py-2 px-xl-5" style = " background-color: #e7d1ff;">
@@ -118,6 +125,25 @@
                         <div class="navbar-nav ml-auto py-0">
                             <a href="login.php" class="nav-item nav-link">Login</a>
                             <a href="register.php" class="nav-item nav-link">Register</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php
+                                if (isset($_SESSION['id'])) {
+                                    $id = $_SESSION['id'];
+$userName = $_SESSION['user_fullname'];
+$level = $_SESSION['level'];
+?>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
+                                <?php
+                                }else{
+                                ?>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span>
+                                <?php
+                                }
+                                ?>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
                         </div>
                     </div>
                 </nav>

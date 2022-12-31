@@ -101,6 +101,7 @@ require('../koneksi.php');
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Suppliers</h6>
+                  <a href = "input.php" class = "btn btn-outline-primary btn-xs mb-0">+</a>
                 </div>
                 <div class="card-body">
                             <div class="table-responsive">
@@ -131,9 +132,9 @@ require('../koneksi.php');
                                             <td><?php echo $no_telp_supplier; ?></td>
                                             <td><?php echo $alamat; ?></td>
                                             <td>
-                                            <!-- <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a> -->
-
+                                            <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
                                             <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_supplier=<?php echo $row['id_supplier']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                          
                                             </td>
                                         </tr>
                                        <?php
@@ -149,7 +150,6 @@ require('../koneksi.php');
       </div>
     </div>
   </div>
-
   <!-- Scroll to top -->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>

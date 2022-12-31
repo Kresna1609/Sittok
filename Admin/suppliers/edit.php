@@ -1,3 +1,18 @@
+<?php
+require('../koneksi.php');
+if(isset($_POST['update'])){
+  $nama = ($_POST['txt_nama']);
+  $no_telp= ($_POST['txt_no_telp']);
+  $alamat = ($_POST['txt_alamat']);
+
+  $query=mysqli_query($koneksi,"INSERT INTO supplier VALUES (NULL, '$nama', '$no_telp', '$alamat')");
+    if($query){
+      echo "<script>alert('Data Ditambahkan')</script>";
+      echo "<script>location='list.php'</script>";
+    }
+  }
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,16 +24,16 @@
   <meta name="author" content="">
   <link href="img/logo/logo.png" rel="icon">
   <title>SITTOK</title>
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="css/ruang-admin.min.css" rel="stylesheet">
+  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-      include 'sidebar.php';
+      include ('../sidebar.php');
     ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -54,7 +69,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
+                <span class="ml-2 d-none d-lg-inline text-white small">Kresna Tampan</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -83,7 +98,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Barang</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Supplier</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -99,37 +114,22 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Supplier</h6>            
                 </div>
                 <div class="card-body">
-                  <form>
-                    <div class="form-group" hidden>
-
-                      <label for="exampleInputEmail1">Id Supplier</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Supplier">
-                    </div>
-
+                  <form action="input.php" method="POST" class="user">
+                  <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Nama Kategori">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Nama Supplier</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Nama Supplier">
+                      <label for="txt_nama">Nama Supplier</label>
+                      <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Supplier">
+                      <div class="form-group">
+                      <label for="txt_nama">No Telepon Supplier</label>
+                      <input type="text" class="form-control" name="txt_no_telp" placeholder="Masukkan No Telepon Supplier">
+                      <div class="form-group">
+                      <label for="txt_nama">Alamat Supplier</label>
+                      <input type="text" class="form-control" name="txt_alamat" placeholder="Masukkan Alamat">
                     </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">No Telepon</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="No Telepon">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Alamat</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Alamat">
-                    </div>
-                      <label for="exampleInputEmail1">User Email</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="update" class="btn btn-primary">Submit</button>
                   </form>
                 </div>
               </div>
-              
-
             
         <!-- <Form Basic> -->
       </div>
@@ -141,12 +141,12 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="js/ruang-admin.min.js"></script>
-  <script src="vendor/chart.js/Chart.min.js"></script>
-  <script src="js/demo/chart-area-demo.js"></script>  
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../assets/js/ruang-admin.min.js"></script>
+  <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="../assets/js/demo/chart-area-demo.js"></script>  
 </body>
 
 </html>

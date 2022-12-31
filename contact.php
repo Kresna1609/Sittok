@@ -81,19 +81,13 @@
                 </div>
             </div>
             <div class="col-lg-5 mb-5">
-                <h5 class="font-weight-semi-bold mb-3">Get In Touch</h5>
-                <p>Justo sed diam ut sed amet duo amet lorem amet stet sea ipsum, sed duo amet et. Est elitr dolor elitr erat sit sit. Dolor diam et erat clita ipsum justo sed.</p>
+                <h5 class="font-weight-semi-bold mb-3">SITTOK</h5>
+                <p>Sittok merupakan salah satu market place yang menjual berbagai macam produk elektronik. Sittok memudahkan para konsumen untuk mencari barang elektronik seperti laptop, komputer dan accescories lainnya.</p>
                 <div class="d-flex flex-column mb-3">
-                    <h5 class="font-weight-semi-bold mb-3">Store 1</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
-                </div>
-                <div class="d-flex flex-column">
-                    <h5 class="font-weight-semi-bold mb-3">Store 2</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                    <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+                    <h5 class="font-weight-semi-bold mb-3">Store</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Jalan Kalimantan no 3a kav8 Jember</p>
+                    <p class="mb-2"><i class="fa fa-instagram text-primary mr-3"></i>@rizki_komputer</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>0852 3510 1051</p>
                 </div>
             </div>
         </div>
