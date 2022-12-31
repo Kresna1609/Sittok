@@ -123,8 +123,6 @@ session_start();
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="login.php" class="nav-item nav-link">Login</a>
-                            <a href="register.php" class="nav-item nav-link">Register</a>
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
@@ -133,16 +131,17 @@ session_start();
                                     $userName = $_SESSION['user_fullname'];
                                     $level = $_SESSION['level'];
                                 ?>
+                                                                <img class="img-profile rounded-circle"src="img/undraw_profile.svg">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
                                 <?php
                                 }else{
                                 ?>
+                                    <a href="login.php" class="nav-item nav-link">Login</a>
+                                    <a href="register.php" class="nav-item nav-link">Register</a>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span>
                                 <?php
                                 }
                                 ?>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
                             </a>
                         </div>
                     </div>
