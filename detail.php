@@ -58,7 +58,7 @@ $detail = mysqli_fetch_array($result);
         <div class="row px-xl-5">
             <div class="col-lg-5">
                 <!-- <div id="product-carousel" class="carousel slide" data-ride="carousel"> -->
-                <img src="assets/img/laptop/<?php echo $detail['gambar']; ?>" alt="Image">
+                <img src="admin/assets/img/barang/<?php echo $detail['gambar']; ?>" alt="Image">
                         
             </div>
 
