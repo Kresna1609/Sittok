@@ -56,10 +56,23 @@ require('../koneksi.php');
             </li>
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
+                <img class="img-profile rounded-circle" src="assets/img/boy.png" style="max-width: 60px">
+                <?php
+                                if (isset($_SESSION['id'])) {
+                                    $id = $_SESSION['id'];
+                                    $userName = $_SESSION['user_fullname'];
+                                    $level = $_SESSION['level'];
+                                    ?>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
+                                <?php
+                                }else{
+                                ?>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Admin</span>
+                                <?php
+                                }
+                                ?>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -169,33 +182,36 @@ require('../koneksi.php');
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
-                                            <th>Password</th>
-                                            <th>Level</th>
+                                            <th>Tanggal Jual</th>
+                                            <th>Id Customer</th>
+                                            <th>Id Barang</th>
+                                            <th>Status Pesanan</th>
+                                            <th>Bukti Pembayaran</th>
                                             <th>Hapus</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                            $query = "SELECT * FROM user";
+                                            $query = "SELECT * FROM jual_barang";
                                             $result = mysqli_query($koneksi, $query); 
                                         
                                                  
                                             while ($row = mysqli_fetch_array($result)){
-                                                $id = $row['id'];
-                                                $user_fullname = $row['user_fullname'];
-                                                $user_email = $row['user_email'];
-                                                $user_password = $row['user_password'];
-                                                $level = $row['level'];
+                                                $id_jual_barang = $row['id_jual_barang'];
+                                                $tgl_jual = $row['tgl_jual'];
+                                                $id_barang = $row['id_barang'];
+                                                $id_customer = $row['id_customer'];
+                                                $status_pesanan = $row['status_pesanan'];
+                                                $bukti_penjualan = $row['bukti_penjualan'];
                                             
                                         ?>
                                         <tr>
-                                            <td><?php echo $id; ?></td>
-                                            <td><?php echo $user_fullname; ?></td>
-                                            <td><?php echo $user_email; ?></td>
-                                            <td><?php echo $user_password; ?></td>
-                                            <td><?php echo $level; ?></td>
+                                            <td><?php echo $id_jual_barang; ?></td>
+                                            <td><?php echo $tgl_jual; ?></td>
+                                            <td><?php echo $id_barang; ?></td>
+                                            <td><?php echo $id_customer; ?></td>
+                                            <td><?php echo $status_pesanan; ?></td>
+                                            <td><?php echo $bukti_penjualan; ?></td>
                                             <td>
                                             <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_kategori=<?php echo $row['id_kategori']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                             </td>
