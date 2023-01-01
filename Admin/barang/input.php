@@ -157,56 +157,6 @@ if(isset($_POST['simpan'])){
                 </div>
               </div>
         <!-- <Form Basic> -->
-          <!--Form Tabel>-->
-          <div class="container my-5">
-            <h2> List Barang </h2>
-            <a class="btn btn-primary" href="/Sittok/admin/index.php" role="button">New List</a>
-            <br>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Merk Barang</th>
-                  <th>Jumlah</th>
-                  <th>Id Supplier</th>
-                  <th>Id Kategori</th>
-                  <th>Gambar</th>
-</tr>
-</thead>
-<tbody>
-                                        <?php
-                                            $query = "SELECT * FROM barang";
-                                            $result = mysqli_query($koneksi, $query); 
-                                            $no = 1;      
-                                                 
-                                            while ($row = mysqli_fetch_array($result)){
-                                                $id = $row['id_barang'];
-                                                $merk_barang = $row['merk_barang'];
-                                                $jumlah_barang = $row['jumlah_barang'];
-                                                $id_supplier = $row['id_supplier'];
-                                                $id_kategori = $row['id_kategori'];
-                                                //$gambar = $row['gambar'];
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $id; ?></td>
-                                            <td><?php echo $merk_barang; ?></td>
-                                            <td><?php echo $jumlah_barang; ?></td>
-                                            <td><?php echo $id_supplier; ?></td>
-                                            <td><?php echo $id_kategori; ?></td>
-                      
-                                            <td>
-                                            <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
-
-                                            <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');"><i class="fas fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <?php
-                                            $no++;
-                                            }
-                                        ?>
-                                    </tbody>
-      </table>
-</div>
 
 
       </div>
