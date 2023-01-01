@@ -24,11 +24,11 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sittok</h6>
-            <a class="collapse-item" href="../carousel/list.php">Carousel</a>
+            <a class="collapse-item" href="../admin/carousel/list.php">Carousel</a>
             <a class="collapse-item" href="../admin/barang/list.php">Barang</a>
-            <a class="collapse-item" href="../kategori/list.php">Kategori</a>
-            <a class="collapse-item" href="../customers/list.php">Customers</a>
-            <a class="collapse-item" href="../suppliers/list.php">Supplier</a>
+            <a class="collapse-item" href="../admin/kategori/list.php">Kategori</a>
+            <a class="collapse-item" href="../admin/customers/list.php">Customers</a>
+            <a class="collapse-item" href="../admin/suppliers/list.php">Supplier</a>
           </div>
         </div>
       </li>
