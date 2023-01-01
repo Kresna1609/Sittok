@@ -131,7 +131,7 @@ session_start();
                                     $userName = $_SESSION['user_fullname'];
                                     $level = $_SESSION['level'];
                                 ?>
-                                                                <img class="img-profile rounded-circle"src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle"src="img/undraw_profile.svg">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
                                 <?php
                                 }else{
@@ -146,8 +146,8 @@ session_start();
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
-                                href="logout.php" class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                                <a href="logout.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
+                                    class="dropdown-item">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
                             </div>
                         </div>
