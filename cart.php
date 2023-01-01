@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+require('koneksi.php');
+session_start();
+
+echo "<pre>";
+print_r($_SESSION['cart']);
+echo"</pre>";
+?>
 <html lang="en">
 
 <head>
