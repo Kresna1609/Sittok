@@ -2,10 +2,10 @@
 <?php
 require('koneksi.php');
 
-//$barang = $_GET['barang'];
-$sql =$koneksi->query("SELECT*FROM barang"); 
-$review = $sql->fetch_array();
-
+$id_barang = $_GET['id'];
+$query = "SELECT * FROM barang WHERE id_barang = '$id_barang'";
+$result = mysqli_query($koneksi, $query);
+$detail = mysqli_fetch_array($result);
 
 ?>
 <html lang="en">
@@ -41,7 +41,7 @@ $review = $sql->fetch_array();
     ?>
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #e7d1ff;" >
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px; background-color: #e7d1ff;" >
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Shop Detail</h1>
             <div class="d-inline-flex">
                 <p class="m-0"><a href="">Home</a></p>
@@ -58,12 +58,12 @@ $review = $sql->fetch_array();
         <div class="row px-xl-5">
             <div class="col-lg-5">
                 <!-- <div id="product-carousel" class="carousel slide" data-ride="carousel"> -->
-                <img src="assets/img/laptop/<?=$review['gambar']?>" alt="Image">
+                <img src="assets/img/laptop/<?php echo $detail['gambar']; ?>" alt="Image">
                         
             </div>
 
             <div class="col-lg-6 pb-5">
-                <h3 class="font-weight-semi-bold"><?=$review['merk_barang']?></h3>
+                <h3 class="font-weight-semi-bold"><?php echo $detail['merk_barang']; ?></h3>
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
                         <small class="fas fa-star"></small>
@@ -74,33 +74,8 @@ $review = $sql->fetch_array();
                     </div>
                     <small class="pt-1">(50 Reviews)</small>
                 </div>
-                <h4 class="font-weight-semi-bold mb-4"><?=$review['harga']?></h4>
-                <p class="mb-4"><?= $review['deskripsi']?>;</p>
-                <div class="d-flex mb-5">
-                    <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
-                    <form>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-1" name="color">
-                            <label class="custom-control-label" for="color-1">Black</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-2" name="color">
-                            <label class="custom-control-label" for="color-2">White</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-3" name="color">
-                            <label class="custom-control-label" for="color-3">Red</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-4" name="color">
-                            <label class="custom-control-label" for="color-4">Blue</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-5" name="color">
-                            <label class="custom-control-label" for="color-5">Green</label>
-                        </div>
-                    </form>
-                </div>
+                <h4 class="font-weight-semi-bold mb-4"><?php echo $detail['harga']; ?></h4>
+                <p class="mb-4"><?php echo $detail['deskripsi']; ?></p>
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
@@ -141,11 +116,10 @@ $review = $sql->fetch_array();
                 <div class="nav nav-tabs justify-content-center border-secondary mb-4">
                     <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Description</a>
                     <!-- <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Information</a> -->
-                    <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="tab-pane-1">
-                        <p class="mb-3"><?= $review['deskripsi']?></p>
+                        <p class="mb-3"><?php echo $detail['deskripsi']; ?></p>
                         </div>
                     <div class="tab-pane fade" id="tab-pane-2">
                         <!-- <h4 class="mb-3">Additional Information</h4> -->
