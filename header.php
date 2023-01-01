@@ -75,28 +75,28 @@ session_start();
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h6 class="m-0">Categories</h6>
+                    <h6 class="m-0" href="#kategori">Categories</h6>
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
-                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px" >
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown">Accessories <i class="fa fa-angle-down float-right mt-1"></i></a>
+                            <a href="#kategori" class="nav-link" data-toggle="dropdown">Accessories <i class="fa fa-angle-down float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
                                 <a href="" class="dropdown-item">Headphone</a>
                                 <a href="" class="dropdown-item">Fan</a>
                                 <a href="" class="dropdown-item">Keyboard + Mouse</a>
                             </div>
                         </div>
-                        <a href="" class="nav-item nav-link">Laptop</a>
-                        <a href="" class="nav-item nav-link">Charger</a>
-                        <a href="" class="nav-item nav-link">LCD</a>
-                        <a href="" class="nav-item nav-link">Motherboard</a>
-                        <a href="" class="nav-item nav-link">CPU</a>
-                        <a href="" class="nav-item nav-link">Monitor</a>
-                        <a href="" class="nav-item nav-link">Power Supply</a>
-                        <a href="" class="nav-item nav-link">RAM</a>
-                        <a href="" class="nav-item nav-link">Printer</a>
+                        <a href="shop.php?id_kategori=3" class="nav-item nav-link">Laptop</a>
+                        <a href="shop.php?id_kategori=6" class="nav-item nav-link">Charger</a>
+                        <a href="kategori.php?id_kategori=7" class="nav-item nav-link">LCD</a>
+                        <a href="kategori.php?id_kategori=8" class="nav-item nav-link">Motherboard</a>
+                        <a href="kategori.php?id_kategori=9" class="nav-item nav-link">CPU</a>
+                        <a href="kategori.php?id_kategori=10" class="nav-item nav-link">Monitor</a>
+                        <a href="kategori.php?id_kategori=11" class="nav-item nav-link">Power Supply</a>
+                        <a href="kategori.php?id_kategori=12" class="nav-item nav-link">RAM</a>
+                        <a href="kategori.php?id_kategori=13" class="nav-item nav-link">Printer</a>
                     </div>
                 </nav>
             </div>

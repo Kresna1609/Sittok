@@ -3,7 +3,8 @@
 require('koneksi.php');
 
 //$barang = $_GET['barang'];
-$sql =$koneksi->query("SELECT*FROM barang"); 
+$id = $_GET['id_kategori'];
+$sql =$koneksi->query("SELECT*FROM barang WHERE id_kategori='$id'"); 
 $review = $sql->fetch_array();
 
 ?>
