@@ -133,7 +133,7 @@ session_start();
                                 <div class="p-3" style="max-width: 700px;">
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">Diskon 10% bagi pelanggan pertama</h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">SITTOK</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                                    <a href="shop.php?id_kategori=0" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -141,9 +141,9 @@ session_start();
                             <img class="img-fluid" src="assets/img/toko-komputer.jpg" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Belanja Hemat Kantong Sehat</h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                                    <a href="shop.php?id_kategori=0" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
                         </div>

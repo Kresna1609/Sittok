@@ -86,7 +86,7 @@
                 <div class="d-flex flex-column mb-3">
                     <h5 class="font-weight-semi-bold mb-3">Store</h5>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Jalan Kalimantan no 3a kav8 Jember</p>
-                    <p class="mb-2"><i class="fa fa-instagram text-primary mr-3"></i>@rizki_komputer</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>@rizki_komputer</p>
                     <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>0852 3510 1051</p>
                 </div>
             </div>

@@ -76,53 +76,51 @@ require('koneksi.php');
         </div>
     </div>
     <!-- Featured End -->
-
-
     <!-- Categories Start -->
-    <div class="container-fluid pt-5" style="padding: 50px;">
+    <div class="container-fluid pt-5" style="padding: 50px; margin-top: -30px; margin-bottom: -30px;">
         <div class="row px-xl-5 pb-3" >
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+            <div class="col-lg-2 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/laptop/laptop-asusdepan.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/laptop/laptop-asusdepan.jpg" alt="" >
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Laptop</h5>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+            <div class="col-lg-2 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/LCD/lcd-ultradepan.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">LCD</h5>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+            <div class="col-lg-2 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/keyboard/keyboard.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Keyboard</h5>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+            <div class="col-lg-2 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/fan/fandepan.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Fan</h5>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+            <div class="col-lg-2 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/charger/charger-asusdepan.jpg" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">Charger</h5>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+            <div class="col-lg-2 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/Printer/printerdpn.jpg" alt="">
                     </a>
@@ -141,9 +139,9 @@ require('koneksi.php');
                 <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
                     <img src="img/offer-1.png" alt="">
                     <div class="position-relative" style="z-index: 1;">
-                        <h5 class="text-uppercase text-primary mb-3">Diskon 20% Untuk Semua Produk SAMSUNG</h5>
-                        <h1 class="mb-4 font-weight-semi-bold">Samsung Collection</h1>
-                        <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                        <h5 class="text-uppercase text-primary mb-3">Sittok Collection</h5>
+                        <h1 class="mb-4 font-weight-semi-bold">Pilihan Laptop Unggulan</h1>
+                        <a href="shop.php?id_kategori=0" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -151,42 +149,89 @@ require('koneksi.php');
                 <div class="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
                     <img src="img/offer-2.png" alt="">
                     <div class="position-relative" style="z-index: 1;">
-                        <h5 class="text-uppercase text-primary mb-3">Diskon 20% Untuk Semua Produk ASUS</h5>
-                        <h1 class="mb-4 font-weight-semi-bold">ASUS Collection</h1>
-                        <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                        <h5 class="text-uppercase text-primary mb-3">Sittok Collection</h5>
+                        <h1 class="mb-4 font-weight-semi-bold">Dapatkan Produk Murah</h1>
+                        <a href="shop.php?id_kategori=0" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Offer End -->
+    <div class="container-fluid">
+            <!-- Shop Product Start -->
+            <div class="col-lg-12 col-md-12">
+                <div class="row pb-3">
+                    <?php
+                        $sql =$koneksi->query("SELECT * FROM barang"); 
+                       
+                            while($shop = $sql->fetch_array()){
+                                ?>
+                                <div class="col-lg-2 col-md-6 col-sm-12 pb-1">
+                                <div class="card product-item border-0 mb-4">
+                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                        <img class="img-fluid w-100" src="admin/assets/img/barang/<?php echo $shop['gambar']; ?>" alt="">
+                                    </div>
+                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                        <h6 class="text-truncate mb-3"><?=$shop['merk_barang']?></h6>
+                                        <div class="d-flex justify-content-center">
+                                            <h6><?=$shop['harga']?></h6><h6 class="text-muted ml-2"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between bg-light border">
+                                        <a href="detail.php?id=<?php echo $shop['id_barang']; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                        <a href="cart.php?id_barang=<?php echo $shop['id_barang'];?>&aksi=tambah_produk&jumlah=1" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                    </div>
+                                </div>
+                                </div>    
+                    
 
+                    <?php
+                        }
+                    ?>
+                </div>
+            </div>
+            <!-- Shop Product End -->
+    </div>
+    <!-- Shop End -->
 
-    <!-- Products Start -->
-    <div class="container-fluid pt-5">
-        <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Popular</span></h2>
-        </div>
-        <div class="row px-xl-5 pb-3">
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="assets/img/mouse/mouse-hp.jpg" alt="">
+    <!-- Vendor Start -->
+    <div class="text-center mb-4" style="margin-top: 30px;">
+            <h2 class="section-title px-5"><span class="px-2">Our Brands</span></h2>
+    </div>
+    <div class="container-fluid py-5">
+        <div class="row px-xl-5">
+            <div class="col">
+                <div class="owl-carousel vendor-carousel">
+                    <div class="vendor-item border p-4">
+                        <img src="assets/img/Asus.png" alt="">
                     </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3"></h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>30.000</h6><h6 class="text-muted ml-2"><del>55.000</del></h6>
-                        </div>
+                    <div class="vendor-item border p-4">
+                        <img src="assets/img/lenovo.png" alt="">
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                    <div class="vendor-item border p-4">
+                        <img src="assets/img/Acer.gif" alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="assets/img/coolermaster.jpg" alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="assets/img/epson.png" alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="assets/img/logitech.png" alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="assets/img/ds.png" alt="">
+                    </div>
+                    <div class="vendor-item border p-4">
+                        <img src="assets/img/robot.jpg" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Vendor End -->
 
     <?php
         include 'footer.php';
