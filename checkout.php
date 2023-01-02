@@ -28,7 +28,77 @@
 <body>
     <?php
     include ('header.php');
+
+    if(isset($_SESSION['id'])){
+    $id = $_SESSION['id'];
+    }else{
+    $user_id = '';
+    header('location:login.php');
+    };
+
+
+    if (isset($_POST['add_img'])) {
+
+    $iid = $_POST['id'];
+    $iid = filter_var($iid, FILTER_SANITIZE_STRING);
+
+    $image = $_FILES['img']['name'];
+    $image = filter_var($image, FILTER_SANITIZE_STRING);
+    $image_size = $_FILES['img']['size'];
+    $image_tmp_name = $_FILES['img']['tmp_name'];
+    $image_folder = 'admin_img/' . $image;
+
+    if (!empty($image)) {
+        if ($image_size > 2000000) {
+            $message[] = 'ukuran gambar terlalu besar';
+        } else {
+            $update_image = $conn->prepare("UPDATE `orders` SET proof_payment = ? WHERE id = ?");
+            $update_image->execute([$image, $iid]);
+            move_uploaded_file($image_tmp_name, $image_folder);         
+            $message[] = 'gambar berhasil diperbarui!';
+        }
+    }
+    }
+
     ?>
+
+
+<div class="heading">
+   <h3>order</h3>
+</div>
+
+<section class="jual_barang">
+
+   <h3 class="title">Pesanan Anda </h3>
+
+   <div class="box-container">   
+   <?php
+      if($id == ''){
+         echo '<p class="empty">silahkan login untuk melihat pesanan Anda</p>';
+      }else{
+         $select_jual_barang = $koneksi->prepare("SELECT * FROM `jual_barang` WHERE id = ? ORDER BY id DESC");
+         if($query){
+            echo "<script>alert('Pesanan Masuk')</script>";
+         if($select_jual_barang == 0){
+            while($fetch_jual_barang = $select_orders->fetch(PDO::FETCH_ASSOC)){
+               $stat=$fetch_jual_barang["status_pesanan"];
+
+            if ($stat == "Diterima") {
+               $nota = "<button>Cetak nota</button>";
+            }else{
+               $nota = "";
+            }
+   ?>
+
+<div class="box">
+   <table>      
+         <tr>
+            <td>Status Pesanan</td>
+            <td>:</td>
+            <td><span style="color:<?php if($fetch_jual_barang['status_pesanan'] == 'Diproses'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['status_pesanan']; ?></span></td>
+         </tr>
+      </table>      
+   </div>
     <!-- Page Header Start -->
     <div class="coba">
     <div class="container-fluid bg-secondary mb-5">
@@ -40,108 +110,16 @@
             </div>
         </div>
     </div>
+    <?php
+      }
+      }else{
+         echo '<p class="empty">tidak ada pesanan!</p>';
+      }
+      }
+   ?>
     <!-- Page Header End -->
 
-
-    <!-- Checkout Start -->
-    <div class="container-fluid pt-5">
-        <div class="row px-xl-5">
-            <div class="col-lg-8">
-                <div class="mb-4">
-                    <h4 class="font-weight-semi-bold mb-4">Alamat Pengiriman</h4>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Nama Lengkap</label>
-                            <input class="form-control" type="text" placeholder="John">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Nomor Headphone Aktif</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Alamat Lengkap</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Negara</label>
-                            <select class="custom-select">
-                                <option selected>Indonesia</option>
-                                <option>Malaysia</option>
-                                <option>Singapore</option>
-                                <option>Brunnei Darussalam</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Provinsi</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Kabupaten/Kota</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Kode Post</label>
-                            <input class="form-control" type="text" placeholder="123">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card border-secondary mb-5">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Total Pemesanan</h4>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="font-weight-medium mb-3">Jumlah Produk</h5>
-                        <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 1</p>
-                            <p>$150</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 2</p>
-                            <p>$150</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 3</p>
-                            <p>$150</p>
-                        </div>
-                        <hr class="mt-0">
-                        <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium">$150</h6>
-                        </div>
-                    </div>
-                    <div class="card-footer border-secondary bg-transparent">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">$160</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border-secondary mb-5">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Bukti Transfer Pembayaran</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="buktitf">
-                            <div class="custom-control custom-radio">
-                            <input type="file" accept="image/*" width : 200px;/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer border-secondary bg-transparent">
-                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Checkout</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Checkout End -->
-
+    
 
     <!-- Footer Start -->
     <?php
@@ -167,5 +145,4 @@
     <!-- Template Javascript -->
     <script src="assets/js/main.js"></script>
 </body>
-
 </html>

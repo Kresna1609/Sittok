@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+
 <?php
 require('koneksi.php');
-if (isset($_GET['id_barang']) && isset($_GET['jumlah'])) {
+
+    if (isset($_GET['id_barang']) && isset($_GET['jumlah'])) {
 
     $id_barang=$_GET['id_barang'];
     $jumlah=$_GET['jumlah'];
-
 
     $sql =$koneksi->query("SELECT * FROM barang WHERE id_barang = '$id_barang'");
     $data = $sql->fetch_array();
@@ -49,7 +49,7 @@ switch($aksi){
 
         if(!empty($_SESSION["keranjang"])) {
             foreach($_SESSION["keranjang"] as $k => $v) {
-                    if($_GET["id_barang"] == $k)
+                    if($_GET["id_barang"])
                         unset($_SESSION["keranjang"][$k]);
                     if(empty($_SESSION["keranjang"]))
                         unset($_SESSION["keranjang"]);
@@ -144,9 +144,7 @@ switch($aksi){
                             <td class="align-middle"> <?php echo $item['merk_barang']; ?> </td>
                             <td class="align-middle"><?php echo $item['harga']; ?></td>
                             <td class="align-middle">
-
                                     <input type="number" min="1" value="<?php echo $item["jumlah"]; ?>" class="form-control" id="jumlah<?php echo $no; ?>" name="jumlah[]" >
-
                                 <script>
                     $("#jumlah<?php echo $no; ?>").bind('change', function () {
                         var jumlah<?php echo $no; ?>=$("#jumlah<?php echo $no; ?>").val();
@@ -161,12 +159,12 @@ switch($aksi){
                             <td class="align-middle"><?php echo $sub_total;?></td>
                             <td>
                             <form method="get">
-                        <input type="hidden" name="id_barang"  value="<?php echo $item['id_barang']; ?>" class="form-control">
-                        <input type="hidden" name="merk_barang"  value="update" class="form-control">
-                        <input type="hidden" name="jumlah" value="<?php echo $item["jumlah"]; ?>" id="jumlah<?php echo $no; ?>" value="" class="form-control">
-                        <input type="submit" class="btn btn-warning btn-xs" value="Update">
-                    </form>
-                    <a href="cart.php?id=<?php echo $item['id_barang']; ?>&aksi=hapus" class="btn btn-danger btn-xs" role="button">Delete</a>
+                                <input type="hidden" name="id_barang"  value="<?php echo $item['id_barang']; ?>" class="form-control">
+                                <input type="hidden" name="merk_barang"  value="update" class="form-control">
+                                <input type="hidden" name="jumlah" value="<?php echo $item["jumlah"]; ?>" id="jumlah<?php echo $no; ?>" value="" class="form-control">
+                                <input type="submit" class="btn btn-warning btn-xs" value="Update" width: 100px;>
+                            </form>
+                            <a href="cart.php?id=<?php echo $item['id_barang']; ?>&aksi=hapus" class="btn btn-danger btn-xs" role="button" style="width: 90px;"</style>>Delete</a>
                             </td>
                         </tr>
                         <?php 
@@ -187,12 +185,18 @@ switch($aksi){
                             <h6 class="font-weight-medium">Rp. <?php echo $total;?> </h6>
                         </div>
                         <div class="card-body">
-                        <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Gratis Ongkir</h6>
-                            <h6 class="font-weight-medium">Rp. 0 </h6>
+                        <h4 class="font-weight-semi-bold m-0">Bukti Transfer Pembayaran</h4>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
-                    </div>
+                        <div class="card-body">
+                            <div class="buktitf">
+                                <div class="custom-control custom-radio">
+                                <input type="file" accept="image/*" width : 200px;/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer border-secondary bg-transparent">
+                            <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="co">Checkout</button>
+                        </div>
                 </div>
             </div>
         </div>
@@ -224,5 +228,4 @@ switch($aksi){
     <!-- Template Javascript -->
     <script src="assets/js/main.js"></script>
 </body>
-
-</html>
+?>
