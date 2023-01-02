@@ -123,6 +123,7 @@ require('koneksi.php');
                                             <th>Id</th>
                                             <th>Merk Barang</th>
                                             <th>Jumlah Barang</th>
+                                            <th>Harga</th>
                                             <th>Deskripsi</th>
                                             <th>Id Kategori</th>
                                             <th>Gambar</th>
@@ -139,6 +140,7 @@ require('koneksi.php');
                                                 $id = $row['id_barang'];
                                                 $merk_barang = $row['merk_barang'];
                                                 $jumlah_barang = $row['jumlah_barang'];
+                                                $harga = $row['harga'];
                                                 $deskripsi = $row['deskripsi'];
                                                 $id_kategori = $row['id_kategori'];
                                                 $gambar = $row['gambar'];
@@ -147,7 +149,8 @@ require('koneksi.php');
                                             <td><?php echo $id; ?></td>
                                             <td><?php echo $merk_barang; ?></td>
                                             <td><?php echo $jumlah_barang; ?></td>
-                                            <!-- <td><?php echo $id_supplier; ?></td> -->
+                                            <td><?php echo $harga; ?></td>
+                                            <td><?php echo $deskripsi; ?></td>
                                             <td><?php echo $id_kategori; ?></td>
                                             <td><?php echo $gambar; ?></td> 
                                 

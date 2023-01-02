@@ -137,7 +137,7 @@ if(isset($_POST['simpan'])){
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Harga</label>
-                      <input type="text" name="harga "class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk">
+                      <input type="text" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Deskripsi</label>
