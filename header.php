@@ -80,23 +80,16 @@ session_start();
                 </a>
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px" >
-                        <div class="nav-item dropdown">
-                            <a href="#kategori" class="nav-link" data-toggle="dropdown">Accessories <i class="fa fa-angle-down float-right mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                <a href="" class="dropdown-item">Headphone</a>
-                                <a href="" class="dropdown-item">Fan</a>
-                                <a href="" class="dropdown-item">Keyboard + Mouse</a>
-                            </div>
-                        </div>
+                        <a href="shop.php?id_kategori=4" class="nav-item nav-link">Aksesoris</a>
                         <a href="shop.php?id_kategori=3" class="nav-item nav-link">Laptop</a>
                         <a href="shop.php?id_kategori=6" class="nav-item nav-link">Charger</a>
-                        <a href="kategori.php?id_kategori=7" class="nav-item nav-link">LCD</a>
-                        <a href="kategori.php?id_kategori=8" class="nav-item nav-link">Motherboard</a>
-                        <a href="kategori.php?id_kategori=9" class="nav-item nav-link">CPU</a>
-                        <a href="kategori.php?id_kategori=10" class="nav-item nav-link">Monitor</a>
-                        <a href="kategori.php?id_kategori=11" class="nav-item nav-link">Power Supply</a>
-                        <a href="kategori.php?id_kategori=12" class="nav-item nav-link">RAM</a>
-                        <a href="kategori.php?id_kategori=13" class="nav-item nav-link">Printer</a>
+                        <a href="shop.php?id_kategori=7" class="nav-item nav-link">LCD</a>
+                        <a href="shop.php?id_kategori=8" class="nav-item nav-link">Motherboard</a>
+                        <a href="shop.php?id_kategori=9" class="nav-item nav-link">CPU</a>
+                        <a href="shop.php?id_kategori=10" class="nav-item nav-link">Monitor</a>
+                        <a href="shop.php?id_kategori=11" class="nav-item nav-link">Power Supply</a>
+                        <a href="shop.php?id_kategori=12" class="nav-item nav-link">RAM</a>
+                        <a href="shop.php?id_kategori=13" class="nav-item nav-link">Printer</a>
                     </div>
                 </nav>
             </div>
@@ -111,8 +104,7 @@ session_start();
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
-                            <a href="shop.php" class="nav-item nav-link">Shop</a>
-                            <a href="detail.php" class="nav-item nav-link">Shop Detail</a>
+                            <a href="shop.php?id_kategori=0" class="nav-item nav-link">Shop</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
