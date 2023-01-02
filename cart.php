@@ -67,7 +67,7 @@ switch($aksi){
                     if($_GET["id_barang"] == $k)
                         $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
                 }}
-            break;
+        break;
         }
     ?>
 <html lang="en">

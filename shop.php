@@ -55,7 +55,7 @@ $id = $_GET['id_kategori'];
                 <div class="row pb-3">
                     <?php
                     if($id == 0){
-                        $sql =$koneksi->query("SELECT*FROM barang"); 
+                        $sql =$koneksi->query("SELECT * FROM barang"); 
                        
                             while($shop = $sql->fetch_array()){
                                 ?>
@@ -78,7 +78,7 @@ $id = $_GET['id_kategori'];
                                 </div>
                            <?php     
                     }}else{
-                    $sql =$koneksi->query("SELECT*FROM barang WHERE id_kategori='$id'"); 
+                    $sql =$koneksi->query("SELECT * FROM barang WHERE id_kategori='$id'"); 
                     
                         while($shop = $sql->fetch_array()){
                     ?>
