@@ -205,10 +205,24 @@ switch($aksi){
                             <h6 class="font-weight-medium">Gratis Ongkir</h6>
                             <h6 class="font-weight-medium">Rp. 0 </h6>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
                     </div>
                 </div>
             </div>
+            <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Bukti Transfer Pembayaran</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="buktitf">
+                            <div class="custom-control custom-radio">
+                            <input type="file" accept="image/*" width : 200px;/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Checkout</button>
+                    </div>
+                </div>
         </div>
     </div>
     <!-- Cart End -->
