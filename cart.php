@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <?php
 require('koneksi.php');
-
 if (isset($_GET['id_barang']) && isset($_GET['jumlah'])) {
 
     $id_barang=$_GET['id_barang'];
     $jumlah=$_GET['jumlah'];
 
-    $sql= "SELECT * FROM barang WHERE id_barang='$id_barang'";
 
-    $query = mysqli_query($koneksi,$sql);
-    $shop = mysqli_fetch_array($query);
-    $id_barang=$shop['id_barang'];
-    $merk_barang=$shop['merk_barang'];
-    $harga=$shop['harga'];
+    $sql =$koneksi->query("SELECT * FROM barang WHERE id_barang = '$id_barang'");
+    $data = $sql->fetch_array();
+    $id_barang=$data['id_barang'];
+    $merk_barang=$data['merk_barang'];
+    $harga=$data['harga'];
 
 }else {
     $id_barang="";
     $jumlah=0;
 }
-
 
 if (isset($_GET['aksi'])) {
     $aksi=$_GET['aksi'];
@@ -28,48 +25,49 @@ if (isset($_GET['aksi'])) {
 }
 
 
-switch($aksi){  
+switch($aksi){	
     //Fungsi untuk menambah penyewaan kedalam cart
     case "tambah_produk":
     $itemArray = array($id_barang=>array('id_barang'=>$id_barang,'merk_barang'=>$merk_barang,'jumlah'=>$jumlah,'harga'=>$harga));
-    if(!empty($_SESSION["keranjang_belanja"])) {
-        if(in_array($shop['id_barang'],array_keys($_SESSION["keranjang_belanja"]))) {
-            foreach($_SESSION["keranjang_belanja"] as $k => $v) {
-                if($shop['id_barang'] == $k) {
-                    $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
+    if(!empty($_SESSION["keranjang"])) {
+        echo $merk_barang;
+        if(in_array($data['id_barang'],array_keys($_SESSION["keranjang"]))) {
+            foreach($_SESSION["keranjang"] as $k => $v) {
+                if($data['id_barang'] == $k) {
+                    $_SESSION["keranjang"] = array_merge($_SESSION["keranjang"],$itemArray);
                 }
             }
         } else {
-            $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
+            $_SESSION["keranjang"] = array_merge($_SESSION["keranjang"],$itemArray);
         }
     } else {
-        $_SESSION["keranjang_belanja"] = $itemArray;
+        $_SESSION["keranjang"] = $itemArray;
     }
     break;
-
     //Fungsi untuk menghapus item dalam cart
     case "hapus":
 
-        if(!empty($_SESSION["keranjang_belanja"])) {
-            foreach($_SESSION["keranjang_belanja"] as $k => $v) {
-                if($_GET["id_barang"] == $k)
-                    unset($_SESSION["keranjang_belanja"][$k]);
-                if(empty($_SESSION["keranjang_belanja"]))
-                    unset($_SESSION["keranjang_belanja"]);
+        if(!empty($_SESSION["keranjang"])) {
+            foreach($_SESSION["keranjang"] as $k => $v) {
+                    if($_GET["id_barang"] == $k)
+                        unset($_SESSION["keranjang"][$k]);
+                    if(empty($_SESSION["keranjang"]))
+                        unset($_SESSION["keranjang"]);
             }
         }
-        break;
-    
-        case "update":
-            $itemArray = array($id_barang=>array('id_barang'=>$id_barang,'merk_barang'=>$merk_barang,'jumlah'=>$jumlah,'harga'=>$harga));
-            if(!empty($_SESSION["keranjang_belanja"])) {
-                foreach($_SESSION["keranjang_belanja"] as $k => $v) {
-                    if($_GET["id_barang"] == $k)
-                        $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
-                }}
-        break;
+    break;
+
+    case "update":
+        $itemArray = array($id_barang=>array('id_barang'=>$id_barang,'merk_barang'=>$merk_barang,'jumlah'=>$jumlah,'harga'=>$harga));
+        if(!empty($_SESSION["keranjang"])) {
+            foreach($_SESSION["keranjang"] as $k => $v) {
+                if($_GET["id_barang"] == $k)
+                $_SESSION["keranjang"] = array_merge($_SESSION["keranjang"],$itemArray);
+            }
         }
-    ?>
+    break;
+}
+?>
 <html lang="en">
 
 <head>
@@ -98,9 +96,7 @@ switch($aksi){
 </head>
 
 <body>
-    <?php
-    include ('header.php');
-    ?>
+
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
@@ -135,36 +131,26 @@ switch($aksi){
                         $no=0;
                         $sub_total=0;
                         $total=0;
-
-                        if(!empty($_SESSION["keranjang_belanja"])):
-                            foreach ($_SESSION["keranjang_belanja"] as $item):
-                                $no++;
-                                $sub_total = $item["jumlah"]*$item['harga'];
-                                $total+=$sub_total;
-                                ?>
-        <input type="hidden" name="id_barang[]" value="<?php echo $item["id_barang"]; ?>">
+                        $total_berat=0;
+                        if(!empty($_SESSION["keranjang"])):
+                        foreach ($_SESSION["keranjang"] as $item):
+                            $no++;
+                            $sub_total = $item["jumlah"]*$item['harga'];
+                            $total+=$sub_total;
+                            ?>
+                        <input type="hidden" name="id_barang[]" value="<?php echo $item["id_barang"]; ?>">
                         <tr>
                             <td class="align-middle"><?php echo $no; ?></td>
                             <td class="align-middle"> <?php echo $item['merk_barang']; ?> </td>
                             <td class="align-middle"><?php echo $item['harga']; ?></td>
                             <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
+
                                     <input type="number" min="1" value="<?php echo $item["jumlah"]; ?>" class="form-control" id="jumlah<?php echo $no; ?>" name="jumlah[]" >
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+
                                 <script>
                     $("#jumlah<?php echo $no; ?>").bind('change', function () {
                         var jumlah<?php echo $no; ?>=$("#jumlah<?php echo $no; ?>").val();
-                        $("#jumlaha<?php echo $no; ?>").val(jumlah<?php echo $no; ?>);
+                        $("#jumlah<?php echo $no; ?>").val(jumlah<?php echo $no; ?>);
                     });
                     $("#jumlah<?php echo $no; ?>").keydown(function(event) { 
                         return false;
@@ -172,7 +158,7 @@ switch($aksi){
                     
                 </script>
                             </td>
-                            <td class="align-middle"><?php $sub_total;?></td>
+                            <td class="align-middle"><?php echo $sub_total;?></td>
                             <td>
                             <form method="get">
                         <input type="hidden" name="id_barang"  value="<?php echo $item['id_barang']; ?>" class="form-control">
@@ -198,31 +184,17 @@ switch($aksi){
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Total Pembayaran</h6>
-                            <h6 class="font-weight-medium">Rp. <?php echo number_format($total,0,',','.');?> </h6>
+                            <h6 class="font-weight-medium">Rp. <?php echo $total;?> </h6>
                         </div>
                         <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Gratis Ongkir</h6>
                             <h6 class="font-weight-medium">Rp. 0 </h6>
                         </div>
+                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
                     </div>
                 </div>
             </div>
-            <div class="card border-secondary mb-5">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Bukti Transfer Pembayaran</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="buktitf">
-                            <div class="custom-control custom-radio">
-                            <input type="file" accept="image/*" width : 200px;/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer border-secondary bg-transparent">
-                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Checkout</button>
-                    </div>
-                </div>
         </div>
     </div>
     <!-- Cart End -->

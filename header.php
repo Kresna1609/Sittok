@@ -1,10 +1,37 @@
 <?php
 require("koneksi.php");
 
+
 session_start();
-
 ?>
+<html lang="en">
 
+<head>
+<meta charset="utf-8">
+    <title>SITTOK</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <link href='assets/img/Sittok-png.png' rel='shortcut icon'>
+
+    <!-- Favicon -->
+    <link href="assets/assets/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
 <!-- Topbar Start -->
 <div class="container-fluid" >
         <div class="row bg-secondary py-2 px-xl-5" style = " background-color: #e7d1ff;">
