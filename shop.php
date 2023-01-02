@@ -72,7 +72,7 @@ $id = $_GET['id_kategori'];
                                     </div>
                                     <div class="card-footer d-flex justify-content-between bg-light border">
                                         <a href="detail.php?id=<?php echo $shop['id_barang']; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                        <a href="beli.php" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                        <a href="cart.php?id_barang=<?php echo $shop['id_barang'];?>&aksi=tambah_produk&jumlah=1" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                     </div>
                                 </div>
                                 </div>

@@ -1,12 +1,75 @@
 <!DOCTYPE html>
 <?php
 require('koneksi.php');
-session_start();
 
-echo "<pre>";
-print_r($_SESSION['cart']);
-echo"</pre>";
-?>
+if (isset($_GET['id_barang']) && isset($_GET['jumlah'])) {
+
+    $id_barang=$_GET['id_barang'];
+    $jumlah=$_GET['jumlah'];
+
+    $sql= "SELECT * FROM barang WHERE id_barang='$id_barang'";
+
+    $query = mysqli_query($koneksi,$sql);
+    $shop = mysqli_fetch_array($query);
+    $id_barang=$shop['id_barang'];
+    $merk_barang=$shop['merk_barang'];
+    $harga=$shop['harga'];
+
+}else {
+    $id_barang="";
+    $jumlah=0;
+}
+
+
+if (isset($_GET['aksi'])) {
+    $aksi=$_GET['aksi'];
+}else {
+    $aksi="";
+}
+
+
+switch($aksi){  
+    //Fungsi untuk menambah penyewaan kedalam cart
+    case "tambah_produk":
+    $itemArray = array($id_barang=>array('id_barang'=>$id_barang,'merk_barang'=>$merk_barang,'jumlah'=>$jumlah,'harga'=>$harga));
+    if(!empty($_SESSION["keranjang_belanja"])) {
+        if(in_array($shop['id_barang'],array_keys($_SESSION["keranjang_belanja"]))) {
+            foreach($_SESSION["keranjang_belanja"] as $k => $v) {
+                if($shop['id_barang'] == $k) {
+                    $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
+                }
+            }
+        } else {
+            $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
+        }
+    } else {
+        $_SESSION["keranjang_belanja"] = $itemArray;
+    }
+    break;
+
+    //Fungsi untuk menghapus item dalam cart
+    case "hapus":
+
+        if(!empty($_SESSION["keranjang_belanja"])) {
+            foreach($_SESSION["keranjang_belanja"] as $k => $v) {
+                if($_GET["id_barang"] == $k)
+                    unset($_SESSION["keranjang_belanja"][$k]);
+                if(empty($_SESSION["keranjang_belanja"]))
+                    unset($_SESSION["keranjang_belanja"]);
+            }
+        }
+        break;
+    
+        case "update":
+            $itemArray = array($id_barang=>array('id_barang'=>$id_barang,'merk_barang'=>$merk_barang,'jumlah'=>$jumlah,'harga'=>$harga));
+            if(!empty($_SESSION["keranjang_belanja"])) {
+                foreach($_SESSION["keranjang_belanja"] as $k => $v) {
+                    if($_GET["id_barang"] == $k)
+                        $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
+                }}
+            break;
+        }
+    ?>
 <html lang="en">
 
 <head>
@@ -41,7 +104,7 @@ echo"</pre>";
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Keranjang</h1>
             <div class="d-inline-flex">
                 <p class="m-0"><a href="">Home</a></p>
                 <p class="m-0 px-2">-</p>
@@ -59,17 +122,31 @@ echo"</pre>";
                 <table class="table table-bordered text-center mb-0">
                     <thead class="bg-secondary text-dark">
                         <tr>
-                            <th>Products</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
+                            <th>No.</th>
+                            <th>Merk barang</th>
+                            <th>Harga</th>
+                            <th>Jumlah</th>
                             <th>Total</th>
-                            <th>Remove</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="align-middle">
+                    <?php
+                        $no=0;
+                        $sub_total=0;
+                        $total=0;
+
+                        if(!empty($_SESSION["keranjang_belanja"])):
+                            foreach ($_SESSION["keranjang_belanja"] as $item):
+                                $no++;
+                                $sub_total = $item["jumlah"]*$item['harga'];
+                                $total+=$sub_total;
+                                ?>
+        <input type="hidden" name="id_barang[]" value="<?php echo $item["id_barang"]; ?>">
                         <tr>
-                            <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
-                            <td class="align-middle">$150</td>
+                            <td class="align-middle"><?php echo $no; ?></td>
+                            <td class="align-middle"> <?php echo $item['merk_barang']; ?> </td>
+                            <td class="align-middle"><?php echo $item['harga']; ?></td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
@@ -77,131 +154,56 @@ echo"</pre>";
                                         <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
+                                    <input type="number" min="1" value="<?php echo $item["jumlah"]; ?>" class="form-control" id="jumlah<?php echo $no; ?>" name="jumlah[]" >
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-primary btn-plus">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
+                                <script>
+                    $("#jumlah<?php echo $no; ?>").bind('change', function () {
+                        var jumlah<?php echo $no; ?>=$("#jumlah<?php echo $no; ?>").val();
+                        $("#jumlaha<?php echo $no; ?>").val(jumlah<?php echo $no; ?>);
+                    });
+                    $("#jumlah<?php echo $no; ?>").keydown(function(event) { 
+                        return false;
+                    });
+                    
+                </script>
                             </td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-2.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                            <td class="align-middle"><?php $sub_total;?></td>
+                            <td>
+                            <form method="get">
+                        <input type="hidden" name="id_barang"  value="<?php echo $item['id_barang']; ?>" class="form-control">
+                        <input type="hidden" name="merk_barang"  value="update" class="form-control">
+                        <input type="hidden" name="jumlah" value="<?php echo $item["jumlah"]; ?>" id="jumlah<?php echo $no; ?>" value="" class="form-control">
+                        <input type="submit" class="btn btn-warning btn-xs" value="Update">
+                    </form>
+                    <a href="cart.php?id=<?php echo $item['id_barang']; ?>&aksi=hapus" class="btn btn-danger btn-xs" role="button">Delete</a>
                             </td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                         </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-3.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-4.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-5.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
+                        <?php 
+            endforeach;
+            endif;
+        ?>
                     </tbody>
                 </table>
             </div>
             <div class="col-lg-4">
-                <form class="mb-5" action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control p-4" placeholder="Coupon Code">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary">Apply Coupon</button>
-                        </div>
-                    </div>
-                </form>
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+                        <h4 class="font-weight-semi-bold m-0">Checkout</h4>
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium">$150</h6>
+                            <h6 class="font-weight-medium">Total Pembayaran</h6>
+                            <h6 class="font-weight-medium">Rp. <?php echo number_format($total,0,',','.');?> </h6>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">$10</h6>
-                        </div>
-                    </div>
-                    <div class="card-footer border-secondary bg-transparent">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">$160</h5>
+                        <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Gratis Ongkir</h6>
+                            <h6 class="font-weight-medium">Rp. 0 </h6>
                         </div>
                         <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
                     </div>
