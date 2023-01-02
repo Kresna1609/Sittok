@@ -130,7 +130,7 @@ session_start();
                                 ?>
                                     <a href="login.php" class="nav-item nav-link">Login</a>
                                     <a href="register.php" class="nav-item nav-link">Register</a>
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span>
+                                <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span> -->
                                 <?php
                                 }
                                 ?>
