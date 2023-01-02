@@ -7,7 +7,7 @@
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="../indexadmin.php">
+        <a class="nav-link" href="../Admin/indexadmin.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -24,11 +24,11 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sittok</h6>
-            <a class="collapse-item" href="../admin/carousel/list.php">Carousel</a>
-            <a class="collapse-item" href="../admin/barang/list.php">Barang</a>
-            <a class="collapse-item" href="../admin/kategori/list.php">Kategori</a>
-            <a class="collapse-item" href="../admin/customers/list.php">Customers</a>
-            <a class="collapse-item" href="../admin/suppliers/list.php">Supplier</a>
+            <a class="collapse-item" href="../Admin/carousel/list.php">Carousel</a>
+            <a class="collapse-item" href="../Admin/barang/list.php">Barang</a>
+            <a class="collapse-item" href="../Admin/kategori/list.php">Kategori</a>
+            <a class="collapse-item" href="../Admin/customers/list.php">Customers</a>
+            <a class="collapse-item" href="../Admin/suppliers/list.php">Supplier</a>
           </div>
         </div>
       </li>

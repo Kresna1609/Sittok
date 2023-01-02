@@ -11,7 +11,7 @@ require('koneksi.php');
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="img/logo/logo.png" rel="icon">
+  <link href="assets/img/logo/logo.png" rel="icon">
   <title>SITTOK</title>
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -155,7 +155,7 @@ require('koneksi.php');
                                             <td>
                                             <a href="edit.php?id= " class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
 
-                                            <a href="#" class="btn btn-danger btn-circle" onClick="confirm Modal('hapus.php?&id=');"><i class="fas fa-trash"></i></a>
+                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_barang=<?php echo $row['id_barang']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <?php 
