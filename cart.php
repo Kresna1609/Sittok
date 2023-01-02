@@ -66,8 +66,27 @@ switch($aksi){
             }
         }
     break;
+    
 }
 ?>
+<?php
+require('koneksi.php');
+                            if(isset($_POST['co'])){
+                                $id_jual_barang = ($_POST['id_jual_barang']);
+                                $total_harga = ($_POST['total']);
+                                $tgl_jual = ($_POST['tgl_jual']);
+                                $merk_barang = ($_POST['merk_barang']);
+                                move_uploaded_file($_FILES['gbr']['tmp_name'], "../assets/img/barang/".basename($_FILES['gbr']['name']));
+                                $jumlah_barang = ($_POST['jumlah']);
+                                $id_barang =($_POST ['id_kategori']); 
+                                
+                                $query=mysqli_query($koneksi,"INSERT INTO barang VALUES ('', '$total','$tgl_jual','$merk_barang', '','$FILES', '$jumlah_barang', '$id_kategori','','')");
+                                if($query){
+                                    echo "<script>alert('Pesanan Masuk')</script>";
+                                    echo "<script>location='checkout.php'</script>";
+                                  }
+                            }
+                            ?>
 <html lang="en">
 
 <head>
@@ -196,6 +215,7 @@ switch($aksi){
                         </div>
                         <div class="card-footer border-secondary bg-transparent">
                             <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="co">Checkout</button>
+                            
                         </div>
                 </div>
             </div>

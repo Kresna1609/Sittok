@@ -77,8 +77,7 @@
          echo '<p class="empty">silahkan login untuk melihat pesanan Anda</p>';
       }else{
          $select_jual_barang = $koneksi->prepare("SELECT * FROM `jual_barang` WHERE id = ? ORDER BY id DESC");
-         if($query){
-            echo "<script>alert('Pesanan Masuk')</script>";
+    
          if($select_jual_barang == 0){
             while($fetch_jual_barang = $select_orders->fetch(PDO::FETCH_ASSOC)){
                $stat=$fetch_jual_barang["status_pesanan"];
