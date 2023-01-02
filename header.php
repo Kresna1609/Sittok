@@ -145,9 +145,11 @@ session_start();
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="list_user.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Edit Profile</a>
                                 <a href="logout.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
                                     class="dropdown-item">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
                             </div>
                         </div>
                     </div>
