@@ -2,8 +2,24 @@
 
 <?php  
 require('../koneksi.php');
-?>
 
+session_start(); 
+
+if(isset($_POST['status_pesanan'])){
+
+$id_jual_barang = $_POST['id_jual_barang'];
+$id_jual_barang = filter_var($id_jual_barang, FILTER_SANITIZE_STRING);
+
+$status_pesanan = $_POST['status_pesanan'];
+$status_pesanan = filter_var($status_pesanan, FILTER_SANITIZE_STRING);
+
+$update_status = $conn->prepare("UPDATE `jual` SET status_pesanan = ? WHERE id_jual_barang = ?");
+$update_status->execute([$status_pesanan, $id_jual_barang]);
+
+$message[] = 'status diperbarui';
+}
+
+?>
 <html lang="en">
 
 <head>
@@ -182,8 +198,9 @@ require('../koneksi.php');
                                         <tr>
                                             <th>No</th>
                                             <th>Tanggal Jual</th>
-                                            <th>Id Customer</th>
                                             <th>Id Barang</th>
+                                            <th>Id Customer</th>
+                                            <th>Total Harga</th>
                                             <th>Status Pesanan</th>
                                             <th>Bukti Pembayaran</th>
                                             <th>Hapus</th>
@@ -200,6 +217,7 @@ require('../koneksi.php');
                                                 $tgl_jual = $row['tgl_jual'];
                                                 $id_barang = $row['id_barang'];
                                                 $id_customer = $row['id_customer'];
+                                                $total_harga = $row['total_harga'];
                                                 $status_pesanan = $row['status_pesanan'];
                                                 $bukti_penjualan = $row['bukti_penjualan'];
                                             
@@ -209,32 +227,23 @@ require('../koneksi.php');
                                             <td><?php echo $tgl_jual; ?></td>
                                             <td><?php echo $id_barang; ?></td>
                                             <td><?php echo $id_customer; ?></td>
-                                            <td><?php echo $status_pesanan; ?></td>
+                                            <td><?php echo $total_harga; ?></td>
                                             <td>
-                                            <a href class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bismillah">
-                                              Lihat
-                                            </a>
-                                            <div class="modal" tabindex="-1" id="bismillah">
-                                            <div class="modal-dialog">
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <h5 class="modal-title">Modal title</h5>
-                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <p>Modal body text goes here.</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                  <button type="button" class="btn btn-primary">konfirmasi</button>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                            </td>
+                                              <input type="hidden" name="order_id" value="<?= $fetch_jual['id_jual_barang']; ?>">
+                                              <select name="status_pesanan" class="drop-down-order">                  
+                                                  <option hidden selected value="<?= $fetch_jual['status_pesanan']; ?>" ><?= $fetch_jual['status_pesanan']; ?></option>
+                                                  <option value="Diproses">Diproses</option>
+                                                  <option value="Diterima">Diterima</option>
+                                              </select>
+                                            </td>   
+                                            <td><?php echo $bukti_penjualan; ?></td>    
                                             <td>
-                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_kategori=<?php echo $row['id_kategori']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
-                                            </td>
+                                              <div class="flex-btn">
+                                              <input type="submit" value="update" class="btn-order" name="update_status">
+                                              </div>     
+                                              <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_kategori=<?php echo $row['id_kategori']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>        
+                                            </td>   
+                                            
                                         </tr>
                                        <?php 
                                             }
