@@ -123,7 +123,7 @@ require('koneksi.php');
                                             <th>Id</th>
                                             <th>Merk Barang</th>
                                             <th>Jumlah Barang</th>
-                                            <!-- <th>Id Supplier</th> -->
+                                            <th>Deskripsi</th>
                                             <th>Id Kategori</th>
                                             <th>Gambar</th>
                                             <th style=" width: 100px;">Aksi</th>
@@ -139,7 +139,7 @@ require('koneksi.php');
                                                 $id = $row['id_barang'];
                                                 $merk_barang = $row['merk_barang'];
                                                 $jumlah_barang = $row['jumlah_barang'];
-                                                // $id_supplier = $row['id_supplier'];
+                                                $deskripsi = $row['deskripsi'];
                                                 $id_kategori = $row['id_kategori'];
                                                 $gambar = $row['gambar'];
                                         ?>
