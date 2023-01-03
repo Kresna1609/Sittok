@@ -106,67 +106,7 @@
             </ol>
           </div>
             
-          <div class="row">
-
-                        <!-- pesanan masuk -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                pesanan masuk</div>
-                                            <div class="h3 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ditolak -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-danger shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Ditolak</div>
-                                            <div class="h3 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- terkonfirmasi -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Terkonfirmasi</div>
-                                            <div class="h3 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- terkirim -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Terkirim</div>
-                                            <div class="h3 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          
             <!-- Area Chart -->
           <div class="row mb-4">
             <div class="col-xl-12 col-lg-7">
@@ -187,11 +127,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                </div>
+                <br>
+                <br>
+                <br>
+                <h2><b><center>Selamat Datang Admin Sittok</center></b></h2>
+                <br>
+                <br>
+                <br>
               </div>
             </div>
           </div>

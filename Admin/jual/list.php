@@ -168,11 +168,12 @@ $message[] = 'status diperbarui';
                                             <td><?php echo $id_customer; ?></td>
                                             <td><?php echo $total_harga; ?></td>
                                             <td>
-                                              <input type="hidden" name="order_id" value="<?= $fetch_jual['id_jual_barang']; ?>">
+                                              <input type="hidden" name="id_jual_barang" value="<?= $fetch_jual['id_jual_barang']; ?>">
                                               <select name="status_pesanan" class="drop-down-order">                  
-                                                  <option hidden selected value="<?= $fetch_jual['status_pesanan']; ?>" ><?= $fetch_jual['status_pesanan']; ?></option>
+                                                  <option hidden selected value="<?= $fetch_jual_barang['status_pesanan']; ?>" ><?= $fetch_jual_barang['status_pesanan']; ?></option>
                                                   <option value="Diproses">Diproses</option>
                                                   <option value="Diterima">Diterima</option>
+                                                  <option value="Diterima">Dikirim</option>
                                               </select>
                                             </td>   
                                             <td><?php echo $bukti_penjualan; ?></td>    

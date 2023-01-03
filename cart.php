@@ -79,7 +79,7 @@ require('koneksi.php');
                                 move_uploaded_file($_FILES['gbr']['tmp_name'], "../assets/img/barang/".basename($_FILES['gbr']['name']));
                                 $jumlah_barang = ($_POST['jumlah']);
                                 $id_barang =($_POST ['id_kategori']); 
-                                
+
                                 $query=mysqli_query($koneksi,"INSERT INTO barang VALUES ('', '$total','$tgl_jual','$merk_barang', '','$FILES', '$jumlah_barang', '$id_kategori','','')");
                                 if($query){
                                     echo "<script>alert('Pesanan Masuk')</script>";
@@ -214,7 +214,7 @@ require('koneksi.php');
                             </div>
                         </div>
                         <div class="card-footer border-secondary bg-transparent">
-                            <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="co">Checkout</button>
+                            <button href="checkout.php" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="co" >Checkout</button>
                             
                         </div>
                 </div>

@@ -45,8 +45,8 @@
         <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sittok</h6>
-            <a class="collapse-item" href="../user/list.php">User</a>
-            <a class="collapse-item" href="../jual/list.php">Jual</a>
+            <a class="collapse-item" href="../admin/user/list.php">User</a>
+            <a class="collapse-item" href="../admin/jual/list.php">Jual</a>
           </div>
         </div>
       </li>
