@@ -73,7 +73,7 @@ switch($aksi){
 require('koneksi.php');
                             if(isset($_POST['co'])){
                                 $id_jual_barang = ($_POST['id_jual_barang']);
-                                $total_harga = ($_POST['total']);
+                                $total_harga = ($_POST['total_harga']);
                                 $tgl_jual = ($_POST['tgl_jual']);
                                 $merk_barang = ($_POST['merk_barang']);
                                 move_uploaded_file($_FILES['gbr']['tmp_name'], "../assets/img/barang/".basename($_FILES['gbr']['name']));

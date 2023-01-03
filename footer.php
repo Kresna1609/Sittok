@@ -9,7 +9,7 @@
                     Sittok memudahkan para konsumen untuk mencari barang elektronik seperti laptop, 
                     komputer dan accescories lainnya.</p>
                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Jalan Kalimantan no 3a kav8 Jember</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>@rizki_komputer</p>
+                <!-- <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>@rizki_komputer</p> -->
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>0852 3510 1051</p>
             </div>
             <div class="col-lg-8 col-md-12">
