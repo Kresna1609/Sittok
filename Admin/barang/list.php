@@ -156,7 +156,7 @@ require('koneksi.php');
                                 
                                            
                                             <td>
-                                            <a href="edit.php?id= " class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
+                                            <a href="edit.php?id= <?php echo $row['id_barang']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
 
                                             <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_barang=<?php echo $row['id_barang']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                             </td>
