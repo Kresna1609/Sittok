@@ -11,7 +11,7 @@ require('koneksi.php');
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    <link href='assets/img/Sittok-png.png' rel='shortcut icon'>
+    <link href='assets/img/Sittok-gambar.png' rel='shortcut icon'>
 
     <!-- Favicon -->
     <link href="assets/assets/img/favicon.ico" rel="icon">

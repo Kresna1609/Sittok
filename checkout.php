@@ -66,7 +66,7 @@
             <select class="form-control" id="exampleFormControlSelect1">
                <option>BRI</option>
                <option>Mandiri</option>
-               <option>ShopeePay</option>
+               <option>Dana 085235101051</option>
             </select>
          </div>
          <button type="submit" class="btn btn-primary">Checkout</button>
