@@ -13,9 +13,9 @@ require('koneksi.php');
   <meta name="author" content="">
   <link href="assets/img/logo/logo.png" rel="icon">
   <title>SITTOK</title>
-  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="assets/css/ruang-admin.min.css" rel="stylesheet">
+  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -180,12 +180,12 @@ require('koneksi.php');
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="assets/js/ruang-admin.min.js"></script>
-  <script src="assets/vendor/chart.js/Chart.min.js"></script>
-  <script src="assets/js/demo/chart-area-demo.js"></script>  
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../assets/js/ruang-admin.min.js"></script>
+  <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="../assets/js/demo/chart-area-demo.js"></script>   
 </body>
 
 </html
