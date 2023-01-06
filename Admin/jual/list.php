@@ -170,7 +170,7 @@ $message[] = 'status diperbarui';
                                             <td>
                                               <input type="hidden" name="id_jual_barang" value="<?= $fetch_jual['id_jual_barang']; ?>">
                                               <select name="status_pesanan" class="drop-down-order">                  
-                                                  <option hidden selected value="<?= $fetch_jual_barang['status_pesanan']; ?>" ><?= $fetch_jual_barang['status_pesanan']; ?></option>
+                                                  <!-- <option hidden selected value="<?= $fetch_jual_barang['status_pesanan']; ?>" ><?= $fetch_jual_barang['status_pesanan']; ?></option> -->
                                                   <option value="Diproses">Diproses</option>
                                                   <option value="Diterima">Diterima</option>
                                                   <option value="Diterima">Dikirim</option>
