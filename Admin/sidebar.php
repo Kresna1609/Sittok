@@ -1,7 +1,7 @@
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-          <img src="../assets/img/logo/logo2.png">
+          <img src="assets/img/logo/logo2.png">
         </div>
         <div class="sidebar-brand-text mx-3">SITTOK</div>
       </a>
@@ -24,7 +24,6 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sittok</h6>
-            <a class="collapse-item" href="../Admin/carousel/list.php">Carousel</a>
             <a class="collapse-item" href="../Admin/barang/list.php">Barang</a>
             <a class="collapse-item" href="../Admin/kategori/list.php">Kategori</a>
             <a class="collapse-item" href="../Admin/customers/list.php">Customers</a>
@@ -54,5 +53,4 @@
       <div class="sidebar-heading">
       </div>
       <hr class="sidebar-divider">
-      <div class="version" id="version-ruangadmin"></div>
     </ul>
