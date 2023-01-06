@@ -11,7 +11,7 @@ if(isset($_POST['add_to_cart'])){
     $gambar = $_POST['gambar'];
     $qty = 1;
 
-    $shop = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE merk_barang = '$merk_barang' AND id_user = '$id'");
+    $shop = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE merk_barang = '$merk_barang' AND id = '$id'");
     $cek = mysqli_num_rows($shop);
 
     if($cek > 0){
@@ -71,7 +71,7 @@ if(isset($_POST['add_to_cart'])){
             </div>
             <div class="col-lg-3 col-6 text-right">
                 <a href="cart.php" class="btn border">
-                    <<a href="cart.php?id_barang=i" class="fas fa-shopping-cart text-primary" ></i>
+                    <<a href="cart.php" class="fas fa-shopping-cart text-primary" ></i>
                     <span class="badge"></span>
                 </a>
             </div>

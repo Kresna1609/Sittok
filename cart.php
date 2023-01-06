@@ -2,6 +2,7 @@
 <?php
 require('koneksi.php');
 session_start();
+$id = $_SESSION['id'];
 if(isset($_POST['delete'])){
     $id_keranjang = $_POST['id_keranjang'];
     $delete_cart_item = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id_keranjang='$id_keranjang'");
@@ -87,7 +88,7 @@ $grand_total = 0;
                     <tbody> 
                         <?php
                         $grand_total = 0;
-                        $shop = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id_user = '$id'");
+                        $shop = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id = '$id'");
                         $cek = mysqli_num_rows($shop);
                         if($cek > 0){
                             while($fetch_cart = mysqli_fetch_array($shop)){
@@ -97,15 +98,14 @@ $grand_total = 0;
                                         <input type="hidden" name="id_keranjang" value="<?= $fetch_cart['id_keranjang']; ?>">                        
                                         <td class="text-center"> <?php echo "1"; ?> </td>
                                         <td class="text-center"> 
-                                            <img width="100px" src="assets/img/menu/<?php echo $fetch_cart['gambar']; ?>" alt="">
-                                            <br>
+                        
                                             <?php echo $fetch_cart['merk_barang']; ?>
                                         </td>
-                                        <td class="text-center"><?php echo rupiah($fetch_cart['harga']); ?></td>
+                                        <td class="text-center"><?php echo $fetch_cart['harga']; ?></td>
                                         <td class="text-center">
                                             <input type="number" name="qty" class="qty" min="1" max="99" value="<?= $fetch_cart['qty']; ?>" maxlength="2">
                                         </td>  
-                                        <td class="text-center"> <?php echo rupiah($sub_total = ($fetch_cart['harga'] * $fetch_cart['qty'])); ?></td> 
+                                        <td class="text-center"> <?php echo $sub_total = ($fetch_cart['harga'] * $fetch_cart['qty']); ?></td> 
                                         <td class="text-center">
                                             <button type="submit" class="bi bi-arrow-clockwise" name="update_qty"></button>
                                             <button type="submit" class="bi bi-trash" name="delete" onclick="return confirm('Apakah anda yakin akan menghapus menu ini?')" ></button>
@@ -130,20 +130,10 @@ $grand_total = 0;
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Total Pembayaran</h6>
-                            <h6 class="font-weight-medium">Rp. <?php echo $total;?> </h6>
-                        </div>
-                        <div class="card-body">
-                        <h4 class="font-weight-semi-bold m-0">Bukti Transfer Pembayaran</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="buktitf">
-                                <div class="custom-control custom-radio">
-                                <input type="file" accept="image/*" width : 200px;/>
-                                </div>
-                            </div>
+                            <h6 class="font-weight-medium">Rp. <?php echo $grand_total;?> </h6>
                         </div>
                         <div class="card-footer border-secondary bg-transparent">
-                            <button href="checkout.php" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="co" >Checkout</button>
+                            <a href="checkout.php" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="co" >Checkout</a>
                             
                         </div>
                 </div>
