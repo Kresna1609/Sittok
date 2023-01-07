@@ -75,15 +75,19 @@
             </div>   
          <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <input type="text" class="form-control" id="" placeholder="" value="<?php echo $userName; ?>" disabled>
+         </div>
+         <div class="form-group">
+            <label for="exampleInputEmail1">Nama Lengkap</label>
+            <input type="text" class="form-control" id="" placeholder="Masukkan Nama Lengkap" >
          </div>
          <div class="form-group">
             <label for="exampleInputEmail1">Alamat</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <input type="text" class="form-control" id="" placeholder="Masukkan Alamat Anda">
          </div>
          <div class="form-group">
             <label for="exampleInputEmail1">No Telepon</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <input type="text" class="form-control" id="" placeholder="Masukkan No Telepon">
          </div>
          <div>                        
          <div class="card-body">
