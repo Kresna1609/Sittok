@@ -1,9 +1,29 @@
 <!DOCTYPE html>
 <?php
-require('koneksi.php');
 session_start();
-$id = $_GET['id_kategori'];
+require('koneksi.php');
+$id = $_SESSION['id'];
+$idkategori=$_GET['id_kategori'];
+if(isset($_POST['add_to_cart'])){
+    $id_barang = $_POST['id_barang'];
+    $merk_barang = $_POST['merk_barang'];
+    $harga = $_POST['harga'];
+    $gambar = $_POST['gambar'];
+    $qty = 1;
+
+    $shop = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE merk_barang = '$merk_barang' AND id_user = '$id'");
+    $cek = mysqli_num_rows($shop);
+
+    if($cek > 0){
+     $message[] = 'Sudah ditambakan ke keranjang!';
+     echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
+   }else{
+     $insert_keranjang = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$id', '$id_barang', '$merk_barang', '$qty', '$harga', '$gambar')");
+     $message[] = 'Ditambakan ke keranjang!';
+     echo "<script>alert('Ditambakan ke keranjang!')</script>";}
+   }
 ?>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -31,13 +51,38 @@ $id = $_GET['id_kategori'];
 </head>
 
 <body>
-
+<div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a href="" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Sittok</h1>
+                </a>
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for products">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-6 text-right">
+                <a href="cart.php" class="btn border">
+                    <<a href="cart.php?id_barang=i" class="fas fa-shopping-cart text-primary" ></i>
+                    <span class="badge"></span>
+                </a>
+            </div>
+        </div>
+    </div>
     <!-- Page Header Start -->
     <div class="coba">
     <div class="container-fluid bg-secondary mb-5" style= "background-color: #e7d1ff;">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #e7d1ff;" >
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Sittok</h1>
-            <p class="m-0" style="text-color: black"><b><a href="">Home</a></b></p>
+            <p class="m-0" style="text-color: black"><b><a href="index.php">Home</a></b></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Our Shop</p>
             </div>
@@ -52,11 +97,13 @@ $id = $_GET['id_kategori'];
             <div class="col-lg-12 col-md-12">
                 <div class="row pb-3">
                     <?php
-                    if($id == 0){
+                    if($idkategori == 0){
                         $sql =$koneksi->query("SELECT * FROM barang"); 
                        
                             while($shop = $sql->fetch_array()){
                                 ?>
+                                
+
                                 <div class="col-lg-2 col-md-6 col-sm-6 pb-1">
                                 <div class="card product-item border-0 mb-4">
                                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
@@ -73,9 +120,17 @@ $id = $_GET['id_kategori'];
                                         <?php
                                             if(isset($_SESSION['id'])) {
                                         ?>
-                                        <a href="cart.php?id_barang=<?php echo $shop['id_barang'];?>&aksi=tambah_produk&jumlah=1" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                        <form action="" method="POST">
+                                    <input type="hidden" name="id_barang" value="<?php echo $shop['id_barang'] ?>">
+                                    <input type="hidden" name="merk_barang" value="<?php echo $shop['merk_barang'] ?>">
+                                    <input type="hidden" name="harga" value="<?php echo $shop['harga'] ?>">
+                                    <input type="hidden" name="gambar" value="<?php echo $shop['gambar'] ?>">
+                                        <a href="" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button></a>
+                                        </form>
                                         <?php }else{ ?>
                                         <a onclick="return confirm('Silahkan Login Terlebih Dahulu')" href="login.php" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                        
+                                        
                                         <?php } ?>
                                     </div>
                                 </div>

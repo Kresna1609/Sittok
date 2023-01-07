@@ -1,92 +1,31 @@
 
 <?php
 require('koneksi.php');
-
-    if (isset($_GET['id_barang']) && isset($_GET['jumlah'])) {
-
-    $id_barang=$_GET['id_barang'];
-    $jumlah=$_GET['jumlah'];
-
-    $sql =$koneksi->query("SELECT * FROM barang WHERE id_barang = '$id_barang'");
-    $data = $sql->fetch_array();
-    $id_barang=$data['id_barang'];
-    $merk_barang=$data['merk_barang'];
-    $harga=$data['harga'];
-
-}else {
-    $id_barang="";
-    $jumlah=0;
+session_start();
+if(isset($_POST['delete'])){
+    $id_keranjang = $_POST['id_keranjang'];
+    $delete_cart_item = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id_keranjang='$id_keranjang'");
+    $message[] = 'produk di keranjang dihapus!';
+    echo "<script>alert('Produk di keranjang dihapus!')</script>";
 }
 
-if (isset($_GET['aksi'])) {
-    $aksi=$_GET['aksi'];
-}else {
-    $aksi="";
+if(isset($_POST['delete_all'])){
+    $delete_cart_item = $koneksi->prepare("DELETE FROM `cart` WHERE id_user = ?");
+    $delete_cart_item->execute([$user_id]);
+  // header('location:cart.php');
+    $message[] = 'dihapus semua produk di keranjang!';
 }
 
-
-switch($aksi){	
-    //Fungsi untuk menambah penyewaan kedalam cart
-    case "tambah_produk":
-    $itemArray = array($id_barang=>array('id_barang'=>$id_barang,'merk_barang'=>$merk_barang,'jumlah'=>$jumlah,'harga'=>$harga));
-    if(!empty($_SESSION["keranjang"])) {
-        echo $merk_barang;
-        if(in_array($data['id_barang'],array_keys($_SESSION["keranjang"]))) {
-            foreach($_SESSION["keranjang"] as $k => $v) {
-                if($data['id_barang'] == $k) {
-                    $_SESSION["keranjang"] = array_merge($_SESSION["keranjang"],$itemArray);
-                }
-            }
-        } else {
-            $_SESSION["keranjang"] = array_merge($_SESSION["keranjang"],$itemArray);
-        }
-    } else {
-        $_SESSION["keranjang"] = $itemArray;
-    }
-    break;
-    //Fungsi untuk menghapus item dalam cart
-    case "hapus":
-
-        if(!empty($_SESSION["keranjang"])) {
-            foreach($_SESSION["keranjang"] as $k => $v) {
-                    if($_GET["id_barang"])
-                        unset($_SESSION["keranjang"][$k]);
-                    if(empty($_SESSION["keranjang"]))
-                        unset($_SESSION["keranjang"]);
-            }
-        }
-    break;
-
-    case "update":
-        $itemArray = array($id_barang=>array('id_barang'=>$id_barang,'merk_barang'=>$merk_barang,'jumlah'=>$jumlah,'harga'=>$harga));
-        if(!empty($_SESSION["keranjang"])) {
-            foreach($_SESSION["keranjang"] as $k => $v) {
-                if($_GET["id_barang"] == $k)
-                $_SESSION["keranjang"] = array_merge($_SESSION["keranjang"],$itemArray);
-            }
-        }
-    break;
-    
+if(isset($_POST['update_qty'])){
+    $id_keranjang = $_POST['id_keranjang'];
+    $qty = $_POST['qty'];
+    $update_qty = mysqli_query($koneksi, "UPDATE keranjang SET qty = '$qty' WHERE id_keranjang ='$id_keranjang'");
+    $message[] = 'jumlah produk di keranjang diperbarui';
+    echo "<script>alert('Jumlah produk di keranjang diperbarui')</script>";
 }
-?>
-<?php
-require('koneksi.php');
-                            if(isset($_POST['co'])){
-                                $id_jual_barang = ($_POST['id_jual_barang']);
-                                $total_harga = ($_POST['total_harga']);
-                                $tgl_jual = ($_POST['tgl_jual']);
-                                $merk_barang = ($_POST['merk_barang']);
-                                move_uploaded_file($_FILES['gbr']['tmp_name'], "../assets/img/barang/".basename($_FILES['gbr']['name']));
-                                $jumlah_barang = ($_POST['jumlah']);
-                                $id_barang =($_POST ['id_kategori']); 
 
-                                $query=mysqli_query($koneksi,"INSERT INTO barang VALUES ('', '$total','$tgl_jual','$merk_barang', '','$FILES', '$jumlah_barang', '$id_kategori','','')");
-                                if($query){
-                                    echo "<script>alert('Pesanan Masuk')</script>";
-                                    echo "<script>location='checkout.php'</script>";
-                                  }
-                            }
-                            ?>
+$grand_total = 0;
+    ?>
 <html lang="en">
 
 <head>
@@ -145,52 +84,42 @@ require('koneksi.php');
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="align-middle">
-                    <?php
-                        $no=0;
-                        $sub_total=0;
-                        $total=0;
-                        $total_berat=0;
-                        if(!empty($_SESSION["keranjang"])):
-                        foreach ($_SESSION["keranjang"] as $item):
-                            $no++;
-                            $sub_total = $item["jumlah"]*$item['harga'];
-                            $total+=$sub_total;
-                            ?>
-                        <input type="hidden" name="id_barang[]" value="<?php echo $item["id_barang"]; ?>">
-                        <tr>
-                            <td class="align-middle"><?php echo $no; ?></td>
-                            <td class="align-middle"> <?php echo $item['merk_barang']; ?> </td>
-                            <td class="align-middle"><?php echo $item['harga']; ?></td>
-                            <td class="align-middle">
-                                    <input type="number" min="1" value="<?php echo $item["jumlah"]; ?>" class="form-control" id="jumlah<?php echo $no; ?>" name="jumlah[]" >
-                                <script>
-                    $("#jumlah<?php echo $no; ?>").bind('change', function () {
-                        var jumlah<?php echo $no; ?>=$("#jumlah<?php echo $no; ?>").val();
-                        $("#jumlah<?php echo $no; ?>").val(jumlah<?php echo $no; ?>);
-                    });
-                    $("#jumlah<?php echo $no; ?>").keydown(function(event) { 
-                        return false;
-                    });
-                    
-                </script>
-                            </td>
-                            <td class="align-middle"><?php echo $sub_total;?></td>
-                            <td>
-                            <form method="get">
-                                <input type="hidden" name="id_barang"  value="<?php echo $item['id_barang']; ?>" class="form-control">
-                                <input type="hidden" name="merk_barang"  value="update" class="form-control">
-                                <input type="hidden" name="jumlah" value="<?php echo $item["jumlah"]; ?>" id="jumlah<?php echo $no; ?>" value="" class="form-control">
-                                <input type="submit" class="btn btn-warning btn-xs" value="Update" width: 100px;>
-                            </form>
-                            <a href="cart.php?id=<?php echo $item['id_barang']; ?>&aksi=hapus" class="btn btn-danger btn-xs" role="button" style="width: 90px;"</style>>Delete</a>
-                            </td>
-                        </tr>
-                        <?php 
-            endforeach;
-            endif;
-        ?>
-                    </tbody>
+                    <tbody> 
+                        <?php
+                        $grand_total = 0;
+                        $shop = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id_user = '$id'");
+                        $cek = mysqli_num_rows($shop);
+                        if($cek > 0){
+                            while($fetch_cart = mysqli_fetch_array($shop)){
+                                ?>                        
+                                <tr>
+                                    <form action="" method="post"> 
+                                        <input type="hidden" name="id_keranjang" value="<?= $fetch_cart['id_keranjang']; ?>">                        
+                                        <td class="text-center"> <?php echo "1"; ?> </td>
+                                        <td class="text-center"> 
+                                            <img width="100px" src="assets/img/menu/<?php echo $fetch_cart['gambar']; ?>" alt="">
+                                            <br>
+                                            <?php echo $fetch_cart['merk_barang']; ?>
+                                        </td>
+                                        <td class="text-center"><?php echo rupiah($fetch_cart['harga']); ?></td>
+                                        <td class="text-center">
+                                            <input type="number" name="qty" class="qty" min="1" max="99" value="<?= $fetch_cart['qty']; ?>" maxlength="2">
+                                        </td>  
+                                        <td class="text-center"> <?php echo rupiah($sub_total = ($fetch_cart['harga'] * $fetch_cart['qty'])); ?></td> 
+                                        <td class="text-center">
+                                            <button type="submit" class="bi bi-arrow-clockwise" name="update_qty"></button>
+                                            <button type="submit" class="bi bi-trash" name="delete" onclick="return confirm('Apakah anda yakin akan menghapus menu ini?')" ></button>
+                                        </td>
+                                    </form>
+                                    </tr>                        
+                                <?php
+                                $grand_total += $sub_total;
+                            }
+                        }else{
+                            echo '<p>keranjang kosong</p>';
+                        }
+                        ?>
+            </tbody>
                 </table>
             </div>
             <div class="col-lg-4">
