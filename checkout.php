@@ -1,3 +1,32 @@
+<?php
+   include ('header.php');
+
+   if(isset($_POST['checkout'])){
+
+      $tgl_jual = date("Y-m-d");
+      $alamat = $_POST['txt_alamat'];
+      $nohp = $_POST['txt_nohp'];
+      $harga = $_POST['harga'];
+      $total_harga = $_POST['total_harga'];
+      $qty = $_POST['qty'];
+      $id_barang = $_POST['txt_id_barang'];
+
+   $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id = '$id'");
+
+   if($check_cart = mysqli_num_rows($shop) > 0){
+   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$tgl_jual', '$harga', '$qty', '$total_harga', '$alamat', '$nohp', NULL, 'Belum Dibayar', '$id', '$id_barang')");
+   $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id='$id'");
+
+   $message[] = 'pesanan berhasil dilakukan!';
+   echo "<script>alert('Pesanan berhasil dilakukan!')</script>";
+   echo "<script>location='payment.php'</script>";
+
+   }else{
+   $message[] = 'keranjang Anda kosong';
+   }
+
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +43,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
 
-   <!-- CSS Bootstrap Datepicker -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
-
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
@@ -28,9 +54,7 @@
 </head>
 
 <body>
-    <?php
-    include ('header.php');
-    ?>
+    
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
@@ -45,6 +69,10 @@
     <!-- Page Header End -->
       <div class="containeroner" style="margin-left: 100px; margin-right: 100px;">
       <form>
+      <div class="m-4">
+            <div>
+              <h6 style="text-align: right;">Tanggal Pembelian : <?php echo date("d/m/Y") ?></h6>
+            </div>   
          <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
             <input type="text" class="form-control" id="" placeholder="">
@@ -57,9 +85,63 @@
             <label for="exampleInputEmail1">No Telepon</label>
             <input type="text" class="form-control" id="" placeholder="">
          </div>
-         <div class="form-group">
-            <label for="exampleInputEmail1">Tanggal Pembelian</label>
-            <input type="text" class="form-control" placeholder="klik disini">
+         <div>                        
+         <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th class="text-center" style="color: #384046;">No.</th>
+                  <th class="text-center" style="color: #384046;">Menu</th>
+                  <th class="text-center" style="color: #384046;">Harga</th>
+                  <th class="text-center" style="color: #384046;">Jumlah</th>
+                  <th class="text-center" style="color: #384046;">Total Harga</th>
+                </tr>
+              </thead>                                    
+              <tbody> 
+
+                <?php
+
+                $grand_total = 0;
+                $cart_items[] = '';
+                $select_cart = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id = '$id'");
+
+                if(mysqli_num_rows($select_cart) > 0){
+
+                  while($fetch_cart = mysqli_fetch_array($select_cart)){
+
+                   $cart_items[] = $fetch_cart['merk_barang'].' ('.$fetch_cart['harga'].' x '. $fetch_cart['qty'].') + ';
+                   $total_products = implode($cart_items);
+                   $grand_total += ($fetch_cart['harga'] * $fetch_cart['qty']);
+
+                   ?>
+                   <tr>
+                     <td class="text-center" style="color: #384046;">1</td>
+                     <td class="text-center" style="color: #384046;"><img src="Admin/assets/img/barang/<?php echo $fetch_cart['gambar']; ?>" width="100px"><span style="margin-left: 10px;"><?php echo $fetch_cart['merk_barang']; ?></span></td>
+                     <td class="text-center" style="color: #384046;"><?php echo ($fetch_cart['harga']); ?></td>
+                     <td class="text-center" style="color: #384046;"><?php echo $fetch_cart['qty']; ?></td>
+                     <td class="text-center" style="color: #384046;"><?php echo ($sub_total = ($fetch_cart['harga'] * $fetch_cart['qty'])); ?></td>
+                   </tr>
+                   <input type="hidden" name="txt_id_barang" value="<?= $fetch_cart['id_barang']; ?>">
+                   <input type="hidden" name="harga" value="<?= $fetch_cart['total_harga']; ?>">
+                   <input type="hidden" name="qty" value="<?= $fetch_cart['qty']; ?>">
+                   <input type="hidden" name="total_harga" value="<?= $sub_total; ?>">
+                   <?php
+                     }
+                     }else{
+                     echo '<p class="empty">keranjang Anda kosong!</p>';
+                  }
+                  ?>                                     
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                     <th colspan="4" class="text-center" style="color: #384046;">Sub Total Harga</th>
+                     <th class="text-center" style="color: #384046;"><?php echo ($grand_total); ?></th>
+                  </tr>
+                  </tfoot>
+               </table>
+            </div>
+            </div>
          </div>
          <div class="form-group">
             <label for="exampleFormControlSelect1">Metode Pembayaran</label>
@@ -69,7 +151,7 @@
                <option>Dana 085235101051</option>
             </select>
          </div>
-         <button type="submit" class="btn btn-primary">Checkout</button>
+         <button type="submit" name="checkout" class="btn btn-primary">Checkout</button>
       </form>
       </div>
     
@@ -91,13 +173,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="assets/lib/easing/easing.min.js"></script>
     <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
-    <!-- Javascript Bootstrap Datepicker -->
-   <script
-   src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js">
-   </script>
-    <script type="text/javascript">
-      $('.form-control').datepicker();
-    </script>
     
     <!-- Contact Javascript File -->
     <script src="assets/mail/jqBootstrapValidation.min.js"></script>
