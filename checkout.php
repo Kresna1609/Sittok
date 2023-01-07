@@ -10,17 +10,24 @@
       $total_harga = $_POST['total_harga'];
       $qty = $_POST['qty'];
       $id_barang = $_POST['txt_id_barang'];
+      $nama = $_POST['txt_nama'];
 
-   $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id = '$id'");
+      $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id = '$id'");
 
-   if($check_cart = mysqli_num_rows($shop) > 0){
-   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$tgl_jual', '$harga', '$qty', '$total_harga', '$alamat', '$nohp', NULL, 'Belum Dibayar', '$id', '$id_barang')");
+   if($check_cart = mysqli_num_rows($data) > 0){
+      foreach ($id_barang as $barang => $barangs) {
+         $s_idbarang = $barangs;
+         $s_harga = $harga[$barang];
+         $s_qty = $qty[$barang];
+         $s_total = $total_harga[$barang];
+
+   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$tgl_jual', '$s_harga', '$s_qty', '$s_total', '$alamat', '$nohp', NULL, 'Belum Dibayar', '$id', '$s_idbarang', '$nama')");
    $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id='$id'");
 
    $message[] = 'pesanan berhasil dilakukan!';
    echo "<script>alert('Pesanan berhasil dilakukan!')</script>";
-   echo "<script>location='payment.php'</script>";
-
+   echo "<script>location='index.php'</script>";
+   }
    }else{
    $message[] = 'keranjang Anda kosong';
    }
@@ -68,7 +75,7 @@
     </div>
     <!-- Page Header End -->
       <div class="containeroner" style="margin-left: 100px; margin-right: 100px;">
-      <form>
+      <form method="POST" action="checkout.php">
       <div class="m-4">
             <div>
               <h6 style="text-align: right;">Tanggal Pembelian : <?php echo date("d/m/Y") ?></h6>
@@ -79,15 +86,15 @@
          </div>
          <div class="form-group">
             <label for="exampleInputEmail1">Nama Lengkap</label>
-            <input type="text" class="form-control" id="" placeholder="Masukkan Nama Lengkap" >
+            <input type="text" name="txt_nama" class="form-control" id="" placeholder="Masukkan Nama Lengkap" >
          </div>
          <div class="form-group">
             <label for="exampleInputEmail1">Alamat</label>
-            <input type="text" class="form-control" id="" placeholder="Masukkan Alamat Anda">
+            <input type="text" name="txt_alamat" class="form-control" id="" placeholder="Masukkan Alamat Anda">
          </div>
          <div class="form-group">
             <label for="exampleInputEmail1">No Telepon</label>
-            <input type="text" class="form-control" id="" placeholder="Masukkan No Telepon">
+            <input type="text" name="txt_nohp" class="form-control" id="" placeholder="Masukkan No Telepon">
          </div>
          <div>                        
          <div class="card-body">
@@ -126,10 +133,10 @@
                      <td class="text-center" style="color: #384046;"><?php echo $fetch_cart['qty']; ?></td>
                      <td class="text-center" style="color: #384046;"><?php echo ($sub_total = ($fetch_cart['harga'] * $fetch_cart['qty'])); ?></td>
                    </tr>
-                   <input type="hidden" name="txt_id_barang" value="<?= $fetch_cart['id_barang']; ?>">
-                   <input type="hidden" name="harga" value="<?= $fetch_cart['total_harga']; ?>">
-                   <input type="hidden" name="qty" value="<?= $fetch_cart['qty']; ?>">
-                   <input type="hidden" name="total_harga" value="<?= $sub_total; ?>">
+                   <input type="hidden" name="txt_id_barang[]" value="<?= $fetch_cart['id_barang']; ?>">
+                   <input type="hidden" name="harga[]" value="<?= $fetch_cart['harga']; ?>">
+                   <input type="hidden" name="qty[]" value="<?= $fetch_cart['qty']; ?>">
+                   <input type="hidden" name="total_harga[]" value="<?= $sub_total; ?>">
                    <?php
                      }
                      }else{
