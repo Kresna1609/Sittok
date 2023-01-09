@@ -71,23 +71,15 @@
                             </thead>                                    
                             <tbody> 
                             <?php 
-										$batas = 10;
-										$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-										$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
-
-										$previous = $halaman - 1;
-										$next = $halaman + 1;
 
 										$data = mysqli_query($koneksi,"SELECT * FROM jual_barang WHERE id = $id;");
 										$jumlah_data = mysqli_num_rows($data);
-										$total_halaman = ceil($jumlah_data / $batas);
 
-										$data_order = mysqli_query($koneksi,"SELECT DISTINCT tgl_jual, no_pesanan, status_pesanan FROM jual_barang WHERE status_pesanan='Selesai' AND id=$id LIMIT $halaman_awal, $batas");
-										$nomor = $halaman_awal+1;
+										$data_order = mysqli_query($koneksi,"SELECT DISTINCT tgl_jual, no_pesanan, status_pesanan FROM jual_barang WHERE status_pesanan='Selesai' AND id=$id;");
 										$grand_total = 0;
 										while($d = mysqli_fetch_array($data_order)){
 
-								?>
+							?>
                                 <tr>
                                     <td class="text-center" style="color: #384046;"><?php echo $nomor++; ?></td>
                                     <td class="text-center"><?php echo $no_pesanan; ?></td>
@@ -98,7 +90,7 @@
                                         </button>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal<?php echo $d['no_pesanan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                             <div class="modal-header">
@@ -111,7 +103,7 @@
                                             <form action="pesanansaya.php" method="POST">
 															<?php 
 															$pesanan = $d['no_pesanan'];
-															$data_order1 = mysqli_query($koneksi,"SELECT * FROM jual_barang JOIN barang ON barang.id_barang = barang.id_barang WHERE no_pesanan= '$pesanan' AND id_user='$idUser' LIMIT $halaman_awal, $batas");
+															$data_order1 = mysqli_query($koneksi,"SELECT * FROM jual_barang JOIN barang ON barang.id_barang = barang.id_barang WHERE no_pesanan= '$pesanan' AND id='$id' LIMIT $halaman_awal, $batas");
 
 															while($d2 = mysqli_fetch_array($data_order1)){ ?>
 																<br>
