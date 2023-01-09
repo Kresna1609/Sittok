@@ -103,7 +103,7 @@
                                             <form action="pesanansaya.php" method="POST">
 															<?php 
 															$pesanan = $d['no_pesanan'];
-															$data_order1 = mysqli_query($koneksi,"SELECT * FROM jual_barang JOIN barang ON barang.id_barang = barang.id_barang WHERE no_pesanan= '$pesanan' AND id='$id' LIMIT $halaman_awal, $batas");
+															$data_order1 = mysqli_query($koneksi,"SELECT * FROM jual_barang JOIN barang ON barang.id_barang = barang.id_barang WHERE no_pesanan= '$pesanan' AND id='$id'");
 
 															while($d2 = mysqli_fetch_array($data_order1)){ ?>
 																<br>
