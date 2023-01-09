@@ -60,9 +60,8 @@
                                 <tr>
                                 <th class="text-center" style="color: #384046;">No.</th>
                                 <th class="text-center" style="color: #384046;">No Pesanan</th>
-                                <th class="text-center" style="color: #384046;">Merk Barang</th>
-                                <th class="text-center" style="color: #384046;">Harga</th>
-                                <th class="text-center" style="color: #384046;">Jumlah</th>
+                                <th class="text-center" style="color: #384046;">Tgl. Pesan</th>
+                                <th class="text-center" style="color: #384046;">Isi Pesanan</th>
                                 <th class="text-center" style="color: #384046;">Total Harga</th>
                                 <th class="text-center" style="color: #384046;">Bukti Pembayaran</th>
                                 <th class="text-center" style="color: #384046;">Status Pesanan</th>
@@ -75,95 +74,35 @@
 										$data = mysqli_query($koneksi,"SELECT * FROM jual_barang WHERE id = $id;");
 										$jumlah_data = mysqli_num_rows($data);
 
-										$data_order = mysqli_query($koneksi,"SELECT DISTINCT tgl_jual, no_pesanan, status_pesanan FROM jual_barang WHERE status_pesanan='Selesai' AND id=$id;");
+										$data_order = mysqli_query($koneksi,"SELECT DISTINCT no_pesanan,tgl_jual,status_pesanan FROM jual_barang WHERE status_pesanan!='Selesai' AND id='$id'");
 										$grand_total = 0;
+                                        $nomor = 1;
 										while($d = mysqli_fetch_array($data_order)){
 
 							?>
                                 <tr>
                                     <td class="text-center" style="color: #384046;"><?php echo $nomor++; ?></td>
-                                    <td class="text-center"><?php echo $no_pesanan; ?></td>
-                                    <td class="text-center" style="color: #384046;">
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    <td class="text-center"><?php echo $d['no_pesanan']; ?></td>
+                                    <td class="text-center"><?php echo $d['tgl_jual']; ?></td>
+                                    <td class="text-center"> 
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                         Lihat
                                         </button>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal<?php echo $d['no_pesanan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                            <form action="pesanansaya.php" method="POST">
-															<?php 
-															$pesanan = $d['no_pesanan'];
-															$data_order1 = mysqli_query($koneksi,"SELECT * FROM jual_barang JOIN barang ON barang.id_barang = barang.id_barang WHERE no_pesanan= '$pesanan' AND id='$id'");
-
-															while($d2 = mysqli_fetch_array($data_order1)){ ?>
-																<br>
-																<img src="Admin/assets/img/barang/<?php echo $fetch_cart['gambar']; ?>" width="100px"><span style="margin-left: 10px;"><?php echo $fetch_cart['merk_barang']; ?></span>
-																<div class="form-group">
-																	<br>
-																	<label for="txt_nama">Merk Barang</label>
-																	<input type="text" class="form-control form-control-menu" placeholder="Merk Barang" name="txt_nama" value="<?php echo $d2['merk_barang']; ?>">
-																</div> 
-																<br>
-																<div class="form-group">
-																	<label for="txt_desk">Deskripsi</label>
-																	<input type="text" class="form-control form-control-menu" placeholder="Merk Barang" name="txt_desk" value="<?php echo ($d2['harga']); ?> x <?php echo $d2['qty']; ?> = <?php echo($d2['total_harga']); ?>">
-																</div> 
-
-															<?php } ?>
-                                            
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
                                     </td>
-                                    <td class="text-center" style="color: #384046;"><?php echo $d['harga']; ?></td>
-                                    <td class="text-center" style="color: #384046;"><?php echo $d['qty']; ?></td>
-                                    <td class="text-center" style="color: #384046;"><?php echo ($sub_total = ($fetch_cart['harga'] * $fetch_cart['qty'])); ?></td>
+                                    <td class="text-center"> </td>
                                     <td class="text-center" style="color: #384046;">
+                                        img
+                                    </td>
+                                    <td class="text-center" style="color: #384046;"><?php echo $d['status_pesanan']; ?></td>
+                                    <td class="text-center" style="color: #384046;">
+                                    
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                        Lihat
+                                        Nota
                                         </button>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                            <img src="Admin/assets/img/barang/<?php echo $fetch_cart['gambar']; ?>" width="100px"><span style="margin-left: 10px;"><?php echo $fetch_cart['merk_barang']; ?></span>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
                                     </td>
-                                    <td class="text-center" style="color: #384046;">Belum Diproses</td>
-                                    </tr>
-                                <input type="hidden" name="txt_id_barang[]" value="<?= $fetch_cart['id_barang']; ?>">
-                                <input type="hidden" name="harga[]" value="<?= $fetch_cart['harga']; ?>">
-                                <input type="hidden" name="qty[]" value="<?= $fetch_cart['qty']; ?>">
-                                <input type="hidden" name="total_harga[]" value="<?= ['$sub_total']; ?>">
+                                </tr>
+                                
                                 <?php
                                     }
                                 ?>                                     
