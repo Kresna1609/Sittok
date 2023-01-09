@@ -12,6 +12,7 @@
       $qty = $_POST['qty'];
       $id_barang = $_POST['txt_id_barang'];
       $nama = $_POST['txt_nama'];
+      $file = $_FILES['gbr']['name'];
 
       $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id = '$id'");
 
@@ -21,8 +22,9 @@
          $s_harga = $harga[$barang];
          $s_qty = $qty[$barang];
          $s_total = $total_harga[$barang];
+         move_uploaded_file($_FILES['gbr']['tmp_name'], "assets/img/buktitf/".basename($_FILES['gbr']['name']) );
 
-   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$nopesanan', '$tgl_jual', '$s_harga', '$s_qty', '$s_total', '$alamat', '$nohp', NULL, 'Belum Dibayar', '$id', '$s_idbarang', '$nama')");
+   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$nopesanan', '$tgl_jual', '$s_harga', '$s_qty', '$s_total', '$alamat', '$nohp', '$file', 'Belum Dibayar', '$id', '$s_idbarang', '$nama')");
    $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id='$id'");
 
    $message[] = 'pesanan berhasil dilakukan!';
@@ -107,7 +109,7 @@
                   <th class="text-center" style="color: #384046;">Menu</th>
                   <th class="text-center" style="color: #384046;">Harga</th>
                   <th class="text-center" style="color: #384046;">Jumlah</th>
-                  <th class="text-center" style="color: #384046;">Total Harga</th>
+                  <th class="text-center" style="color: #384046;">Sub Total Harga</th>
                 </tr>
               </thead>                                    
               <tbody> 
@@ -147,7 +149,7 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                     <th colspan="4" class="text-center" style="color: #384046;">Sub Total Harga</th>
+                     <th colspan="4" class="text-center" style="color: #384046;">Total Harga</th>
                      <th class="text-center" style="color: #384046;"><?php echo ($grand_total); ?></th>
                   </tr>
                   </tfoot>
@@ -163,7 +165,9 @@
                <option>Dana 085235101051</option>
             </select>
          </div>
-
+         <div class="form-group">
+         <input type="file" name="gbr" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="upload gambar">
+         </div>
          <center><button type="submit" name="checkout" class="btn btn-primary">Checkout</button></center>
       </form>
       </div>
