@@ -5,9 +5,10 @@ if(isset($_POST['update'])){
   $user = ($_POST['txt_nama']);
   $id = ($_POST['txt_id']);
   $email = ($_POST['txt_email']);
+  $password = ($_POST['txt_password']);
   $alamat = ($_POST['txt_alamat']);
 
-  $update=mysqli_query($koneksi,"UPDATE user SET user_fullname='$user', user_email='$email', alamat='$alamat' WHERE id = '$id'");
+  $update=mysqli_query($koneksi,"UPDATE user SET user_fullname='$user', user_email='$email', user_password='$password', alamat='$alamat' WHERE id = '$id'");
   if($update){
     echo "<script>alert('Data di Update')</script>";
     echo "<script>location='list_user.php'</script>";
@@ -83,6 +84,10 @@ $u = mysqli_fetch_array($result);
                     <div class="form-group">
                       <label for="txt_email">Email User</label>
                       <input type="text" class="form-control" name="txt_email" placeholder="Masukkan Email" value="<?php echo $u['user_email']; ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="txt_email">Password</label>
+                      <input type="text" class="form-control" name="txt_password" placeholder="Masukkan Password" value="<?php echo $u['user_password']; ?>">
                     </div>
                     <div class="form-group">
                       <label for="txt_alamat">Alamat</label>

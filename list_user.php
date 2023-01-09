@@ -60,6 +60,7 @@ require('koneksi.php');
                                         <tr>
                                             <th>Id</th>
                                             <th>Email</th>
+                                            <th>Password</th>
                                             <th>Nama</th>
                                             <th>Alamat</th>
                                         </tr>
@@ -72,12 +73,14 @@ require('koneksi.php');
                                             while ($row = mysqli_fetch_array($result)){
                                                 $id = $row['id'];
                                                 $email = $row['user_email'];
+                                                $password = $row['user_password'];
                                                 $nama = $row['user_fullname'];
                                                 $alamat = $row['alamat'];
                                         ?>
                                         <tr>
                                             <td><?php echo $id; ?></td>
                                             <td><?php echo $email; ?></td>
+                                            <td><?php echo $password; ?></td>
                                             <td><?php echo $nama; ?></td>
                                             <td><?php echo $alamat; ?></td>
                                             <td>
