@@ -1,38 +1,8 @@
 <?php
    include ('header.php');
+   if ($_SESSION['level'] == 2 || empty($_SESSION['level'])) {
 
-   if(isset($_POST['checkout'])){
-
-      $tgl_jual = date("Y-m-d");
-      $alamat = $_POST['txt_alamat'];
-      $nohp = $_POST['txt_nohp'];
-      $harga = $_POST['harga'];
-      $total_harga = $_POST['total_harga'];
-      $qty = $_POST['qty'];
-      $id_barang = $_POST['txt_id_barang'];
-      $nama = $_POST['txt_nama'];
-
-      $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id = '$id'");
-
-   if($check_cart = mysqli_num_rows($data) > 0){
-      foreach ($id_barang as $barang => $barangs) {
-         $s_idbarang = $barangs;
-         $s_harga = $harga[$barang];
-         $s_qty = $qty[$barang];
-         $s_total = $total_harga[$barang];
-
-   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$tgl_jual', '$s_harga', '$s_qty', '$s_total', '$alamat', '$nohp', NULL, 'Belum Dibayar', '$id', '$s_idbarang', '$nama')");
-   $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id='$id'");
-
-   $message[] = 'pesanan berhasil dilakukan!';
-   echo "<script>alert('Pesanan berhasil dilakukan!')</script>";
-   echo "<script>location='index.php'</script>";
-   }
-   }else{
-   $message[] = 'keranjang Anda kosong';
-   }
-
-   }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,139 +44,162 @@
         </div>
     </div>
     <!-- Page Header End -->
-      <div class="containeroner" style="margin-left: 100px; margin-right: 100px;">
-      <form method="POST" action="checkout.php">
-      <div class="m-4">
-            <div>
-              <h6 style="text-align: right;">Tanggal Pembelian : <?php echo date("d/m/Y") ?></h6>
-            </div>   
-         <div class="form-group">
-            <label for="exampleInputEmail1">Username</label>
-            <input type="text" class="form-control" id="" placeholder="" value="<?php echo $userName; ?>" disabled>
-         </div>
-         <div>                        
-         <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th class="text-center" style="color: #384046;">No.</th>
-                  <th class="text-center" style="color: #384046;">Menu</th>
-                  <th class="text-center" style="color: #384046;">Harga</th>
-                  <th class="text-center" style="color: #384046;">Jumlah</th>
-                  <th class="text-center" style="color: #384046;">Total Harga</th>
-                  <th class="text-center" style="color: #384046;">Bukti Pembayaran</th>
-                  <th class="text-center" style="color: #384046;">Status Pesanan</th>
-                  <th class="text-center" style="color: #384046;">Nota</th>
-                </tr>
-              </thead>                                    
-              <tbody> 
-
-                <?php
-
-                $grand_total = 0;
-                $cart_items[] = '';
-                $select_cart = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id = '$id'");
-
-                if(mysqli_num_rows($select_cart) > 0){
-
-                  while($fetch_cart = mysqli_fetch_array($select_cart)){
-
-                   $cart_items[] = $fetch_cart['merk_barang'].' ('.$fetch_cart['harga'].' x '. $fetch_cart['qty'].') + ';
-                   $total_products = implode($cart_items);
-                   $grand_total += ($fetch_cart['harga'] * $fetch_cart['qty']);
-
-                   ?>
-                   <tr>
-                     <td class="text-center" style="color: #384046;">1</td>
-                     
-                     <td class="text-center" style="color: #384046;">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Lihat
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                            <img src="Admin/assets/img/barang/<?php echo $fetch_cart['gambar']; ?>" width="100px"><span style="margin-left: 10px;"><?php echo $fetch_cart['merk_barang']; ?></span>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                            </div>
+                    <div class="containeroner" style="margin-left: 100px; margin-right: 100px;">
+                    <form method="POST" action="pesanansaya.php">
+                    <div class="m-4">  
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Username</label>
+                            <input type="text" class="form-control" id="" placeholder="" value="<?php echo $userName; ?>" disabled>
                         </div>
-                        </div>
-                    </td>
-                     <td class="text-center" style="color: #384046;"><?php echo ($fetch_cart['harga']); ?></td>
-                     <td class="text-center" style="color: #384046;"><?php echo $fetch_cart['qty']; ?></td>
-                     <td class="text-center" style="color: #384046;"><?php echo ($sub_total = ($fetch_cart['harga'] * $fetch_cart['qty'])); ?></td>
-                     <td class="text-center" style="color: #384046;">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Lihat
-                        </button>
+                        <div>                        
+                        <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                <th class="text-center" style="color: #384046;">No.</th>
+                                <th class="text-center" style="color: #384046;">No Pesanan</th>
+                                <th class="text-center" style="color: #384046;">Merk Barang</th>
+                                <th class="text-center" style="color: #384046;">Harga</th>
+                                <th class="text-center" style="color: #384046;">Jumlah</th>
+                                <th class="text-center" style="color: #384046;">Total Harga</th>
+                                <th class="text-center" style="color: #384046;">Bukti Pembayaran</th>
+                                <th class="text-center" style="color: #384046;">Status Pesanan</th>
+                                <th class="text-center" style="color: #384046;">Nota</th>
+                                </tr>
+                            </thead>                                    
+                            <tbody> 
+                            <?php 
+										$batas = 10;
+										$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+										$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
+										$previous = $halaman - 1;
+										$next = $halaman + 1;
+
+										$data = mysqli_query($koneksi,"SELECT * FROM jual_barang WHERE id = $id;");
+										$jumlah_data = mysqli_num_rows($data);
+										$total_halaman = ceil($jumlah_data / $batas);
+
+										$data_order = mysqli_query($koneksi,"SELECT DISTINCT tgl_jual, no_pesanan, status_pesanan FROM jual_barang WHERE status_pesanan='Selesai' AND id=$id LIMIT $halaman_awal, $batas");
+										$nomor = $halaman_awal+1;
+										$grand_total = 0;
+										while($d = mysqli_fetch_array($data_order)){
+
+								?>
+                                <tr>
+                                    <td class="text-center" style="color: #384046;"><?php echo $nomor++; ?></td>
+                                    <td class="text-center"><?php echo $no_pesanan; ?></td>
+                                    <td class="text-center" style="color: #384046;">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Lihat
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <form action="pesanansaya.php" method="POST">
+															<?php 
+															$pesanan = $d['no_pesanan'];
+															$data_order1 = mysqli_query($koneksi,"SELECT * FROM jual_barang JOIN barang ON barang.id_barang = barang.id_barang WHERE no_pesanan= '$pesanan' AND id_user='$idUser' LIMIT $halaman_awal, $batas");
+
+															while($d2 = mysqli_fetch_array($data_order1)){ ?>
+																<br>
+																<img src="Admin/assets/img/barang/<?php echo $fetch_cart['gambar']; ?>" width="100px"><span style="margin-left: 10px;"><?php echo $fetch_cart['merk_barang']; ?></span>
+																<div class="form-group">
+																	<br>
+																	<label for="txt_nama">Nama Menu</label>
+																	<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $d2['nama_menu']; ?>">
+																</div> 
+																<br>
+																<div class="form-group">
+																	<label for="txt_desk">Deskripsi</label>
+																	<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($d2['harga_satuan']); ?> x <?php echo $d2['qty']; ?> = <?php echo rupiah($d2['total_harga']); ?>">
+																</div> 
+
+															<?php } ?>
+                                            
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center" style="color: #384046;"><?php echo $d['harga']; ?></td>
+                                    <td class="text-center" style="color: #384046;"><?php echo $d['qty']; ?></td>
+                                    <td class="text-center" style="color: #384046;"><?php echo ($sub_total = ($fetch_cart['harga'] * $fetch_cart['qty'])); ?></td>
+                                    <td class="text-center" style="color: #384046;">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Lihat
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <img src="Admin/assets/img/barang/<?php echo $fetch_cart['gambar']; ?>" width="100px"><span style="margin-left: 10px;"><?php echo $fetch_cart['merk_barang']; ?></span>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center" style="color: #384046;">Belum Diproses</td>
+                                    </tr>
+                                <input type="hidden" name="txt_id_barang[]" value="<?= $fetch_cart['id_barang']; ?>">
+                                <input type="hidden" name="harga[]" value="<?= $fetch_cart['harga']; ?>">
+                                <input type="hidden" name="qty[]" value="<?= $fetch_cart['qty']; ?>">
+                                <input type="hidden" name="total_harga[]" value="<?= $sub_total; ?>">
+                                <?php
+                                    }
+                                ?>                                     
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                
+                                </tr>
+                                </tfoot>
+                            </table>
                             </div>
-                            <div class="modal-body">
-                            <img src="Admin/assets/img/barang/<?php echo $fetch_cart['gambar']; ?>" width="100px"><span style="margin-left: 10px;"><?php echo $fetch_cart['merk_barang']; ?></span>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </td>
-                    <td class="text-center" style="color: #384046;">Belum Diproses</td>
-                    </tr>
-                   <input type="hidden" name="txt_id_barang[]" value="<?= $fetch_cart['id_barang']; ?>">
-                   <input type="hidden" name="harga[]" value="<?= $fetch_cart['harga']; ?>">
-                   <input type="hidden" name="qty[]" value="<?= $fetch_cart['qty']; ?>">
-                   <input type="hidden" name="total_harga[]" value="<?= $sub_total; ?>">
-                   <?php
-                     }
-                     }else{
-                     echo '<p class="empty">keranjang Anda kosong!</p>';
-                  }
-                  ?>                                     
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                  
-                  </tr>
-                  </tfoot>
-               </table>
-            </div>
-            </div>
-         </div>         
-      </form>
-      </div>
-    
+                        </div>         
+                    </form>
+                    </div>
+        
 
 
     <!-- Footer Start -->
     <?php
+    }else{
+        echo "<script>alert('Anda adalah Admin!')</script>";
+        echo "<script>location='dashboard/'</script>"; 
+        }
         include 'footer.php';
     ?>
+    
     <!-- Footer End -->
+
 
 
     <!-- Back to Top -->

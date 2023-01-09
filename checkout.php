@@ -3,6 +3,7 @@
 
    if(isset($_POST['checkout'])){
 
+      $nopesanan = "STK".date("YmzHis");
       $tgl_jual = date("Y-m-d");
       $alamat = $_POST['txt_alamat'];
       $nohp = $_POST['txt_nohp'];
@@ -21,12 +22,12 @@
          $s_qty = $qty[$barang];
          $s_total = $total_harga[$barang];
 
-   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$tgl_jual', '$s_harga', '$s_qty', '$s_total', '$alamat', '$nohp', NULL, 'Belum Dibayar', '$id', '$s_idbarang', '$nama')");
+   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$nopesanan', '$tgl_jual', '$s_harga', '$s_qty', '$s_total', '$alamat', '$nohp', NULL, 'Belum Dibayar', '$id', '$s_idbarang', '$nama')");
    $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id='$id'");
 
    $message[] = 'pesanan berhasil dilakukan!';
    echo "<script>alert('Pesanan berhasil dilakukan!')</script>";
-   echo "<script>location='index.php'</script>";
+   echo "<script>location='pesanansaya.php'</script>";
    }
    }else{
    $message[] = 'keranjang Anda kosong';
@@ -162,6 +163,7 @@
                <option>Dana 085235101051</option>
             </select>
          </div>
+
          <center><button type="submit" name="checkout" class="btn btn-primary">Checkout</button></center>
       </form>
       </div>
