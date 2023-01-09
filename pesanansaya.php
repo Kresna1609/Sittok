@@ -4,6 +4,7 @@
 
     
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,13 +118,13 @@
 																<img src="Admin/assets/img/barang/<?php echo $fetch_cart['gambar']; ?>" width="100px"><span style="margin-left: 10px;"><?php echo $fetch_cart['merk_barang']; ?></span>
 																<div class="form-group">
 																	<br>
-																	<label for="txt_nama">Nama Menu</label>
-																	<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $d2['nama_menu']; ?>">
+																	<label for="txt_nama">Merk Barang</label>
+																	<input type="text" class="form-control form-control-menu" placeholder="Merk Barang" name="txt_nama" value="<?php echo $d2['merk_barang']; ?>">
 																</div> 
 																<br>
 																<div class="form-group">
 																	<label for="txt_desk">Deskripsi</label>
-																	<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($d2['harga_satuan']); ?> x <?php echo $d2['qty']; ?> = <?php echo rupiah($d2['total_harga']); ?>">
+																	<input type="text" class="form-control form-control-menu" placeholder="Merk Barang" name="txt_desk" value="<?php echo ($d2['harga']); ?> x <?php echo $d2['qty']; ?> = <?php echo($d2['total_harga']); ?>">
 																</div> 
 
 															<?php } ?>
@@ -170,7 +171,7 @@
                                 <input type="hidden" name="txt_id_barang[]" value="<?= $fetch_cart['id_barang']; ?>">
                                 <input type="hidden" name="harga[]" value="<?= $fetch_cart['harga']; ?>">
                                 <input type="hidden" name="qty[]" value="<?= $fetch_cart['qty']; ?>">
-                                <input type="hidden" name="total_harga[]" value="<?= $sub_total; ?>">
+                                <input type="hidden" name="total_harga[]" value="<?= ['$sub_total']; ?>">
                                 <?php
                                     }
                                 ?>                                     
