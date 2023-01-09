@@ -107,8 +107,8 @@ $grand_total = 0;
                                         </td>  
                                         <td class="text-center"> <?php echo $sub_total = ($fetch_cart['harga'] * $fetch_cart['qty']); ?></td> 
                                         <td class="text-center">
-                                            <button type="submit" class="bi bi-arrow-clockwise" name="update_qty"></button>
-                                            <button type="submit" class="bi bi-trash" name="delete" onclick="return confirm('Apakah anda yakin akan menghapus menu ini?')" ></button>
+                                            <button type="submit" class="fas fa-history" name="update_qty"></button>
+                                            <button type="submit" class="fas fa-trash" name="delete" onclick="return confirm('Apakah anda yakin akan menghapus menu ini?')" ></button>
                                         </td>
                                     </form>
                                     </tr>                        

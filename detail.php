@@ -1,7 +1,27 @@
 <!DOCTYPE html>
 <?php
 require('koneksi.php');
+session_start();
+$id = $_SESSION['id'];
+//$idkategori=$_GET['id_kategori'];
+if(isset($_POST['add_to_cart'])){
+    $id_barang = $_POST['id_barang'];
+    $merk_barang = $_POST['merk_barang'];
+    $harga = $_POST['harga'];
+    $gambar = $_POST['gambar'];
+    $qty = 1;
 
+    $detail = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE merk_barang = '$merk_barang' AND id = '$id'");
+    $cek = mysqli_num_rows($detail);
+
+    if($cek > 0){
+     $message[] = 'Sudah ditambakan ke keranjang!';
+     echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
+   }else{
+     $insert_keranjang = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$id', '$id_barang', '$merk_barang', '$qty', '$harga', '$gambar')");
+     $message[] = 'Ditambakan ke keranjang!';
+     echo "<script>alert('Ditambakan ke keranjang!')</script>";}
+   }
 $id_barang = $_GET['id'];
 $query = "SELECT * FROM barang WHERE id_barang = '$id_barang'";
 $result = mysqli_query($koneksi, $query);
@@ -36,9 +56,57 @@ $detail = mysqli_fetch_array($result);
 </head>
 
 <body>
-    <?php
-    include ('header.php');
-    ?>
+<body>
+<!-- Topbar Start -->
+<div class="container-fluid" >
+        <div class="row bg-secondary py-2 px-xl-5" style = " background-color: #e7d1ff;">
+            <div class="col-lg-6 d-none d-lg-block" >
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-dark" href="">FAQs</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Help</a>
+                    <span class="text-muted px-2">|</span>
+                    <a class="text-dark" href="">Support</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-dark px-2" href="https://wa.me/085235101051">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a class="text-dark px-2" href="https://instagram.com/rizki_komputer?igshid=OGQ2MjdiOTE=">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a href="" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Sittok</h1>
+                </a>
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for products">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-6 text-right">
+                <a href="cart.php" class="btn border">
+                    <i class="fas fa-shopping-cart text-primary" ></i>
+                    <span class="badge"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px; background-color: #e7d1ff;" >
@@ -90,7 +158,15 @@ $detail = mysqli_fetch_array($result);
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                    <?php
+                                            if(isset($_SESSION['id'])) {
+                                        ?>
+                     <a href="" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button></a>
+                                        </form>
+                                        <?php }else{ ?>
+                                        <a onclick="return confirm('Silahkan Login Terlebih Dahulu')">
+                                        <?php } ?>
+                                        
                 </div>
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
