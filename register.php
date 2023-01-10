@@ -1,15 +1,18 @@
 <?php
 require('koneksi.php');
-if (isset ($_POST['register'])) {
-    $userVal   = $_POST['txt_email'];
-    $passVal   = $_POST['txt_pass'];
-    $userName  = $_POST['txt_nama'];
+if(isset($_POST['create'])){
+    $email = ($_POST['txt_user_email']);
+    $password= ($_POST['txt_user_password']);
+    $name = ($_POST['txt_user_fullname']);
+    $level = ($_POST['txt_level']);
+    $alamat = ($_POST['txt_alamat']);
 
-    $query  = "INSERT INTO user VALUES (NULL, '$userVal', '$userName', '$passVal', 2)";
-    $result = mysqli_query($koneksi, $query);
-
-    header('Location: login.php');
-}
+    $query=mysqli_query($koneksi,"INSERT INTO user VALUES (NULL, '$email', '$password', '$name', 2, '$alamat')");
+      if($query){
+        echo "<script>alert('Data Ditambahkan')</script>";
+        echo "<script>location='login.php'</script>";
+      }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -50,21 +53,29 @@ if (isset ($_POST['register'])) {
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" action="register.php" method="POST">
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address" name="txt_email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputUsername"
-                                        placeholder="Username" name="txt_nama">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                                        placeholder="Password" name="txt_pass">
-                                </div>
-                                <button type="submit" name="register" class="btn-user btn-block" style="background-color:#d2afff;">Register</button>
-                            </form>
+                            <form action="register.php" method="POST" class="user">
+                        <input type="hidden" class="form-control" name="txt_id" placeholder="Masukkan Id">
+                         <div class="form-group">
+                      <label for="txt_user_email">Email</label>
+                      <input type="text" class="form-control" name="txt_user_email" placeholder="Masukkan Email">
+                    </div>
+                    <div class="form-group">
+                      <label for="txt_user_password">Password</label>
+                      <input type="password" class="form-control" name="txt_user_password" placeholder="Masukkan Password">
+                    </div>
+                    <div class="form-group">
+                      <label for="txt_user_fullname">Nama</label>
+                      <input type="text" class="form-control" name="txt_user_fullname" placeholder="Masukkan Nama">
+                    </div>
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" name="txt_level" placeholder="Masukkan Level">
+                    </div>
+                    <div class="form-group">
+                      <label for="txt_alamat">Alamat</label>
+                      <input type="text" class="form-control" name="txt_alamat" placeholder="Masukkan Alamat">
+                    </div>
+                    <button type="submit" name="create" class="btn btn-primary">Submit</button>
+                  </form>
                             <hr>
                             <div class="text-center">
                                 <a class="small" href="login.php">Already have an account? Login!</a>
