@@ -31,7 +31,6 @@ require('koneksi.php');
 </head>
 
 <body>
- <h1>Pencarian Barang</h1>
  <form method="GET" action="search.php" >
   <label>Kata Pencarian : </label>
   <input type="text" name="kata_cari" value="<?php if(isset($_GET['kata_cari'])) { echo $_GET['kata_cari']; } ?>"  />
@@ -65,63 +64,6 @@ require('koneksi.php');
     //kalau ini melakukan foreach atau perulangan
     while ($row = mysqli_fetch_assoc($result)) {
    ?>
-   <div class="container-fluid pt-5" style="padding: 50px;">
-        <div class="row px-xl-5 pb-3" >
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/laptop/laptop-asusdepan.jpg" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">Laptop</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/LCD/lcd-ultradepan.jpg" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">LCD</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/keyboard/keyboard.jpg" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">Keyboard</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/fan/fandepan.jpg" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">Fan</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/charger/charger-asusdepan.jpg" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">Charger</h5>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="assets/img/Printer/printerdpn.jpg" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">Printer</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-   <tr>
-    <td><?php echo $row['id_barang']; ?></td>
-    <td><?php echo $row['merk_barang']; ?></td>
-    <td><?php echo $row['jumlah_barang']; ?></td>
-   </tr>
    <?php
    }
    ?>

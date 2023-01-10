@@ -1,9 +1,7 @@
-<!DOCTYPE html>
 <?php
 require('koneksi.php');
 session_start();
 $id = $_SESSION['id'];
-//$idkategori=$_GET['id_kategori'];
 if(isset($_POST['add_to_cart'])){
     $id_barang = $_POST['id_barang'];
     $merk_barang = $_POST['merk_barang'];
@@ -26,10 +24,10 @@ $id_barang = $_GET['id'];
 $query = "SELECT * FROM barang WHERE id_barang = '$id_barang'";
 $result = mysqli_query($koneksi, $query);
 $detail = mysqli_fetch_array($result);
-
 ?>
 <html lang="en">
 
+<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
     <title>SITTOK</title>
@@ -125,8 +123,11 @@ $detail = mysqli_fetch_array($result);
     <div class="container-fluid py-5">
         <div class="row px-xl-5">
             <div class="col-lg-5">
+            <?php
+                                            if(isset($_SESSION['id'])) {
+                                        ?>
                 <!-- <div id="product-carousel" class="carousel slide" data-ride="carousel"> -->
-                <img src="admin/assets/img/barang/<?php echo $detail['gambar']; ?>" alt="Image" width="600px" height="500px">
+                <img src="admin/assets/img/barang/<?php echo $detail['gambar']; ?>" alt="Image" width="500px" height="500px">
                         
             </div>
 
@@ -144,8 +145,10 @@ $detail = mysqli_fetch_array($result);
                 </div>
                 <h4 class="font-weight-semi-bold mb-4"><?php echo $detail['harga']; ?></h4>
                 <p class="mb-4"><?php echo $detail['deskripsi']; ?></p>
+
+               
                 <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;">
+                    <div class="input-group quantity mr-2" style="width: 130px;">
                         <div class="input-group-btn">
                             <button class="btn btn-primary btn-minus" >
                             <i class="fa fa-minus"></i>
@@ -158,11 +161,8 @@ $detail = mysqli_fetch_array($result);
                             </button>
                         </div>
                     </div>
-                    <?php
-                                            if(isset($_SESSION['id'])) {
-                                        ?>
-                     <a href="" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button></a>
-                                        </form>
+                   
+                     <a href="cart.php" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button></a>
                                         <?php }else{ ?>
                                         <a onclick="return confirm('Silahkan Login Terlebih Dahulu')">
                                         <?php } ?>
@@ -203,55 +203,71 @@ $detail = mysqli_fetch_array($result);
     </div>
     <!-- Shop Detail End -->
 
-
-    <!-- Products Start -->
-    <div class="container-fluid py-5">
-        <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Rekomendasi Untuk Anda </span></h2>
-        </div>
-
-        <div class="row px-xl-5">
-            <div class="col">
-            
-                <div class="owl-carousel related-carousel">
-                <?php
-                    while($detail = $sql->fetch_array()){
-                ?>
-                    <div class="card product-item border-0">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
-                        </div>
-
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3"><?=$detail['merk_barang']?></h6>
-                            <div class="d-flex justify-content-center">
-                                <h6><?=$detail['harga']?></h6><h6 class="text-muted ml-2"><del><?=$detail['harga']?></del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+    <!-- Footer Start -->
+    <footer>
+<div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <a href="" class="text-decoration-none">
+                    <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Sittok</h1>
+                </a>
+                <p>Sittok merupakan salah satu market place yang menjual berbagai macam produk elektronik. 
+                    Sittok memudahkan para konsumen untuk mencari barang elektronik seperti laptop, 
+                    komputer dan accescories lainnya.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Jalan Kalimantan no 3a kav8 Jember</p>
+                <!-- <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>@rizki_komputer</p> -->
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>0852 3510 1051</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="shop.php"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-dark mb-2" href="detail.php"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                            <a class="text-dark mb-2" href="cart.php"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-dark mb-2" href="checkout.php"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark" href="contact.php"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
-                    <?php
-            }
-                    ?>
+                    <div class="col-md-8 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Kritik & Saran</h5>
+                        <form action="">
+                            <div class="form-group">
+                                <input type="email" class="form-control border-0 py-4" placeholder="Email Anda" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control border-0 py-4" placeholder="Pesan"
+                                    required="required" />
+                            </div>
+                            <div>
+                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Kirim</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-               
             </div>
-           
         </div>
-        
-    </div>
-    <!-- Products End -->
-
-
-    <!-- Footer Start -->
-    <?php
-        include 'footer.php';
-    ?>
+        <div class="row border-top border-light mx-xl-5 py-4">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-dark">
+                    &copy; <a class="text-dark font-weight-semi-bold" href="#">Sittok.com</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">Tim WSI</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="img/payments.png" alt="">
+            </div>
+        </div>
+</div>
+</footer>
     <!-- Footer End -->
 
+
+
+    
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

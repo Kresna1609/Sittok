@@ -125,7 +125,7 @@ if(isset($_POST['add_to_cart'])){
                                     <input type="hidden" name="merk_barang" value="<?php echo $shop['merk_barang'] ?>">
                                     <input type="hidden" name="harga" value="<?php echo $shop['harga'] ?>">
                                     <input type="hidden" name="gambar" value="<?php echo $shop['gambar'] ?>">
-                                        <a href="" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button></a>
+                                        <a href="cart.php" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button></a>
                                         </form>
                                         <?php }else{ ?>
                                         <a onclick="return confirm('Silahkan Login Terlebih Dahulu')" href="login.php" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
