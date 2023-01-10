@@ -16,11 +16,11 @@ if(isset($_POST['add_to_cart'])){
 
     if($cek > 0){
      $message[] = 'Sudah ditambakan ke keranjang!';
-     echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
+     echo "<script>alert('Sudah ditambahkan ke keranjang!')</script>";
    }else{
      $insert_keranjang = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$id', '$id_barang', '$merk_barang', '$qty', '$harga', '$gambar')");
-     $message[] = 'Ditambakan ke keranjang!';
-     echo "<script>alert('Ditambakan ke keranjang!')</script>";}
+     $message[] = 'Ditambahkan ke keranjang!';
+     echo "<script>alert('Ditambahkan ke keranjang!')</script>";}
    }
 ?>
 
@@ -71,7 +71,7 @@ if(isset($_POST['add_to_cart'])){
             </div>
             <div class="col-lg-3 col-6 text-right">
                 <a href="cart.php" class="btn border">
-                    <<a href="cart.php" class="fas fa-shopping-cart text-primary" ></i>
+                    <i class="fas fa-shopping-cart text-primary" ></i>
                     <span class="badge"></span>
                 </a>
             </div>
@@ -79,10 +79,10 @@ if(isset($_POST['add_to_cart'])){
     </div>
     <!-- Page Header Start -->
     <div class="coba">
-    <div class="container-fluid bg-secondary mb-5" style= "background-color: #e7d1ff;">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #e7d1ff;" >
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Sittok</h1>
-            <p class="m-0" style="text-color: black"><b><a href="index.php">Home</a></b></p>
+    <div class="container-fluid bg-secondary mb-5" style= "background-color: #5c0099;">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #5c0099;" >
+            <h1 class="font-weight-semi-bold text-uppercase mb-3" style="text-color: white" >Sittok</h1>
+            <p class="m-0" style="text-color: #ffffff"><b><a href="index.php">Home</a></b></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Our Shop</p>
             </div>

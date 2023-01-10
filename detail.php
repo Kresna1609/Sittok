@@ -6,19 +6,19 @@ if(isset($_POST['add_to_cart'])){
     $id_barang = $_POST['id_barang'];
     $merk_barang = $_POST['merk_barang'];
     $harga = $_POST['harga'];
-    $gambar = $_POST['gambar'];
-    $qty = 1;
+    $gambar = $_POST['gbr'];
+    $qty = $_POST['qty'];
 
     $detail = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE merk_barang = '$merk_barang' AND id = '$id'");
     $cek = mysqli_num_rows($detail);
 
     if($cek > 0){
      $message[] = 'Sudah ditambakan ke keranjang!';
-     echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
+     echo "<script>alert('Sudah ditambahkan ke keranjang!')</script>";
    }else{
      $insert_keranjang = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$id', '$id_barang', '$merk_barang', '$qty', '$harga', '$gambar')");
-     $message[] = 'Ditambakan ke keranjang!';
-     echo "<script>alert('Ditambakan ke keranjang!')</script>";}
+     $message[] = 'Ditambahkan ke keranjang!';
+     echo "<script>alert('Ditambahkan ke keranjang!')</script>";}
    }
 $id_barang = $_GET['id'];
 $query = "SELECT * FROM barang WHERE id_barang = '$id_barang'";
@@ -60,11 +60,11 @@ $detail = mysqli_fetch_array($result);
         <div class="row bg-secondary py-2 px-xl-5" style = " background-color: #e7d1ff;">
             <div class="col-lg-6 d-none d-lg-block" >
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-dark" href="">FAQs</a>
+                    <a class="text-dark" href="contact.php">FAQs</a>
                     <span class="text-muted px-2">|</span>
-                    <a class="text-dark" href="">Help</a>
+                    <a class="text-dark" href="contact.php">Help</a>
                     <span class="text-muted px-2">|</span>
-                    <a class="text-dark" href="">Support</a>
+                    <a class="text-dark" href="contact.php">Support</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
@@ -110,7 +110,7 @@ $detail = mysqli_fetch_array($result);
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px; background-color: #e7d1ff;" >
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Shop Detail</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a href="">Home</a></p>
+                <p class="m-0"><a href="index.php">Home</a></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Shop Detail</p>
             </div>
@@ -120,19 +120,20 @@ $detail = mysqli_fetch_array($result);
 
 
     <!-- Shop Detail Start -->
+    <form action="" method="POST">
     <div class="container-fluid py-5">
         <div class="row px-xl-5">
             <div class="col-lg-5">
-            <?php
-                                            if(isset($_SESSION['id'])) {
-                                        ?>
+            
                 <!-- <div id="product-carousel" class="carousel slide" data-ride="carousel"> -->
                 <img src="admin/assets/img/barang/<?php echo $detail['gambar']; ?>" alt="Image" width="500px" height="500px">
-                        
+                <input type="hidden" name="gbr" value="<?php echo $detail['gambar'];?>">        
             </div>
-
+            
+            <input type="hidden" name="id_barang" value="<?php echo $detail['id_barang'];?>">
             <div class="col-lg-6 pb-5">
                 <h3 class="font-weight-semi-bold"><?php echo $detail['merk_barang']; ?></h3>
+                <input type="hidden" name="merk_barang" value="<?php echo $detail['merk_barang'];?>">
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
                         <small class="fas fa-star"></small>
@@ -144,6 +145,7 @@ $detail = mysqli_fetch_array($result);
                     <small class="pt-1">(50 Reviews)</small>
                 </div>
                 <h4 class="font-weight-semi-bold mb-4"><?php echo $detail['harga']; ?></h4>
+                <input type="hidden" name="harga" value="<?php echo $detail['harga'];?>">
                 <p class="mb-4"><?php echo $detail['deskripsi']; ?></p>
 
                
@@ -154,33 +156,37 @@ $detail = mysqli_fetch_array($result);
                             <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <input type="text" class="form-control bg-secondary text-center" value="1">
+                        <input type="text" name="qty" class="form-control bg-secondary text-center" value="1">
                         <div class="input-group-btn">
                             <button class="btn btn-primary btn-plus">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>
-                   
-                     <a href="cart.php" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button></a>
-                                        <?php }else{ ?>
+                    <?php
+                                            if(isset($_SESSION['id'])) {
+                                        ?>
+                                       
+                     <a href="" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button></a>
+                
+                     <?php }else{ ?>
                                         <a onclick="return confirm('Silahkan Login Terlebih Dahulu')">
                                         <?php } ?>
-                                        
+                                        </form>                       
                 </div>
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                     <div class="d-inline-flex">
-                        <a class="text-dark px-2" href="">
+                        <a class="text-dark px-2" href="facebook.com">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a class="text-dark px-2" href="">
+                        <a class="text-dark px-2" href="twitter.com">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a class="text-dark px-2" href="">
+                        <a class="text-dark px-2" href="linkedin.com">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a class="text-dark px-2" href="">
+                        <a class="text-dark px-2" href="pinterest.com">
                             <i class="fab fa-pinterest"></i>
                         </a>
                     </div>

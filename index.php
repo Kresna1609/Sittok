@@ -70,17 +70,17 @@ require('koneksi.php');
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                     <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                    <a href="contact.php"> <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
                 </div>
             </div>
         </div>
     </div>
     <!-- Featured End -->
     <!-- Categories Start -->
-    <div class="container-fluid pt-5" style="padding: 50px; margin-top: -30px; margin-bottom: -30px;">
+    <div class="container-fluid pt-5" style="padding: 30px; margin-top: -30px; margin-bottom: -30px;">
         <div class="row px-xl-5 pb-3" >
             <div class="col-lg-2 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 10px; width : 250px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/laptop/laptop-asusdepan.jpg" alt="" >
                     </a>
@@ -88,7 +88,7 @@ require('koneksi.php');
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 10px; width : 250px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/LCD/lcd-ultradepan.jpg" alt="">
                     </a>
@@ -96,7 +96,7 @@ require('koneksi.php');
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 10px; width : 250px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/keyboard/keyboard.jpg" alt="">
                     </a>
@@ -104,7 +104,7 @@ require('koneksi.php');
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 10px; width : 250px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/fan/fandepan.jpg" alt="">
                     </a>
@@ -112,7 +112,7 @@ require('koneksi.php');
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 10px; width : 250px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/charger/charger-asusdepan.jpg" alt="">
                     </a>
@@ -120,7 +120,7 @@ require('koneksi.php');
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; width : 300px;">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 10px; width : 250px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="assets/img/Printer/printerdpn.jpg" alt="">
                     </a>
