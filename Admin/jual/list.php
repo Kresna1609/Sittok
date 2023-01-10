@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 
-<?php  
+<?php
 require('../koneksi.php');
 
-session_start(); 
+session_start();
 
-if(isset($_POST['status_pesanan'])){
+if (isset($_POST['status_pesanan'])) {
 
-$id_jual_barang = $_POST['id_jual_barang'];
-$id_jual_barang = filter_var($id_jual_barang, FILTER_SANITIZE_STRING);
+  $id_jual_barang = $_POST['id_jual_barang'];
+  $id_jual_barang = filter_var($id_jual_barang, FILTER_SANITIZE_STRING);
 
-$status_pesanan = $_POST['status_pesanan'];
-$status_pesanan = filter_var($status_pesanan, FILTER_SANITIZE_STRING);
+  $status_pesanan = $_POST['status_pesanan'];
+  $status_pesanan = filter_var($status_pesanan, FILTER_SANITIZE_STRING);
 
-$update_status = $conn->prepare("UPDATE `jual` SET status_pesanan = ? WHERE id_jual_barang = ?");
-$update_status->execute([$status_pesanan, $id_jual_barang]);
+  $message[] = 'status diperbarui';
+}
 
-$message[] = 'status diperbarui';
+if (isset($_POST['update_status'])) {
+  $cek = $_POST['status_pesanan'];
+  $id_jual_barang = $_POST['id_jual_barang'];
+  // var_dump($cek);
+  // var_dump($id_jual_barang);
+  $up = mysqli_query($koneksi,"UPDATE jual_barang SET status_pesanan = '$cek' WHERE id_jual_barang = '$id_jual_barang'");
+  
 }
 
 ?>
@@ -39,7 +45,7 @@ $message[] = 'status diperbarui';
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-      include('../sidebar.php');
+    include('../sidebar.php');
     ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -51,16 +57,13 @@ $message[] = 'status diperbarui';
           </button>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-search fa-fw"></i>
               </a>
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                aria-labelledby="searchDropdown">
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?" aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -72,23 +75,22 @@ $message[] = 'status diperbarui';
             </li>
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="assets/img/boy.png" style="max-width: 60px">
                 <?php
-                                if (isset($_SESSION['id'])) {
-                                    $id = $_SESSION['id'];
-                                    $userName = $_SESSION['user_fullname'];
-                                    $level = $_SESSION['level'];
-                                    ?>
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
-                                <?php
-                                }else{
-                                ?>
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Admin</span>
-                                <?php
-                                }
-                                ?>
+                if (isset($_SESSION['id'])) {
+                  $id = $_SESSION['id'];
+                  $userName = $_SESSION['user_fullname'];
+                  $level = $_SESSION['level'];
+                ?>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
+                <?php
+                } else {
+                ?>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Admin</span>
+                <?php
+                }
+                ?>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -104,9 +106,8 @@ $message[] = 'status diperbarui';
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="logoutadmin.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
-                                    class="dropdown-item">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
+                <a href="logoutadmin.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" class="dropdown-item">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
               </div>
             </li>
           </ul>
@@ -122,8 +123,8 @@ $message[] = 'status diperbarui';
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
             </ol>
           </div>
-        
-        <!-- <Form Basic> -->
+
+          <!-- <Form Basic> -->
           <div class="row">
             <div class="col-lg-12">
               <div class="card mb-4">
@@ -131,85 +132,88 @@ $message[] = 'status diperbarui';
                   <h6 class="m-0 font-weight-bold text-primary">Data Jual</h6>
                 </div>
                 <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Tanggal Jual</th>
-                                            <th>Id Barang</th>
-                                            <th>Id Customer</th>
-                                            <th>Total Harga</th>
-                                            <th>Status Pesanan</th>
-                                            <th>Bukti Pembayaran</th>
-                                            <th>Hapus</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                            $query = "SELECT * FROM jual_barang";
-                                            $result = mysqli_query($koneksi, $query); 
-                                        
-                                                 
-                                            while ($row = mysqli_fetch_array($result)){
-                                                $id_jual_barang = $row['id_jual_barang'];
-                                                $tgl_jual = $row['tgl_jual'];
-                                                $id_barang = $row['id_barang'];
-                                                $id_customer = $row['id_customer'];
-                                                $total_harga = $row['total_harga'];
-                                                $status_pesanan = $row['status_pesanan'];
-                                                $bukti_penjualan = $row['bukti_penjualan'];
-                                            
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $id_jual_barang; ?></td>
-                                            <td><?php echo $tgl_jual; ?></td>
-                                            <td><?php echo $id_barang; ?></td>
-                                            <td><?php echo $id_customer; ?></td>
-                                            <td><?php echo $total_harga; ?></td>
-                                            <td>
-                                              <input type="hidden" name="id_jual_barang" value="<?= $fetch_jual['id_jual_barang']; ?>">
-                                              <select name="status_pesanan" class="drop-down-order">                  
-                                                  <!-- <option hidden selected value="<?= $fetch_jual_barang['status_pesanan']; ?>" ><?= $fetch_jual_barang['status_pesanan']; ?></option> -->
-                                                  <option value="Diproses">Diproses</option>
-                                                  <option value="Diterima">Diterima</option>
-                                                  <option value="Diterima">Dikirim</option>
-                                              </select>
-                                            </td>   
-                                            <td><?php echo $bukti_penjualan; ?></td>    
-                                            <td>
-                                              <div class="flex-btn">
-                                              <input type="submit" value="update" class="btn-order" name="update_status">
-                                              </div>     
-                                              <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_kategori=<?php echo $row['id_kategori']?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>        
-                                            </td>   
-                                            
-                                        </tr>
-                                       <?php 
-                                            }
-                                       ?>
-                                    </tbody>
-                                </table>
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Tanggal Jual</th>
+                          <th>Id Barang</th>
+                          <th>Id Customer</th>
+                          <th>Total Harga</th>
+                          <th>Status Pesanan</th>
+                          <th>Bukti Pembayaran</th>
+                          <th>Hapus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <form action="" method="post">
+                          <?php
+                          $query = "SELECT * FROM jual_barang";
+                          $result = mysqli_query($koneksi, $query);
 
-                            </div>
-                        </div>
+
+                          while ($row = mysqli_fetch_array($result)) {
+                            $id_jual_barang = $row['id_jual_barang'];
+                            $tgl_jual = $row['tgl_jual'];
+                            $id_barang = $row['id_barang'];
+                            $id_customer = $row['id'];
+                            $total_harga = $row['total_harga'];
+                            $status_pesanan = $row['status_pesanan'];
+                            $bukti_pembayaran = $row['bukti_pembayaran'];
+
+                          ?>
+                            <tr>
+                              <td><?php echo $id_jual_barang; ?></td>
+                              <td><?php echo $tgl_jual; ?></td>
+                              <td><?php echo $id_barang; ?></td>
+                              <td><?php echo $id_customer; ?></td>
+                              <td><?php echo $total_harga; ?></td>
+                              <td>
+
+                                <input type="hidden" name="id_jual_barang" value="<?php echo $row['id_jual_barang']; ?>">
+                                <select name="status_pesanan" class="drop-down-order">
+                                  <option value="<?php echo $status_pesanan; ?>" selected disabled><?php echo $status_pesanan; ?></option>
+                                  <option value="Diproses">Diproses</option>
+                                  <option value="Dikemas">Dikemas</option>
+                                  <option value="Dikirim">Dikirim</option>
+                                </select>
+                              </td>
+                              <td><img style="border:1px; border-color:#444444;" width="300px" src="../../assets/img/buktitf/<?php echo $bukti_pembayaran; ?>"></td>
+                              <td>
+                                <div class="flex-btn">
+                                  <input type="submit" value="update" class="btn-order" name="update_status">
+                                </div>
+                                <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus.php?id_jual_barang=<?php echo $row['id_jual_barang'] ?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                              </td>
+
+                            </tr>
+                          <?php
+                          }
+                          ?>
+                        </form>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
               </div>
-        <!-- <Form Basic> -->
-      </div>
-    </div>
-  </div>
+              <!-- <Form Basic> -->
+            </div>
+          </div>
+        </div>
 
-  <!-- Scroll to top -->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+        <!-- Scroll to top -->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
 
-  <script src="../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="../assets/js/ruang-admin.min.js"></script>
-  <script src="../assets/vendor/chart.js/Chart.min.js"></script>
-  <script src="../assets/js/demo/chart-area-demo.js"></script>  
+        <script src="../assets/vendor/jquery/jquery.min.js"></script>
+        <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../assets/js/ruang-admin.min.js"></script>
+        <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+        <script src="../assets/js/demo/chart-area-demo.js"></script>
 </body>
 
 </html>

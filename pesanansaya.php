@@ -74,7 +74,7 @@
 										$data = mysqli_query($koneksi,"SELECT * FROM jual_barang WHERE id = $id;");
 										$jumlah_data = mysqli_num_rows($data);
 
-										$data_order = mysqli_query($koneksi,"SELECT DISTINCT no_pesanan,tgl_jual,status_pesanan,bukti_pembayaran FROM jual_barang WHERE status_pesanan!='Selesai' AND id='$id'");
+										$data_order = mysqli_query($koneksi,"SELECT DISTINCT no_pesanan,tgl_jual,status_pesanan,bukti_pembayaran,harga_bayar FROM jual_barang WHERE status_pesanan!='Selesai' AND id='$id'");
 										$grand_total = 0;
                                         $nomor = 1;
 										while($d = mysqli_fetch_array($data_order)){
@@ -127,9 +127,32 @@
                                         </div>
                                         </div>
                                     </td>
-                                    <td class="text-center"> </td>
+                                    <td class="text-center"><?php echo $d['harga_bayar']; ?></</td>
                                     <td class="text-center" style="color: #384046;">
-                                        <img style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $d['bukti_pembayaran']; ?>">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Lihat
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Bukti pembayaran</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <img style="border:1px; border-color:#444444;" width="300px" src="assets/img/buktitf/<?php echo $d['bukti_pembayaran']; ?>">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
                                     </td>
                                     <td class="text-center" style="color: #384046;"><?php echo $d['status_pesanan']; ?></td>
                                     <td class="text-center" style="color: #384046;">

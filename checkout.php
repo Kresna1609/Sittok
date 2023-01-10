@@ -9,6 +9,7 @@
       $nohp = $_POST['txt_nohp'];
       $harga = $_POST['harga'];
       $total_harga = $_POST['total_harga'];
+      $harga_bayar = $_POST['harga_bayar'];
       $qty = $_POST['qty'];
       $id_barang = $_POST['txt_id_barang'];
       $nama = $_POST['txt_nama'];
@@ -24,7 +25,7 @@
          $s_total = $total_harga[$barang];
          move_uploaded_file($_FILES['gbr']['tmp_name'], "assets/img/buktitf/".basename($_FILES['gbr']['name']) );
 
-   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$nopesanan', '$tgl_jual', '$s_harga', '$s_qty', '$s_total', '$alamat', '$nohp', '$file', 'Belum Dibayar', '$id', '$s_idbarang', '$nama')");
+   $insert_order = mysqli_query($koneksi,"INSERT INTO jual_barang VALUES (NULL, '$nopesanan', '$tgl_jual', '$s_harga', '$s_qty', '$s_total', '$harga_bayar', '$alamat', '$nohp', '$file', ' Menunggu Konfirmasi', '$id', '$s_idbarang', '$nama')");
    $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id='$id'");
 
    $message[] = 'pesanan berhasil dilakukan!';
@@ -150,7 +151,8 @@
                   <tfoot>
                   <tr>
                      <th colspan="4" class="text-center" style="color: #384046;">Total Harga</th>
-                     <th class="text-center" style="color: #384046;"><?php echo ($grand_total); ?></th>
+                     <input type="hidden" name="harga_bayar" value="<?= $grand_total; ?>">
+                     <th class="text-center" style="color: #384046;" ><?php echo ($grand_total); ?></th>
                   </tr>
                   </tfoot>
                </table>

@@ -21,7 +21,7 @@
                                     <td><h2><strong>No. Pesanan </strong><?php echo $data1['no_pesanan']; ?> </h2></td>
                                 </tr>
                                 <tr>
-                                    <td>Tanggal Pakai :</strong><?php echo $data1['tgl_jual']; ?></td>
+                                    <td>Tanggal Beli :</strong><?php echo $data1['tgl_jual']; ?></td>
                                 </tr>
                             </tbody>
                         </table>
