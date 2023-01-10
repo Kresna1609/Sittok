@@ -179,7 +179,31 @@ if (isset($_POST['update_status'])) {
                                   <option value="Dikirim">Dikirim</option>
                                 </select>
                               </td>
-                              <td><img style="border:1px; border-color:#444444;" width="300px" src="../../assets/img/buktitf/<?php echo $bukti_pembayaran; ?>"></td>
+                              <td>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Lihat
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Bukti pembayaran</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <img style="border:1px; border-color:#444444;" width="300px" src="../../assets/img/buktitf/<?php echo $bukti_pembayaran; ?>">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                </td>
                               <td>
                                 <div class="flex-btn">
                                   <input type="submit" value="update" class="btn-order" name="update_status">
