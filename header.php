@@ -37,11 +37,9 @@ session_start();
         <div class="row bg-secondary py-2 px-xl-5" style = " background-color: #e7d1ff;">
             <div class="col-lg-6 d-none d-lg-block" >
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-dark" href="">FAQs</a>
+                    <a class="text-dark" href="contact.php">FAQs</a>
                     <span class="text-muted px-2">|</span>
-                    <a class="text-dark" href="">Help</a>
-                    <span class="text-muted px-2">|</span>
-                    <a class="text-dark" href="">Support</a>
+                    <a class="text-dark" href="contact.php">Help</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
@@ -57,7 +55,7 @@ session_start();
         </div>
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a href="" class="text-decoration-none">
+                <a href="index.php" class="text-decoration-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Sittok</h1>
                 </a>
             </div>
