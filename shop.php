@@ -69,11 +69,12 @@ if(isset($_POST['add_to_cart'])){
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right">
-                <a href="cart.php" class="btn border">
-                    <i class="fas fa-shopping-cart" style= "color : #3c096c" ></i>
-                    <span class="badge"></span>
-                </a>
+            <div class="col-lg-3 col-5 text-right" >
+                        <a href="pesanansaya.php" class="nav-item active" style= "color: #5c0099">Pesanan Saya</a>
+                        </a>
+                        <a href="cart.php" class="btn border" style= "color: #5c0099">
+                        <i class="fas fa-shopping-cart" style= "color : #3c096c" ></i>
+                        </a>
             </div>
         </div>
     </div>
@@ -166,6 +167,23 @@ if(isset($_POST['add_to_cart'])){
                     ?>
                 </div>
             <!-- Shop Product End -->
+            <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
     </div>
     <!-- Shop End -->
 
