@@ -69,22 +69,23 @@ if(isset($_POST['add_to_cart'])){
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right">
-                <a href="cart.php" class="btn border">
-                    <i class="fas fa-shopping-cart" style= "color : #3c096c" ></i>
-                    <span class="badge"></span>
-                </a>
+            <div class="col-lg-3 col-5 text-right" >
+                        <a href="pesanansaya.php" class="nav-item active" style= "color: #5c0099">Pesanan Saya</a>
+                        </a>
+                        <a href="cart.php" class="btn border" style= "color: #5c0099">
+                        <i class="fas fa-shopping-cart" style= "color : #3c096c" ></i>
+                        </a>
             </div>
         </div>
     </div>
     <!-- Page Header Start -->
-    <div class="coba"style= "background-color: #3c096c;>
-    <div class="container-fluid bg-secondary mb-5 style= "background-color: #3c096c;">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px; background-color: #3c096c;" >
-        <h1 class="display-4 text-white font-weight-semi-bold mb-4">SITTOK</h1>
-            <p class="m-0 text-white font-weight-semi-bold mb-4"><b><a href="index.php">Home</a></b></p>
+    <div class="coba"style= "background-color: #e0aaff">
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px; background-color: #c77dff;" >
+        <h1 class="display-4 text-black font-weight-semi-bold mb-4">SITTOK</h1>
+        <p class="m-0"><a href="index.php">Home</a></p>
                 <p class="m-0 px-2">-</p>
-                <p class="m-0 text-white font-weight-semi-bold mb-4">Our Shop</p>
+                <p class="m-0">Shopping Cart</p>
             </div>
         </div>
     </div>
@@ -166,7 +167,6 @@ if(isset($_POST['add_to_cart'])){
                     ?>
                 </div>
             <!-- Shop Product End -->
-    </div>
     <!-- Shop End -->
 
 
