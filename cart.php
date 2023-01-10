@@ -57,13 +57,13 @@ $grand_total = 0;
 <body>
 
     <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5" style = " background-color: #e7d1ff;">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Keranjang</h1>
-            <div class="d-inline-flex">
-                <p class="m-0"><a href="index.php">Home</a></p>
+    <div class="coba"style= "background-color: #e0aaff">
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px; background-color: #c77dff;" >
+        <h1 class="display-4 text-black font-weight-semi-bold mb-4">KERANJANG</h1>
+        <p class="m-0"><a href="index.php">Home</a></p>
                 <p class="m-0 px-2">-</p>
-                <p class="m-0">Shopping Cart</p>
+                <p class="m-0">Shop</p>
             </div>
         </div>
     </div>
@@ -75,7 +75,7 @@ $grand_total = 0;
         <div class="row px-xl-5">
             <div class="col-lg-8 table-responsive mb-5">
                 <table class="table table-bordered text-center mb-0">
-                    <thead class="bg-secondary text-dark">
+                    <thead class="bg-secondary text-dark"  style= "background-color: #e0aaff">
                         <tr>
                             <th>No.</th>
                             <th>Merk barang</th>

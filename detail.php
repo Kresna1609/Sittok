@@ -90,24 +90,25 @@ $detail = mysqli_fetch_array($result);
                         <input type="text" class="form-control" placeholder="Search for products">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
+                                <i class="fa fa-search" style= "color : #3c096c"></i>
                             </span>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right">
-                <a href="cart.php" class="btn border">
-                    <i class="fas fa-shopping-cart text-primary" ></i>
-                    <span class="badge"></span>
-                </a>
+            <div class="col-lg-3 col-5 text-right" >
+                        <a href="pesanansaya.php" class="nav-item active" style= "color: #5c0099">Pesanan Saya</a>
+                        </a>
+                        <a href="cart.php" class="btn border" style= "color: #5c0099">
+                        <i class="fas fa-shopping-cart" style= "color : #3c096c" ></i>
+                        </a>
             </div>
         </div>
     </div>
     <!-- Topbar End -->
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px; background-color: #e7d1ff;" >
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px; background-color: #e0aaff;" >
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Shop Detail</h1>
             <div class="d-inline-flex">
                 <p class="m-0"><a href="index.php">Home</a></p>

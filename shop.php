@@ -79,13 +79,13 @@ if(isset($_POST['add_to_cart'])){
         </div>
     </div>
     <!-- Page Header Start -->
-    <div class="coba"style= "background-color: #3c096c;>
-    <div class="container-fluid bg-secondary mb-5 style= "background-color: #3c096c;">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px; background-color: #3c096c;" >
-        <h1 class="display-4 text-white font-weight-semi-bold mb-4">SITTOK</h1>
-            <p class="m-0 text-white font-weight-semi-bold mb-4"><b><a href="index.php">Home</a></b></p>
+    <div class="coba"style= "background-color: #e0aaff">
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px; background-color: #c77dff;" >
+        <h1 class="display-4 text-black font-weight-semi-bold mb-4">SITTOK</h1>
+        <p class="m-0"><a href="index.php">Home</a></p>
                 <p class="m-0 px-2">-</p>
-                <p class="m-0 text-white font-weight-semi-bold mb-4">Our Shop</p>
+                <p class="m-0">Shopping Cart</p>
             </div>
         </div>
     </div>
@@ -167,24 +167,6 @@ if(isset($_POST['add_to_cart'])){
                     ?>
                 </div>
             <!-- Shop Product End -->
-            <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-    </div>
     <!-- Shop End -->
 
 

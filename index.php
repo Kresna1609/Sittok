@@ -141,7 +141,7 @@ require('koneksi.php');
                     <div class="position-relative" style="z-index: 1;">
                         <h5 class="text-uppercase text-primary mb-3">Sittok Collection</h5>
                         <h1 class="mb-4 font-weight-semi-bold">Pilihan Laptop Unggulan</h1>
-                        <a href="shop.php?id_kategori=0" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                        <a href="shop.php?id_kategori=3" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -151,7 +151,7 @@ require('koneksi.php');
                     <div class="position-relative" style="z-index: 1;">
                         <h5 class="text-uppercase text-primary mb-3">Sittok Collection</h5>
                         <h1 class="mb-4 font-weight-semi-bold">Dapatkan Produk Murah</h1>
-                        <a href="shop.php?id_kategori=0" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                        <a href="shop.php?id_kategori=4" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                     </div>
                 </div>
             </div>
