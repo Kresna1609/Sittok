@@ -73,11 +73,12 @@ session_start();
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right">
-                <a href="cart.php" class="btn border" style= color: #5c0099>
-                    <i class="fas fa-shopping-cart text-primary" ></i>
-                    <span class="badge"></span>
-                </a>
+            <div class="col-lg-3 col-5 text-right" >
+                        <a href="pesanansaya.php" class="nav-item active" style= "color: #5c0099">Pesanan Saya</a>
+                        </a>
+                        <a href="cart.php" class="btn border" style= "color: #5c0099">
+                        <i class="fas fa-shopping-cart" style= "color : #3c096c" ></i>
+                        </a>
             </div>
         </div>
     </div>

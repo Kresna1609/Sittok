@@ -71,20 +71,20 @@ if(isset($_POST['add_to_cart'])){
             </div>
             <div class="col-lg-3 col-6 text-right">
                 <a href="cart.php" class="btn border">
-                    <i class="fas fa-shopping-cart text-primary" ></i>
+                    <i class="fas fa-shopping-cart" style= "color : #3c096c" ></i>
                     <span class="badge"></span>
                 </a>
             </div>
         </div>
     </div>
     <!-- Page Header Start -->
-    <div class="coba">
-    <div class="container-fluid bg-secondary mb-5" style= "background-color: #5c0099;">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #5c0099;" >
+    <div class="coba"style= "background-color: #3c096c;>
+    <div class="container-fluid bg-secondary mb-5 style= "background-color: #3c096c;">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px; background-color: #3c096c;" >
         <h1 class="display-4 text-white font-weight-semi-bold mb-4">SITTOK</h1>
-            <p class="m-0" style="text-color: #ffffff"><b><a href="index.php">Home</a></b></p>
+            <p class="m-0 text-white font-weight-semi-bold mb-4"><b><a href="index.php">Home</a></b></p>
                 <p class="m-0 px-2">-</p>
-                <p class="m-0">Our Shop</p>
+                <p class="m-0 text-white font-weight-semi-bold mb-4">Our Shop</p>
             </div>
         </div>
     </div>
@@ -116,7 +116,7 @@ if(isset($_POST['add_to_cart'])){
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="detail.php?id=<?php echo $shop['id_barang']; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                        <a href="detail.php?id=<?php echo $shop['id_barang']; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Details</a>
                                         <?php
                                             if(isset($_SESSION['id'])) {
                                         ?>
@@ -125,7 +125,7 @@ if(isset($_POST['add_to_cart'])){
                                     <input type="hidden" name="merk_barang" value="<?php echo $shop['merk_barang'] ?>">
                                     <input type="hidden" name="harga" value="<?php echo $shop['harga'] ?>">
                                     <input type="hidden" name="gambar" value="<?php echo $shop['gambar'] ?>">
-                                        <a href="cart.php" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button></a>
+                                        <a href="cart.php" class="btn btn-sm text-dark p-0"><button type="submit" name="add_to_cart"><i class="fas fa-shopping-cart text-primary mr-1"></i></button></a>
                                         </form>
                                         <?php }else{ ?>
                                         <a onclick="return confirm('Silahkan Login Terlebih Dahulu')" href="login.php" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
