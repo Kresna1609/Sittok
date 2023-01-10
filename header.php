@@ -74,7 +74,7 @@ session_start();
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="cart.php" class="btn border">
+                <a href="cart.php" class="btn border" style= color: #5c0099>
                     <i class="fas fa-shopping-cart text-primary" ></i>
                     <span class="badge"></span>
                 </a>
@@ -155,7 +155,7 @@ session_start();
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" style="height: 410px;">
-                            <img class="img-fluid" src="assets/img/carousel-background.jpg" alt="Image">
+                            <img class="img-fluid" src="assets/img/andy-holmes-EOAKUQcsFIU-unsplash.jpg" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">Diskon 10% bagi pelanggan pertama</h4>
@@ -165,7 +165,7 @@ session_start();
                             </div>
                         </div>
                         <div class="carousel-item" style="height: 410px;">
-                            <img class="img-fluid" src="assets/img/toko-komputer.jpg" alt="Image">
+                            <img class="img-fluid" src="assets/img/alienware-Hpaq-kBcYHk-unsplash.jpg" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">Belanja Hemat Kantong Sehat</h4>

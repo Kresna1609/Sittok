@@ -81,7 +81,7 @@ if(isset($_POST['add_to_cart'])){
     <div class="coba">
     <div class="container-fluid bg-secondary mb-5" style= "background-color: #5c0099;">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px; background-color: #5c0099;" >
-            <h1 class="font-weight-semi-bold text-uppercase mb-3" style="text-color: white" >Sittok</h1>
+        <h1 class="display-4 text-white font-weight-semi-bold mb-4">SITTOK</h1>
             <p class="m-0" style="text-color: #ffffff"><b><a href="index.php">Home</a></b></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Our Shop</p>
