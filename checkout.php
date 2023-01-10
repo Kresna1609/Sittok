@@ -78,7 +78,7 @@
     </div>
     <!-- Page Header End -->
       <div class="containeroner" style="margin-left: 100px; margin-right: 100px;">
-      <form method="POST" action="checkout.php">
+      <form method="POST" action="checkout.php" enctype='multipart/form-data'>
       <div class="m-4">
             <div>
               <h6 style="text-align: right;">Tanggal Pembelian : <?php echo date("d/m/Y") ?></h6>

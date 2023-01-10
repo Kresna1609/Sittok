@@ -37,6 +37,7 @@ if (isset($_POST['login'])) {
                     session_start();
                     $_SESSION['id'] = $id;
                     $_SESSION['user_fullname'] = $userName;
+                    $_SESSION['user_email'] = $userVal;
                     $_SESSION['level'] = $level;
                     header('location:index.php');
                 }

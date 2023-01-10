@@ -74,7 +74,7 @@
 										$data = mysqli_query($koneksi,"SELECT * FROM jual_barang WHERE id = $id;");
 										$jumlah_data = mysqli_num_rows($data);
 
-										$data_order = mysqli_query($koneksi,"SELECT DISTINCT no_pesanan,tgl_jual,status_pesanan FROM jual_barang WHERE status_pesanan!='Selesai' AND id='$id'");
+										$data_order = mysqli_query($koneksi,"SELECT DISTINCT no_pesanan,tgl_jual,status_pesanan,bukti_pembayaran FROM jual_barang WHERE status_pesanan!='Selesai' AND id='$id'");
 										$grand_total = 0;
                                         $nomor = 1;
 										while($d = mysqli_fetch_array($data_order)){
@@ -85,21 +85,57 @@
                                     <td class="text-center"><?php echo $d['no_pesanan']; ?></td>
                                     <td class="text-center"><?php echo $d['tgl_jual']; ?></td>
                                     <td class="text-center"> 
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalView<?php echo $d['no_pesanan'];?>">
                                         Lihat
                                         </button>
+                                        <div class="modal fade" id="exampleModalView<?php echo $d['no_pesanan'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" >
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Barang</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <form action="pesanansaya.php" method="POST">
+															<?php 
+															$nopesanan = $d['no_pesanan'];
+															$data_order1 = mysqli_query($koneksi,"SELECT * FROM barang JOIN jual_barang ON jual_barang.id_barang = barang.id_barang WHERE no_pesanan= '$nopesanan' AND id='$id'");
+
+															while($d2 = mysqli_fetch_array($data_order1)){ ?>
+																<br>
+                                                                <img width="200px" src="admin/assets/img/barang/<?php echo $d2['gambar']; ?>" alt="">
+																<div class="form-group">
+																	<br>
+																	<label for="txt_nama">Merk Barang</label>
+																	<input type="text" class="form-control form-control-menu" placeholder="Merk Barang" name="txt_nama" value="<?php echo $d2['merk_barang']; ?>">
+																</div> 
+																<br>
+																<div class="form-group">
+																	<label for="txt_desk">Deskripsi</label>
+																	<input type="text" class="form-control form-control-menu" placeholder="Merk Barang" name="txt_desk" value="<?php echo ($d2['harga']); ?> x <?php echo $d2['qty']; ?> = <?php echo($d2['total_harga']); ?>">
+																</div> 
+
+															<?php } ?>
+                                            
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
                                     </td>
                                     <td class="text-center"> </td>
                                     <td class="text-center" style="color: #384046;">
-                                        img
+                                        <img style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $d['bukti_pembayaran']; ?>">
                                     </td>
                                     <td class="text-center" style="color: #384046;"><?php echo $d['status_pesanan']; ?></td>
                                     <td class="text-center" style="color: #384046;">
                                     
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                        Nota
-                                        </button>
+                                        <a  href="nota.php?resi=<?php echo $d['no_pesanan'];?>" class="btn btn-primary">NOTA</a>
                                     </td>
                                 </tr>
                                 
