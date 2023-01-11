@@ -21,9 +21,6 @@ require('koneksi.php');
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
-    <?php
-      include('../sidebar.php');
-    ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
@@ -57,7 +54,7 @@ require('koneksi.php');
             <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="assets/img/boy.png" style="max-width: 60px">
+                <img class="img-profile rounded-circle" src="../assets/img/boy.png" style="max-width: 60px">
                 <?php
                                 if (isset($_SESSION['id'])) {
                                     $id = $_SESSION['id'];
@@ -73,24 +70,6 @@ require('koneksi.php');
                                 }
                                 ?>
               </a>
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="logoutadmin.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
-                                    class="dropdown-item">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
-              </div>
             </li>
           </ul>
         </nav>

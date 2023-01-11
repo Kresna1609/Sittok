@@ -44,9 +44,6 @@ if (isset($_POST['update_status'])) {
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
-    <?php
-    include('../sidebar.php');
-    ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
@@ -76,7 +73,7 @@ if (isset($_POST['update_status'])) {
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="assets/img/boy.png" style="max-width: 60px">
+                <img class="img-profile rounded-circle" src="../assets/img/boy.png" style="max-width: 60px">
                 <?php
                 if (isset($_SESSION['id'])) {
                   $id = $_SESSION['id'];
@@ -92,23 +89,6 @@ if (isset($_POST['update_status'])) {
                 }
                 ?>
               </a>
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="logoutadmin.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" class="dropdown-item">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
-              </div>
             </li>
           </ul>
         </nav>
@@ -156,17 +136,53 @@ if (isset($_POST['update_status'])) {
                           while ($row = mysqli_fetch_array($result)) {
                             $id_jual_barang = $row['id_jual_barang'];
                             $tgl_jual = $row['tgl_jual'];
-                            $id_barang = $row['id_barang'];
                             $id_customer = $row['id'];
                             $total_harga = $row['total_harga'];
                             $status_pesanan = $row['status_pesanan'];
                             $bukti_pembayaran = $row['bukti_pembayaran'];
+                            $no_pesanan = $row['no_pesanan']
 
                           ?>
                             <tr>
                               <td><?php echo $id_jual_barang; ?></td>
                               <td><?php echo $tgl_jual; ?></td>
-                              <td><?php echo $id_barang; ?></td>
+                              <td>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalView<?php echo $d['no_pesanan'];?>">
+                                        Lihat
+                                        </button>
+                                        <div class="modal fade" id="exampleModalView<?php echo $d['no_pesanan'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" >
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Barang</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <form action="list.php" method="POST">
+                                              <?php 
+                                              $nopesanan = $d['no_pesanan'];
+                                              $data_orderan = mysqli_query($koneksi,"SELECT * FROM barang JOIN jual_barang ON jual_barang.id_barang = barang.id_barang WHERE no_pesanan= '$nopesanan' AND id='$id'");
+
+                                              while($dd = mysqli_fetch_array($data_orderan)){ ?>
+                                                <br>
+                                                <div class="form-group">
+                                                <br>
+                                                <label for="txt_nama">id_barang</label>
+                                                <input type="text" class="form-control form-control-menu" placeholder="Id_Barang" name="txt_nama" value="<?php echo $dd['id_barang']; ?>">
+                                              </div> 
+                                                <br>
+
+                                              <?php } ?>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                              </td>
                               <td><?php echo $id_customer; ?></td>
                               <td><?php echo $total_harga; ?></td>
                               <td>
@@ -180,12 +196,12 @@ if (isset($_POST['update_status'])) {
                                 </select>
                               </td>
                               <td>
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalView<?php echo $no_pesanan;?>">
                                         Lihat
                                         </button>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModalView<?php echo $no_pesanan;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                             <div class="modal-header">
