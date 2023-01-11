@@ -7,8 +7,8 @@ session_start();
 
 if (isset($_POST['status_pesanan'])) {
 
-  $id_jual_barang = $_POST['id_jual_barang'];
-  $id_jual_barang = filter_var($id_jual_barang, FILTER_SANITIZE_STRING);
+  $no_pesanan = $_POST['no_pesanan'];
+  $no_pesanan = filter_var($no_pesanan, FILTER_SANITIZE_STRING);
 
   $status_pesanan = $_POST['status_pesanan'];
   $status_pesanan = filter_var($status_pesanan, FILTER_SANITIZE_STRING);
@@ -18,10 +18,10 @@ if (isset($_POST['status_pesanan'])) {
 
 if (isset($_POST['update_status'])) {
   $cek = $_POST['status_pesanan'];
-  $id_jual_barang = $_POST['id_jual_barang'];
+  $no_pesanan = $_POST['no_pesanan'];
   // var_dump($cek);
   // var_dump($id_jual_barang);
-  $up = mysqli_query($koneksi,"UPDATE jual_barang SET status_pesanan = '$cek' WHERE id_jual_barang = '$id_jual_barang'");
+  $up = mysqli_query($koneksi,"UPDATE jual_barang SET status_pesanan = '$cek' WHERE no_pesanan = '$no_pesanan'");
   
 }
 
@@ -119,6 +119,7 @@ if (isset($_POST['update_status'])) {
                           <th>No</th>
                           <th>Tanggal Jual</th>
                           <th>Id Barang</th>
+                          <th>No Pesanan</th>
                           <th>Id Customer</th>
                           <th>Total Harga</th>
                           <th>Status Pesanan</th>
@@ -136,58 +137,23 @@ if (isset($_POST['update_status'])) {
                           while ($row = mysqli_fetch_array($result)) {
                             $id_jual_barang = $row['id_jual_barang'];
                             $tgl_jual = $row['tgl_jual'];
+                            $id_barang = $row['id_barang'];
                             $id_customer = $row['id'];
                             $total_harga = $row['total_harga'];
                             $status_pesanan = $row['status_pesanan'];
                             $bukti_pembayaran = $row['bukti_pembayaran'];
-                            $no_pesanan = $row['no_pesanan']
+                            $no_pesanan = $row['no_pesanan'];
 
                           ?>
                             <tr>
                               <td><?php echo $id_jual_barang; ?></td>
                               <td><?php echo $tgl_jual; ?></td>
-                              <td>
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalView<?php echo $d['no_pesanan'];?>">
-                                        Lihat
-                                        </button>
-                                        <div class="modal fade" id="exampleModalView<?php echo $d['no_pesanan'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" >
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Barang</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                            <form action="list.php" method="POST">
-                                              <?php 
-                                              $nopesanan = $d['no_pesanan'];
-                                              $data_orderan = mysqli_query($koneksi,"SELECT * FROM barang JOIN jual_barang ON jual_barang.id_barang = barang.id_barang WHERE no_pesanan= '$nopesanan' AND id='$id'");
-
-                                              while($dd = mysqli_fetch_array($data_orderan)){ ?>
-                                                <br>
-                                                <div class="form-group">
-                                                <br>
-                                                <label for="txt_nama">id_barang</label>
-                                                <input type="text" class="form-control form-control-menu" placeholder="Id_Barang" name="txt_nama" value="<?php echo $dd['id_barang']; ?>">
-                                              </div> 
-                                                <br>
-
-                                              <?php } ?>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                              </td>
+                              <td><?php echo $id_barang; ?></td>
+                              <td><?php echo $no_pesanan; ?></td>
                               <td><?php echo $id_customer; ?></td>
                               <td><?php echo $total_harga; ?></td>
                               <td>
-
-                                <input type="hidden" name="id_jual_barang" value="<?php echo $row['id_jual_barang']; ?>">
+                                <input type="hidden" name="no_pesanan" value="<?php echo $row['no_pesanan']; ?>">
                                 <select name="status_pesanan" class="drop-down-order">
                                   <option value="<?php echo $status_pesanan; ?>" selected disabled><?php echo $status_pesanan; ?></option>
                                   <option value="Diproses">Diproses</option>
