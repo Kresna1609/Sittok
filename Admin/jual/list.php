@@ -156,7 +156,7 @@ if (isset($_POST['update_status'])) {
                                 <input type="hidden" name="no_pesanan" value="<?php echo $row['no_pesanan']; ?>">
                                 <select name="status_pesanan" class="drop-down-order">
                                   <option value="<?php echo $status_pesanan; ?>" selected disabled><?php echo $status_pesanan; ?></option>
-                                  <option value="Diproses">Diproses</option>
+                                  <option value="Diproses">Ditolak</option>
                                   <option value="Dikemas">Dikemas</option>
                                   <option value="Dikirim">Dikirim</option>
                                 </select>
