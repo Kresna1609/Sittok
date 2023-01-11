@@ -162,9 +162,9 @@
          <div class="form-group">
             <label for="exampleFormControlSelect1">Metode Pembayaran</label>
             <select class="form-control" id="exampleFormControlSelect1">
-               <option>BRI</option>
-               <option>Mandiri</option>
-               <option>Dana 085235101051</option>
+               <option>BRI 00201235968508 a.n Afkarina Dewi</option>
+               <option>Mandiri 1430023912122 a.n Afkarina Dewi</option>
+               <option>Dana 085235101051 a.n Rizqi</option>
             </select>
          </div>
          <div class="form-group">
